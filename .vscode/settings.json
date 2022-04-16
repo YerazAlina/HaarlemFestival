@@ -5,13 +5,13 @@
                 "authProtocol": "default"
             },
             "previewLimit": 50,
-            "server": "localhost",
+            "server": "sql11.freemysqlhosting.net",
             "port": 3306,
-            "askForPassword": true,
             "driver": "MariaDB",
-            "name": "haarlem_festival",
-            "database": "haarlem_festival",
-            "username": "developer"
+            "name": "HF_database",
+            "database": "sql11479863",
+            "username": "sql11479863",
+            "password": "Qcn3qEQ4rE"
         }
     ]
 }
