@@ -32,7 +32,7 @@ class UserController
 
                 $_SESSION['email'] = $_POST['email'];
 
-                $count = $this->service->login($email, sha1($password));
+                $count = $this->service->login($email, $password);
 
                 if ($count > 0) {
 
@@ -55,15 +55,19 @@ class UserController
         $lastname = $_POST['lastname'];
         $password =  $_POST['password'];
 
-        $confirm_password = $_POST['confirm_email'];
+        $confirm_password = $_POST['confirm_password'];
 
         if (!empty($email) && !empty($password) && ($password === $confirm_password)) {
+            
+            $count = $this->service->createUser($email, $firstname, $lastname, sha1($password));
 
-            $this->service->createUser($email, $firstname, $lastname, sha1($password));
-            header('Location: login');
-
+            if ($count >= "1"){
+                require __DIR__ . "../../views/login.php";
+            }
+            else{
+                require __DIR__ . "../../views/register.php";
+            }
         } else {
-
             header('Location: register');
 
         }

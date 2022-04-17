@@ -81,6 +81,9 @@ class UserRepository extends Repository
 
     public function addUser($email, $firstname, $lastname, $password)
     {
+        $count = "";
+        
+        //$query = "INSERT INTO users (email, password) VALUES (:email, :password); SELECT LAST_INSERT_ID() as id;";
         $query = "INSERT INTO users (email, firstname, lastname, password) VALUES (:email, :firstname, :lastname, :password); SELECT LAST_INSERT_ID() as id;";
         $statement = $this->db->prepare($query);
         $statement->execute(
@@ -91,6 +94,7 @@ class UserRepository extends Repository
                 'password'     =>     $password
             )
         );
+
         $count = $statement->rowCount();
 
         return $count; 

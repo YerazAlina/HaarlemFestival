@@ -12,27 +12,13 @@
     <link rel="stylesheet" href="../../public/css/cms.css">
 </head>
 
+<!-- import a head above -->
+    
 <body>
     <?php require __DIR__ . '/navbar.php'; ?>
 
-    <div class="wrapper" style="margin: auto; width: 360px; padding: 30px;">
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
-
-        <form action="loginUser" method="post">
-            <div class="form-group">
-                <label>Email</label>
-                <input type="text" name="email" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control">
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login" name="login">
-            </div>
-            <p>Don't have an account? <a href="register">Sign up now</a>.</p>
-        </form>
+    <div class="wrapper">
+        <h2>Welcome</h2>
     </div>
 
     <?php require __DIR__ . '/footer.php'; ?>

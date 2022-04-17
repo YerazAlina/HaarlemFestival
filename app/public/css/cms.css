@@ -1,0 +1,12 @@
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;    
+  }
+
+  /* register & login */
+  .wrapper{
+    margin: auto;
+    width: 360px;
+    padding: 30px;
+  }
