@@ -20,7 +20,7 @@ $email_err = $firstname_err = $lastname_err = $password_err = $confirm_password_
 </head>
 
 <body>
-    <?php require __DIR__ . '/navbar.php'; ?>
+    <?php require __DIR__ . '/include/navbar.php'; ?>
 
     <div class="wrapper" style="margin: auto; width: 360px; padding: 30px;">
         <h2>Sign Up</h2>
@@ -59,7 +59,7 @@ $email_err = $firstname_err = $lastname_err = $password_err = $confirm_password_
         </form>
     </div>
 
-    <?php require __DIR__ . '/footer.php'; ?>
+    <?php require __DIR__ . '/include/footer.php'; ?>
 </body>
 
 </html>

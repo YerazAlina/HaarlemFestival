@@ -19,7 +19,7 @@
     <div class="container">
 		<div class="row">
 			<div class="col">
-				<p style="color: #A42323; font-weight: bold; font-size:20px; text-align:center; ">KEEP IN MIND <br>
+				<p style="color: black; font-weight: bold; font-size:20px;">KEEP IN MIND <br>
 					THE POLICY FOR ALL THE ATTENDEES</p>
 				<p style="font-weight:bold; font-size:18px;">Festival policies</p>
 
@@ -46,11 +46,11 @@
 			<div class="col-8 d-flex justify-content-center text-center">
 				<a href="manageUsers">
                     <br> <br> <br> <br>
-					<button type="button" class="btn btn-light" style="background-color:#A42323; color:white; height:160px;"> Manage Users </button>
+					<button type="button" class="btn btn-light" style="background-color:#844242; color:white; height:160px; width: 240px;"> Manage Users </button>
 				</a>
 				<a href="manageContent">
                     <br> <br> <br> <br>
-					<button type="button" class="btn btn-light" style="background-color:#A42323; color:white; height:160px;">Manage Content </button>
+					<button type="button" class="btn btn-light" style="background-color:#844242; color:white; height:160px; width: 240px;"> Manage Content </button>
 				</a>
 			</div>
 
