@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <?php require __DIR__ . '/navbar.php'; ?>
+    <?php require __DIR__ . '/include/navbar.php'; ?>
 
     <div class="wrapper" style="margin: auto; width: 360px; padding: 30px;">
         <h2>Login</h2>
@@ -35,7 +35,7 @@
         </form>
     </div>
 
-    <?php require __DIR__ . '/footer.php'; ?>
+    <?php require __DIR__ . '/include/footer.php'; ?>
 </body>
 
 </html>

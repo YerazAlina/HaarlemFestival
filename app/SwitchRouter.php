@@ -38,8 +38,8 @@ class SwitchRouter
             case 'manageUsers':
                 require __DIR__ . '/backend/views/cms/manageUsers.php';
                 break;
-            case 'manageWebsite':
-                require __DIR__ . '/backend/views/cms/manageWebsite.php';
+            case 'manageContent':
+                require __DIR__ . '/backend/views/cms/manageContent.php';
                 break;
             default:
                 echo '404 not found';

@@ -13,11 +13,16 @@
 </head>
     
 <body>
-    <?php require __DIR__ . '/navbar.php'; ?>
+    <?php require __DIR__ . '/include/navbar.php'; ?>
 
-    <h2>Manage Website</h2>
-    
-    <?php require __DIR__ . '/footer.php'; ?>
+    <div class="wrapper" style="margin: auto; width: 360px; padding: 30px;">
+        <h3>Manage Content</h3>
+        <!-- Food and Jazz? -->
+        <!-- Food: Reservations, Sessions & Restaurants -->
+        <!-- Jazz: Session, Artist & Venue -->
+        
+    </div>
+    <?php require __DIR__ . '/include/footer.php'; ?>
 </body>
 
 </html>

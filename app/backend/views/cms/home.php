@@ -13,13 +13,50 @@
 </head>
     
 <body>
-    <?php require __DIR__ . '/navbar.php'; ?>
+    <?php require __DIR__ . '/include/navbar.php'; ?>
+    <br> <br> <br>
 
-    <div class="wrapper">
-        <h2>Welcome</h2>
-    </div>
+    <div class="container">
+		<div class="row">
+			<div class="col">
+				<p style="color: #A42323; font-weight: bold; font-size:20px; text-align:center; ">KEEP IN MIND <br>
+					THE POLICY FOR ALL THE ATTENDEES</p>
+				<p style="font-weight:bold; font-size:18px;">Festival policies</p>
 
-    <?php require __DIR__ . '/footer.php'; ?>
+				<p style="font-weight:550;">What to bring with you</p>
+				<ul style="list-style-type: square; font-weight:450;">
+					<li>Your Ticket</li>
+					<li>Photo ID</li>
+					<li>QR Code (Negative test / Vaccination)</li>
+				</ul>
+
+				<p style="font-weight:550;">Festival policies</p>
+				<ul style="list-style-type: square; font-weight:450;">
+					<li>No sitting on designated dance floor areas</li>
+					<li>No refunds or exchanges</li>
+					<li>No unauthorized vendors</li>
+					<li>No smoking</li>
+				</ul>
+
+				<a href="?">
+					<button type="button" class="btn btn-light" style="background-color:#844242; color:white; height:50px; width: 240px;">Visit the website</button>
+				</a>
+			</div>
+
+			<div class="col-8 d-flex justify-content-center text-center">
+				<a href="manageUsers">
+                    <br> <br> <br> <br>
+					<button type="button" class="btn btn-light" style="background-color:#A42323; color:white; height:160px;"> Manage Users </button>
+				</a>
+				<a href="manageContent">
+                    <br> <br> <br> <br>
+					<button type="button" class="btn btn-light" style="background-color:#A42323; color:white; height:160px;">Manage Content </button>
+				</a>
+			</div>
+
+		</div>
+	</div>
+    <?php require __DIR__ . '/include/footer.php'; ?>
 </body>
 
 </html>

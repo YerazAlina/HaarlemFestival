@@ -12,34 +12,46 @@
     <link rel="stylesheet" href="../../public/css/cms.css">
 </head>
 
-<body>
-    <?php require __DIR__ . '/navbar.php'; ?>
+<!-- user can edit email, name and password -->
 
-    <div class="wrapper" style="margin: auto; width: 360px; padding: 30px;">
-        <h2>Profile Settings</h2>
-        <form action="profileSettings" method="post">
+<body>
+    <?php require __DIR__ . '/include/navbar.php'; ?>
+    <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
+        <h3>Edit Personal Information</h3>
+        <br>
+        <form action="profile" method="post">
             <div class="form-group">
-                <label>Update Email</label>
-                <input type="text" name="email_new" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email_new; ?>">
-                <span class="invalid-feedback"><?php echo $email_new_err; ?></span>
-                <br>
+                <label>Email</label>
+                <input type="text" name="email" class="form-control">
             </div>
             <div class="form-group">
+                <label>Firstname</label>
+                <input type="text" name="firstname" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Lastname</label>
+                <input type="text" name="lastname" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="reset" class="btn btn-secondary" value="Cancel">
                 <a href="saveChanges">
-                    <button type="button" class="btn btn-primary me-2"> Update Email
-                    </button>
+                    <button type="button" class="btn btn-primary"> Save Changes </button>
+                    <br>
                 </a>
+                <br>
                 <a href="deleteAccount">
-                    <button type="button" class="btn btn-danger me-3">
-                        Delete Account
-                    </button>
+                    <button type="button" class="btn btn-danger"> Delete Account </button>
                 </a>
-            </div>
         </form>
+    </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-    <?php require __DIR__ . '/footer.php'; ?>
+    <?php require __DIR__ . '/include/footer.php'; ?>
 </body>
 
 </html>
