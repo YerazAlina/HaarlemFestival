@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height:100px;">
     <div class="container">
         <a class="navbar-brand me-2">
             <img src="?" height="40" alt="Haarlem Festival" loading="lazy" style="margin-top: -9px;" />
@@ -16,15 +16,15 @@
                 </ul>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="seeds">Seeds</a>
+                        <a class="nav-link" href="manageUsers">Manage Users</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="contactPage">Contact</a>
+                        <a class="nav-link" href="manageWebsite">Manage Website</a>
                     </li>
                 </ul>
-            </div>
+            </div> 
         <?php else : ?>
             <div class="collapse navbar-collapse" id="navbarButtonsExample">
                 <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">

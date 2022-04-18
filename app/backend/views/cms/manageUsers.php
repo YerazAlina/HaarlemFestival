@@ -11,16 +11,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../public/css/cms.css">
 </head>
-
-<!-- import a head above -->
     
 <body>
     <?php require __DIR__ . '/navbar.php'; ?>
 
-    <div class="wrapper">
-        <h2>Welcome</h2>
-    </div>
-
+    <h2>Manage Users</h2>
+    
     <?php require __DIR__ . '/footer.php'; ?>
 </body>
 

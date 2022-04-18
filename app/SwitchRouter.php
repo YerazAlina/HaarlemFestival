@@ -9,14 +9,13 @@ class SwitchRouter
         switch ($uri) {
             case '':
             case 'login':
-                //just for showing the view
-                require __DIR__ . '/backend/views/login.php';
+                require __DIR__ . '/backend/views/cms/login.php';
                 break;
             case 'home':
-                require __DIR__ . '/backend/views/home.php';
+                require __DIR__ . '/backend/views/cms/home.php';
                 break;
             case 'register':
-                require __DIR__ . '/backend/views/register.php';
+                require __DIR__ . '/backend/views/cms/register.php';
                 break;
             case 'loginUser':
                 require __DIR__ . '/backend/controller/usercontroller.php';
@@ -32,6 +31,15 @@ class SwitchRouter
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $controller->logout();
+                break;
+            case 'profile':
+                require __DIR__ . '/backend/views/cms/profile.php';
+                break;
+            case 'manageUsers':
+                require __DIR__ . '/backend/views/cms/manageUsers.php';
+                break;
+            case 'manageWebsite':
+                require __DIR__ . '/backend/views/cms/manageWebsite.php';
                 break;
             default:
                 echo '404 not found';
