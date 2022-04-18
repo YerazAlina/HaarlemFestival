@@ -31,7 +31,7 @@ class UserController
 
                 $_SESSION['email'] = $_POST['email'];
 
-                $count = $this->service->login($email, $password);
+                $count = $this->service->login($email, sha1($password));
 
                 if ($count > 0) {
 
@@ -57,18 +57,15 @@ class UserController
         // A check is performed to see whether a user has registered before using the same email address
 
         // this checks if the email already exists in the db table users and returns uhhhh something idk what
-        $something = $this->service->searchEmail($email);
+        //$something = $this->service->searchEmail($email);
 
-        if ($something) {
-            if (!empty($email) && !empty($password) && ($password === $confirm_password)) {
+        $count = $this->service->createUser($email, $firstname, $lastname, sha1($password));
 
-                $count = $this->service->createUser($email, $firstname, $lastname, sha1($password));
-
-                if ($count >= "1") {
-                    require __DIR__ . "../../views/cms/login.php";
-                } else {
-                    require __DIR__ . "../../views/cms/register.php";
-                }
+        if (!empty($email) && !empty($password) && ($password === $confirm_password)) {
+            if ($count >= 1) {
+                require __DIR__ . "../../views/cms/login.php";
+            } else {
+                require __DIR__ . "../../views/cms/register.php";
             }
         } else {
             header('Location: register');

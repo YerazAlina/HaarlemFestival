@@ -84,8 +84,7 @@ class UserRepository extends Repository
     {
         $count = "";
 
-        //$query = "INSERT INTO users (email, password) VALUES (:email, :password); SELECT LAST_INSERT_ID() as id;";
-        $query = "INSERT INTO users (email, firstname, lastname, password) VALUES (:email, :firstname, :lastname, :password); SELECT LAST_INSERT_ID() as id;";
+        $query = "INSERT INTO users (email, firstname, lastname, password) VALUES (:email, :firstname, :lastname, :password)";
         $statement = $this->db->prepare($query);
         $statement->execute(
             array(
@@ -103,7 +102,7 @@ class UserRepository extends Repository
 
     public function findByEmail($email)
     {
-        $this->stmt = $this->db->prepare($this->one_user_sql);
+        $this->stmt = $this->db->prepare($this->one_userByEmail_sql);
         $this->stmt->bindParam(':email', $email);
         $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
         $this->stmt->execute();
