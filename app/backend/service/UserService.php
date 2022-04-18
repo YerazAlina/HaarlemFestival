@@ -41,6 +41,11 @@ class UserService
         return $this->userRepository->updateEmail($email, $id);
     }
 
+    public function searchEmail($email)
+    {
+        return $this->userRepository->findByEmail($email);
+    }
+
     public function login($email, $password)
     {
         return $this->userRepository->login($email, $password);

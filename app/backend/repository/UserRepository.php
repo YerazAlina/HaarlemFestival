@@ -12,7 +12,8 @@ class UserRepository extends Repository
     private string $all_users_sql = "SELECT * FROM users";
     private string $create_user_sql = "insert into users (id, email, firstname, lastname, password) values (null, :email, :firstname, :lastname, :password, )";  //change this one
     private string $delete_user_sql = "delete from users where email = :email";
-    private string $one_user_sql = "SELECT id from users where id = :id"; 
+    private string $one_user_sql = "SELECT id from users where id = :id";
+    private string $one_userByEmail_sql = "SELECT id from users where email = :email";
 
     public function __construct()
     {
@@ -76,13 +77,13 @@ class UserRepository extends Repository
 
         $count = $statement->rowCount();
 
-        return $count; 
+        return $count;
     }
 
     public function addUser($email, $firstname, $lastname, $password)
     {
         $count = "";
-        
+
         //$query = "INSERT INTO users (email, password) VALUES (:email, :password); SELECT LAST_INSERT_ID() as id;";
         $query = "INSERT INTO users (email, firstname, lastname, password) VALUES (:email, :firstname, :lastname, :password); SELECT LAST_INSERT_ID() as id;";
         $statement = $this->db->prepare($query);
@@ -97,12 +98,22 @@ class UserRepository extends Repository
 
         $count = $statement->rowCount();
 
-        return $count; 
+        return $count;
+    }
+
+    public function findByEmail($email)
+    {
+        $this->stmt = $this->db->prepare($this->one_user_sql);
+        $this->stmt->bindParam(':email', $email);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        $this->stmt->execute();
+
+        return $this->stmt->fetch(); //what does this return??
     }
 
     public function updateEmail($email, $id)
     {
-     /*    $query = "UPDATE users SET email = :email WHERE id = :id";
+        /*    $query = "UPDATE users SET email = :email WHERE id = :id";
         $statement = $this->db->prepare($query);
         $statement->execute(
             array(
