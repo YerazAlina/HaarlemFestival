@@ -16,15 +16,7 @@
     <?php require __DIR__ . '/include/navbar.php'; ?>
 
     <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
-        <h3>Manage Content</h3>
-        <p>The website can be edited here choose a page that you want to edit:</p>
-
-        <div class="list-group">
-            <a href="foodcms" class="list-group-item list-group-item-action">Food</a>
-            <a href="jazzcms" class="list-group-item list-group-item-action">Jazz</a>
-            <a href="historycms" class="list-group-item list-group-item-action">History</a>
-            <a href="#" class="list-group-item list-group-item-action disabled">Music (currently unavailable)</a>
-        </div>
+        <h3>Manage Content Food</h3>
 
     </div>
     <?php require __DIR__ . '/include/footer.php'; ?>

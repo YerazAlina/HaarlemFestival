@@ -14,6 +14,15 @@ class SwitchRouter
             case 'home':
                 require __DIR__ . '/backend/views/cms/home.php';
                 break;
+            case 'foodcms':
+                require __DIR__ . '/backend/views/cms/foodcms.php';
+                break;
+            case 'jazzcms':
+                require __DIR__ . '/backend/views/cms/jazzcms.php';
+                break;
+            case 'historycms':
+                require __DIR__ . '/backend/views/cms/historycms.php';
+                break;
             case 'register':
                 require __DIR__ . '/backend/views/cms/register.php';
                 break;
