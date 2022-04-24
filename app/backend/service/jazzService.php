@@ -17,6 +17,4 @@ class jazzService{
     public function getEvents(){
         return $this->jazzrepository->findAll();
     }
-
-
 }
