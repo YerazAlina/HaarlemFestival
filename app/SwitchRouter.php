@@ -14,7 +14,11 @@ class SwitchRouter
                 $controller = new jazzController();
                 $controller->allJazzEvents();
                 break;
-
+            case 'restaurants':
+                require __DIR__ . '/backend/controller/foodController.php';
+                $controller = new foodController();
+                $controller->allfoodRestaurant();
+                break;
             default:
                 echo '404 not found';
                 http_response_code(404);
