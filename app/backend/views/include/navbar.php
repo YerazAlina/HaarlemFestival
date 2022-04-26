@@ -23,16 +23,22 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="contact">FOOD</a>
+                            <a class="nav-link active" href="">FOOD</a>
                         </li>
 
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="contact">JAZZ</a>
+                            <a class="nav-link active" href="jazzevents">JAZZ</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="contact">HISTORY</a>
+                            <a class="nav-link active" href="">HISTORY</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="cart">
+                            <button class="btn"><i class="fa fa-shopping-cart"></i></button>
+                            </a>
                         </li>
 
                         <li class="nav-item dropdown">

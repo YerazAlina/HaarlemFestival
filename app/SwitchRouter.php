@@ -14,6 +14,9 @@ class SwitchRouter
                 $controller = new jazzController();
                 $controller->allJazzEvents();
                 break;
+            case 'cart':
+                require __DIR__ . '/backend/views/cart.php';  
+                break;  
 
             default:
                 echo '404 not found';
