@@ -1,5 +1,6 @@
 <?php
 require_once("location.php");
+require_once("restaurantType.php");
 
 class restaurant {
 

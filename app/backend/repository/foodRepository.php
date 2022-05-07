@@ -16,10 +16,11 @@ class foodRepository
     }
 
 
-    private string $all_restaurants_sql = "SELECT * FROM foodActivity
-                                      JOIN activity a on a.id = restaurantActivity.activityId
-                                      RIGHT JOIN artist a2 on a2.id = restaurntActivity.artistId
-                                      JOIN location l on l.id = a.locationId";
+    private string $all_restaurants_sql = "SELECT r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, a.date, a.startTime, a.endTime, l.address, l.postalCode
+                                        FROM activity AS a 
+                                        INNER JOIN location AS l ON a.locationId=l.id
+                                        INNER JOIN foodActivity AS f ON f.activityId=a.id
+                                        INNER JOIN restaurant AS r ON r.id=f.restaurantId";
 
 
     public function findAll()

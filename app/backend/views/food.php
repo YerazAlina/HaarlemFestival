@@ -20,7 +20,6 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #A42323">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"> <img src="../../img/logo.png" alt="logo" width="116" height="34"> </a>
@@ -69,6 +68,16 @@
             </div>
         </div>
     </nav>
+    <header>
+
+    <section><img class="foodbanner" src="images/food/foodBanner2.jpg"></section>
+
+    <section class="w3-display-topleft" style="padding:150px">
+        <span class="w3-jumbo  w3-text-black ">Welcome to Haarlem festival</span><br>
+        <span class="w3-display-bottommiddle w3-jumbo w3-text-black">Food</span><br>
+    </section>
+
+    </header>
 
 
 
