@@ -22,6 +22,8 @@ class jazzRepository
                                       RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
                                       JOIN location l on l.id = a.locationId";
 
+    private string $get_one_event_sql = "SELECT * FROM jazzActivity WHERE jazzActivity.id=:id";                            
+
 
 
     /*
@@ -91,7 +93,16 @@ class jazzRepository
 
     public function findById($id)
     {
-        // TODO: Implement findById() method.
+        
+        $this->stmt = $this->db->prepare($this->get_one_event_sql);
+        $this->stmt->execute(['id' => $id]);
+
+        if ($this->stmt->rowCount() > 0) {
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return null;
+        }
+
     }
 
     public function saveOne($object)

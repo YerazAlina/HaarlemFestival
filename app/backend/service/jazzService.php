@@ -18,5 +18,11 @@ class jazzService{
         return $this->jazzrepository->findAll();
     }
 
+    
+    public function findById($id){
+        return $this->jazzrepository->findById($id);
+    }
+
+
 
 }

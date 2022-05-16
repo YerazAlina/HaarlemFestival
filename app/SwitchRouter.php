@@ -13,10 +13,15 @@ class SwitchRouter
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
                 $controller->allJazzEvents();
+
+                $controller = new cartController();
+                $controller->index();
                 break;
             case 'cart':
-                require __DIR__ . '/backend/views/cart.php';  
-                break;  
+                require __DIR__ . '/backend/controller/cartController.php';  
+                $controller = new cartController();
+                $controller->getCartTickets();
+
 
             default:
                 echo '404 not found';

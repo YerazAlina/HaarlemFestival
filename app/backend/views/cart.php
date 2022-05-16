@@ -21,12 +21,20 @@
 		        <div class="block-heading">
 		          <h2>Shopping Cart</h2>
 		          <p>You have "number" items in your shopping cart</p>
+
+				  <?php
+
+				  foreach($tickets as $t){ ?>
+					  <p class="card-subtitle"> <?php echo $t->artistname?></p>
+				  <?php
+				    }
+				  ?>
 		        </div>
 		        <div class="content">
 	 				<div class="row">
 	 					<div class="col-md-12 col-lg-8">
-	 						<div class="items">
-				 				<div class="product">
+	 						<div class="cart-items">
+				 				<div class="event">
 				 					<div class="row">
 					 					<div class="col-md-3">
 					 						<img class="img-fluid mx-auto d-block image" src="../img/jazz/backgrounds/haarlem-jazz-background.png">
@@ -34,19 +42,19 @@
 					 					<div class="col-md-8">
 					 						<div class="info">
 						 						<div class="row">
-							 						<div class="col-md-5 product-name">
-							 							<div class="product-name">
+							 						<div class="col-md-5 event-name">
+							 							<div class="event-name">
 								 							<a href="#">Event title</a>
-								 							<div class="product-info">
+								 							<div class="event-info">
 									 							<div>Time: <span class="value">...</span></div>
 									 							<div>Date: <span class="value">...</span></div>
 									 							<div>Location: <span class="value">...</span></div>
 									 						</div>
 									 					</div>
 							 						</div>
-							 						<div class="col-md-4 quantity">
-							 							<label for="quantity">Quantity:</label>
-							 							<input id="quantity" type="number" value ="1" class="form-control quantity-input">
+							 						<div class="col-md-4 cart-quantity">
+							 							<label for="cart-quantity">Quantity:</label>
+							 							<input id="cart-quantity" type="number" value ="1" class="form-control cart-quantity-input">
 							 						</div>
 							 						<div class="col-md-3 price">
 							 							<span>$...</span>
@@ -56,7 +64,7 @@
 					 					</div>
 					 				</div>
 				 				</div>
-				 				<div class="product">
+				 				<div class="event">
 				 					<div class="row">
 					 					<div class="col-md-3">
 					 						<img class="img-fluid mx-auto d-block image" src="../img/jazz/backgrounds/haarlem-jazz-background.png">
@@ -64,19 +72,19 @@
 					 					<div class="col-md-8">
 					 						<div class="info">
 						 						<div class="row">
-							 						<div class="col-md-5 product-name">
-							 							<div class="product-name">
+							 						<div class="col-md-5 event-name">
+							 							<div class="event-name">
 								 							<a href="#">Event title</a>
-								 							<div class="product-info">
+								 							<div class="event-info">
 									 							<div>Time: <span class="value">...</span></div>
 									 							<div>Date: <span class="value">...</span></div>
 									 							<div>Location: <span class="value">...</span></div>
 									 						</div>
 									 					</div>
 							 						</div>
-							 						<div class="col-md-4 quantity">
-							 							<label for="quantity">Quantity:</label>
-							 							<input id="quantity" type="number" value ="1" class="form-control quantity-input">
+							 						<div class="col-md-4 cart-quantity">
+							 							<label for="cart-quantity">Quantity:</label>
+							 							<input id="cart-quantity" type="number" value ="1" class="form-control cart-quantity-input">
 							 						</div>
 							 						<div class="col-md-3 price">
 							 							<span>$...</span>
@@ -90,13 +98,12 @@
 				 			</div>
 			 			</div>
 			 			<div class="col-md-12 col-lg-4">
-			 				<div class="summary">
+			 				<div class="cart-summary">
 			 					<h3>Summary</h3>
 			 					<div class="summary-item"><span class="text">Subtotal</span><span class="price">$...</span></div>
 			 					<div class="summary-item"><span class="text">Discount</span><span class="price">$...</span></div>
-			 					<div class="summary-item"><span class="text">Shipping</span><span class="price">$...</span></div>
 			 					<div class="summary-item"><span class="text">Total</span><span class="price">$...</span></div>
-			 					<button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
+			 					<button type="button" class="btn btn-danger btn-lg btn-block">Checkout</button>
 				 			</div>
 			 			</div>
 		 			</div> 
