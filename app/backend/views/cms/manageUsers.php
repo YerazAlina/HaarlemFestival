@@ -33,36 +33,27 @@
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
+            
             <tbody>
-                <!-- this is static -->
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark de Haan</td>
-                    <td>mark@live.com</td>
-                    <td>superadministrator</td>
-                    <td><a href="editAccount">
-                            <button class="btn"><i class="fa fa-pencil"></i></button>
-                        </a>
-                    </td>
-                    <td><a href="deleteAccount">
-                            <button class="btn"><i class="fa fa-trash"></i></button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Willem Wiltenburasjhfda</td>
-                    <td>willem@live.com</td>
-                    <td>administrator</td>
-                    <td><a href="editAccount">
-                            <button class="btn"><i class="fa fa-pencil"></i></button>
-                        </a>
-                    </td>
-                    <td><a href="deleteAccount">
-                            <button class="btn"><i class="fa fa-trash"></i></button>
-                        </a>
-                    </td>
-                </tr>
+                <?php foreach ($users as $u) {
+                ?>
+                    <tr>
+                        <th scope="row"> <?php echo $u['id'] ?> </th>
+                        <td> <?php echo $u['firstname'] . ' ' . $u['lastname'] ?></td>
+                        <td><?php echo $u['email'] ?></td>
+                        <td>superadministrator STATIC</td>
+                        <td><a href="editAccount">
+                                <button class="btn"><i class="fa fa-pencil"></i></button>
+                            </a>
+                        </td>
+                        <td><a href="deleteAccount">
+                                <button class="btn"><i class="fa fa-trash"></i></button>
+                            </a>
+                        </td>
+                    </tr>
+                <?php }
+                ?>
+
             </tbody>
         </table>
 

@@ -36,6 +36,11 @@ class UserController
                 if ($count > 0) {
 
                     $_SESSION['logged_in'] = true;
+                    $_SESSION['firstname'] = 'blabla';
+                    $_SESSION['lastname'] = 'blabla';
+                    
+                    //$user = $this->service->getOneUserByEmail($email);
+
                     header('Location: home');
                 } else {
 
@@ -72,12 +77,28 @@ class UserController
         }
     }
 
+    public function updateAccount()
+    {
+        $email =  $_POST['email'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $password =  $_POST['password'];
+
+        $count = $this->service->updateUser($email, $firstname, $lastname, sha1($password));
+    }
+
     public function logout()
     {
         session_unset();
         session_destroy();
 
         header('Location: login');
+    }
+
+    public function allUsers()
+    {
+        $users = $this->service->getAllUsers();
+        require __DIR__ . ('/../views/cms/manageUsers.php');
     }
 
     public function updateEmail()

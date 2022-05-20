@@ -22,15 +22,15 @@
         <form action="profile" method="post">
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" name="email" class="form-control">
+                <input type="text" name="email" class="form-control" value="<?php echo $_SESSION['email']; ?>">
             </div>
             <div class="form-group">
                 <label>Firstname</label>
-                <input type="text" name="firstname" class="form-control">
+                <input type="text" name="firstname" class="form-control" value="<?php echo $_SESSION['firstname']; ?>">
             </div>
             <div class="form-group">
                 <label>Lastname</label>
-                <input type="text" name="lastname" class="form-control">
+                <input type="text" name="lastname" class="form-control" value="<?php echo $_SESSION['lastname']; ?>">
             </div>
             <div class="form-group">
                 <label>Password</label>

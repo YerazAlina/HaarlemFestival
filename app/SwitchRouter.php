@@ -45,7 +45,19 @@ class SwitchRouter
                 require __DIR__ . '/backend/views/cms/profile.php';
                 break;
             case 'manageUsers':
-                require __DIR__ . '/backend/views/cms/manageUsers.php';
+                require __DIR__ . '/backend/controller/usercontroller.php';
+                $controller = new UserController();
+                $controller->allUsers();
+                break;
+            case 'deleteAccount':
+                require __DIR__ . '/backend/controller/usercontroller.php';
+                $controller = new UserController();
+                $controller->deleteUser();
+                break;
+            case 'saveChanges':
+                require __DIR__ . '/backend/controller/usercontroller.php';
+                $controller = new UserController();
+                $controller->updateAccount();
                 break;
             case 'manageContent':
                 require __DIR__ . '/backend/views/cms/manageContent.php';

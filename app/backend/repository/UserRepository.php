@@ -23,7 +23,6 @@ class UserRepository extends Repository
     public function findAll()
     {
         $this->stmt = $this->db->prepare($this->all_users_sql);
-        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
         $this->stmt->execute();
 
         return $this->stmt->fetchAll();
@@ -33,7 +32,6 @@ class UserRepository extends Repository
     {
         $this->stmt = $this->db->prepare($this->one_user_sql);
         $this->stmt->bindParam(':id', $id);
-        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
         $this->stmt->execute();
 
         return $this->stmt->fetch();
@@ -108,6 +106,22 @@ class UserRepository extends Repository
         $this->stmt->execute();
 
         return $this->stmt->fetch(); //what does this return??
+    }
+
+    public function updateUser($email, $firstname, $lastname, $password)
+    {
+        //UPDATE users SET email = :email, firstname = :firstname WHERE id = 1;
+        //TODO: IMPLEMENT 
+        $query = "UPDATE users SET email = :email, firstname = :firstname WHERE id = 0;";
+        $statement = $this->db->prepare($query);
+        $statement->execute(
+            array(
+                'email'        =>     $email,
+                'firstname'    =>     $firstname
+            )
+        );
+
+        $count = $statement->rowCount();
     }
 
     public function updateEmail($email, $id)
