@@ -26,6 +26,10 @@ class SwitchRouter
             case 'register':
                 require __DIR__ . '/backend/views/cms/register.php';
                 break;
+            case 'createUser':
+                //for creating a new user account as superadminuser
+                require __DIR__ . '/backend/views/cms/createuser.php';
+                break;
             case 'loginUser':
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
@@ -35,6 +39,13 @@ class SwitchRouter
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $controller->signUp();
+                break;
+            case 'registerUseraccount':
+                //for creating a new user account as superadminuser
+                require __DIR__ . '/backend/controller/usercontroller.php';
+                $controller = new UserController();
+                $controller->addUser();
+                $controller->allUsers();
                 break;
             case 'logoutUser':
                 require __DIR__ . '/backend/controller/usercontroller.php';

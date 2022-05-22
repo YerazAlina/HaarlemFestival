@@ -33,7 +33,7 @@
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
-            
+
             <tbody>
                 <?php foreach ($users as $u) {
                 ?>
@@ -42,11 +42,11 @@
                         <td> <?php echo $u['firstname'] . ' ' . $u['lastname'] ?></td>
                         <td><?php echo $u['email'] ?></td>
                         <td> <?php echo $u['roleId'] ?> </td>
-                        <td><a href="editAccount">
+                        <td><a href="editAccount?<?php echo $u['id'];  //passing the id works but then what? ?>"> 
                                 <button class="btn"><i class="fa fa-pencil"></i></button>
                             </a>
                         </td>
-                        <td><a href="deleteAccount">
+                        <td><a href="deleteAccount?<?php echo $u['id'];  ?>">
                                 <button class="btn"><i class="fa fa-trash"></i></button>
                             </a>
                         </td>
@@ -57,6 +57,9 @@
             </tbody>
         </table>
 
+        <a href="createUser">
+            <button type="button" class="btn btn-dark"> Add New User </button>
+        </a>
     </div>
     <?php require __DIR__ . '/include/footer.php'; ?>
 </body>

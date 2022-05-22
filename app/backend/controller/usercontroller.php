@@ -31,15 +31,21 @@ class UserController
 
                 $_SESSION['email'] = $_POST['email'];
 
-                $count = $this->service->login($email, sha1($password));
+                $user = $this->service->login($email, sha1($password));
 
-                if ($count > 0) {
+                if (!empty($user)) {
 
                     $_SESSION['logged_in'] = true;
 
-                    $current_user = $this->service->searchByEmail($email);
-                    $email = $current_user->getEmail();
-                    echo $email;
+                    //$email2 = $user['email'];
+
+                    //echo $user;
+                    //echo implode(" ",$user); // this prints array wtf . WHYYYYYYY
+                    //$password = $user['password'];
+
+                    // $current_user = $this->service->searchByEmail($email);
+                    // $email = $current_user->getEmail();
+                    // echo $email;
 
 
                     // $_SESSION['id'] = $count; //not correct, count is always 1
@@ -85,10 +91,29 @@ class UserController
         }
     }
 
+    public function addUser()
+    {
+        $email =  $_POST['email'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $password =  $_POST['password'];
+
+        $confirm_password = $_POST['confirm_password'];
+
+        $roleId = 0;
+
+        // A check is performed to see whether a user has registered before using the same email address
+
+        // this checks if the email already exists in the db table users and returns uhhhh something idk what
+        //$something = $this->service->searchEmail($email);
+
+        $count = $this->service->createUser($email, $firstname, $lastname, sha1($password), $roleId);
+    }
+
     //new
     public function updateAccount()
     {
-        $id =  $_POST['id'];
+        $id =  1;
         $email =  $_POST['email'];
         //$firstname = $_POST['firstname'];
         //$lastname = $_POST['lastname'];

@@ -1,4 +1,4 @@
-<?php echo $_SESSION['id']; ?>
+<?php // echo $_SESSION['id']; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,9 +41,9 @@
             <div class="form-group">
                 <input type="reset" class="btn btn-secondary" value="Cancel">
                 <a href="saveChanges">
-                    <button type="button" class="btn btn-primary"> Save Changes </button>
-                    <br>
+                <input type="submit" class="btn btn-primary" value="Save">
                 </a>
+                <br>
                 <br>
                 <a href="deleteAccount">
                     <button type="button" class="btn btn-danger"> Delete Account </button>

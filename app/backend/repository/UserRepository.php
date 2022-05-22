@@ -61,7 +61,7 @@ class UserRepository extends Repository
 
     public function login($email, $password)
     {
-        $count = "";
+        //$count = "";
 
         $query = "SELECT * FROM users WHERE email = :email AND password = :password";
         $statement = $this->db->prepare($query);
@@ -72,9 +72,7 @@ class UserRepository extends Repository
             )
         );
 
-        $count = $statement->rowCount();
-
-        return $count;
+        return $statement->fetchAll(PDO::FETCH_ASSOC); //GOD WHY DOES THIS NOT WORK
     }
 
     public function addUser($email, $firstname, $lastname, $password, $roleId)
@@ -118,7 +116,7 @@ class UserRepository extends Repository
         $statement = $this->db->prepare($query);
         $statement->execute(
             array(
-                'email'        =>     $email,
+                'email'        =>     $email
             )
         );
 
