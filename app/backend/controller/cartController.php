@@ -3,7 +3,7 @@
 
 require_once __DIR__ . ('../../service/jazzService.php');
 
-class cartController{
+class cartContoller{
 
     
     private jazzService $jazzservice;
@@ -13,68 +13,95 @@ class cartController{
         $this->jazzservice = new jazzService();
     }
 
-    public function index(){
+    public function run(){
+        if(isset($_POST['action'])){
+            switch ($_POST['action']) {
+                case 'addToCart':
+                    $this->addToCart();
+                    break;
+                case 'removeFromCart':
+                    $this->removeFromCart();
+                    break;    
+                
+            }
+        }
+    }
 
-        if(!isset($_SESSION['tickets']))
-            $_SESSION['tickets'] = array();
+
+    public function addToCart(){
 
 
-        $tickets = $this->getCartTickets();
+        if(!empty($_POST['addTicket'])){
+
+            
+            
+            $activityId = $_POST['addTicket'];
+            $details = $this->jazzservice->getOne($activityId);
+
+            $_SESSION["cart"][$activityId] = $activityId;
+
+            //foreach($details as $detail){
+              //  $_SESSION['cart'][] = array('artistname'=> $detail['artistname']);
+            //}
+
+           //$_SESSION["cart"][] = array('name'=>$details['artistname']);
+
+
+            
+            /*foreach($details as $d){
+          
+
+            $_SESSION["cart"] = [
+                $activityId =>[
+                    'name': $d['artistname'];
+                    'time': $d['startTime']
+                ] 
+                
+                
+            ] 
+
+                  
+            }*/
+
+            //$name = null;
+            //$date = null;
+
+            /*
+
+
+            foreach($details as $detail){
+                $name = $detail['artistname'];
+                $date = $detail['date'];
+
+            }
+
+            //$_SESSION["cart"][] = array('name'=>'medon', 'date'=> 'ugh');
+
+            */
+
+        }
+       
+
         require __DIR__ . ('/../views/cart.php');
 
     }
 
+   
 
-    public function getCartTickets(){
-        $tickets = array();
+    public function removeFromCart(){
 
-        AddTicketToCart();
+        if(isset($_POST['removeTicket'])){
+            $id = $_POST['removeTicket'];
+            unset($_SESSION["cart"][$id]);
 
-        foreach($_SESSION['tickets'] as $key => $value){
-            $ticket = $this->jazzService->findById($key);
-            array_push($tickets, array('event' => $ticket, 'amount' =>$value));
         }
 
-        return $tickets;
-    }
-
-
-
-    public function AddTicketToCart() {
-
-        if (isset($_POST['addTicket']) )
-
-            $_SESSION['tickets']=array();
-
+    
         
-                
-        $id = $_POST['addTicket'];
-
-        if (array_key_exists($id, $_SESSION['tickets'])) {
-            $_SESSION['tickets'][$id] += 1;
-        } else {
-            $_SESSION['tickets'][$id] = 1;
-        }
-
-            
-     
-
-        /*
-
-        // check if there are enough tickets
-        if (!$this->checkTicketStock($id)) {
-            header('Location: /hf/' . $event . '?event=' . $event);
-            return;
-        }
-
-        if (array_key_exists($id, $_SESSION['tickets'])) {
-            $_SESSION['tickets'][$id] += 1;
-        } else {
-            $_SESSION['tickets'][$id] = 1;
-        }
-
-        */
-
-        require __DIR__ . ('/../views/jazzevents.php');
+        require __DIR__ . ('/../views/cart.php');
     }
+
+  
+   
+
 }

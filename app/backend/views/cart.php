@@ -19,21 +19,78 @@
 	 	<section class="shopping-cart dark">
 	 		<div class="container">
 		        <div class="block-heading">
+
+				
+					
+				<?php foreach($_SESSION["cart"] as $i){ ?>
+					<h4> <?php echo $_SESSION["cart"][$i] ?>
+					<form method="post">   
+                        <button type="submit" id="removeTicket" name="removeTicket" value="<?php echo $_SESSION["cart"][$i]?>" formaction="cart" class="btn btn-outline-warning btn-sm">Remove from cart</button>
+						
+                    </form> 
+				
+
+				<?php } ?>
+
+				
+
+				<!-- NEED TO SOMEHOW CALL THIS FROM THE CONTROLLER -->
+				<!-- WIIILLLL DOOOOOOOO IT       LAAAAAAAAAAAATTTTTTTERRRRRRRR-->
+						<?php
+						
+						if(isset($_POST['removeTicket'])){
+							$id = $_POST['removeTicket'];
+							unset($_SESSION["cart"][$id]);
+				
+						}
+				
+					
+						
+
+						?>
+
 		          <h2>Shopping Cart</h2>
 		          <p>You have "number" items in your shopping cart</p>
 
-				  <?php
-
-				  foreach($tickets as $t){ ?>
-					  <p class="card-subtitle"> <?php echo $t->artistname?></p>
-				  <?php
-				    }
-				  ?>
 		        </div>
 		        <div class="content">
 	 				<div class="row">
 	 					<div class="col-md-12 col-lg-8">
 	 						<div class="cart-items">
+								
+				 				<div class="event">
+				 					<div class="row">
+					 					<div class="col-md-3">
+					 						<img class="img-fluid mx-auto d-block image" src="../img/jazz/backgrounds/haarlem-jazz-background.png">
+					 					</div>
+					 					<div class="col-md-8">
+					 						<div class="info">
+						 						<div class="row">
+							 						<div class="col-md-5 event-name">
+							 							<div class="event-name">
+								 							<a href="#">Event title</a>
+								 							<div class="event-info">
+									 							<div>Time: <span class="value">...</span></div>
+									 							<div>Date: <span class="value">...</span></div>
+									 							<div>Location: <span class="value">...</span></div>
+									 						</div>
+									 					</div>
+							 						</div>
+							 						<div class="col-md-4 cart-quantity">
+							 							<label for="cart-quantity">Quantity:</label>
+							 							<input id="cart-quantity" type="number" value ="1" class="form-control cart-quantity-input">
+							 						</div>
+													
+							 						<div class="col-md-3 price">
+							 							<span>$...</span>
+							 						</div>
+							 					</div>
+							 				</div>
+					 					</div>
+					 				</div>
+				 				</div>
+								
+
 				 				<div class="event">
 				 					<div class="row">
 					 					<div class="col-md-3">
@@ -64,7 +121,7 @@
 					 					</div>
 					 				</div>
 				 				</div>
-				 				<div class="event">
+								 <div class="event">
 				 					<div class="row">
 					 					<div class="col-md-3">
 					 						<img class="img-fluid mx-auto d-block image" src="../img/jazz/backgrounds/haarlem-jazz-background.png">
