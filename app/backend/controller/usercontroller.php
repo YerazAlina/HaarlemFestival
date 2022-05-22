@@ -35,12 +35,13 @@ class UserController
 
                 if ($count > 0) {
 
-                    $current_user = new User; 
-                    $current_user = $this->service->searchByEmail($email);
-
-                    echo $current_user; 
-
                     $_SESSION['logged_in'] = true;
+
+                    $current_user = $this->service->searchByEmail($email);
+                    $email = $current_user->getEmail();
+                    echo $email;
+
+
                     // $_SESSION['id'] = $count; //not correct, count is always 1
 
                     // $_SESSION['firstname'] = 'blabla';
