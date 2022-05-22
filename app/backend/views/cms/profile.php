@@ -1,3 +1,5 @@
+<?php echo $_SESSION['id']; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,18 +26,18 @@
                 <label>Email</label>
                 <input type="text" name="email" class="form-control" value="<?php echo $_SESSION['email']; ?>">
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label>Firstname</label>
-                <input type="text" name="firstname" class="form-control" value="<?php echo $_SESSION['firstname']; ?>">
+                <input type="text" name="firstname" class="form-control" value="<?php //echo $_SESSION['firstname']; ?>">
             </div>
             <div class="form-group">
                 <label>Lastname</label>
-                <input type="text" name="lastname" class="form-control" value="<?php echo $_SESSION['lastname']; ?>">
+                <input type="text" name="lastname" class="form-control" value="<?php //echo $_SESSION['lastname']; ?>">
             </div>
             <div class="form-group">
                 <label>Password</label>
                 <input type="password" name="password" class="form-control">
-            </div>
+            </div> -->
             <div class="form-group">
                 <input type="reset" class="btn btn-secondary" value="Cancel">
                 <a href="saveChanges">

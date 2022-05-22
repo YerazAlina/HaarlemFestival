@@ -35,11 +35,16 @@ class UserController
 
                 if ($count > 0) {
 
+                    $current_user = new User; 
+                    $current_user = $this->service->searchByEmail($email);
+
+                    echo $current_user; 
+
                     $_SESSION['logged_in'] = true;
-                    $_SESSION['firstname'] = 'blabla';
-                    $_SESSION['lastname'] = 'blabla';
-                    
-                    //$user = $this->service->getOneUserByEmail($email);
+                    // $_SESSION['id'] = $count; //not correct, count is always 1
+
+                    // $_SESSION['firstname'] = 'blabla';
+                    // $_SESSION['lastname'] = 'blabla';
 
                     header('Location: home');
                 } else {
@@ -59,12 +64,14 @@ class UserController
 
         $confirm_password = $_POST['confirm_password'];
 
+        $roleId = 0;
+
         // A check is performed to see whether a user has registered before using the same email address
 
         // this checks if the email already exists in the db table users and returns uhhhh something idk what
         //$something = $this->service->searchEmail($email);
 
-        $count = $this->service->createUser($email, $firstname, $lastname, sha1($password));
+        $count = $this->service->createUser($email, $firstname, $lastname, sha1($password), $roleId);
 
         if (!empty($email) && !empty($password) && ($password === $confirm_password)) {
             if ($count >= 1) {
@@ -77,14 +84,16 @@ class UserController
         }
     }
 
+    //new
     public function updateAccount()
     {
+        $id =  $_POST['id'];
         $email =  $_POST['email'];
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $password =  $_POST['password'];
+        //$firstname = $_POST['firstname'];
+        //$lastname = $_POST['lastname'];
+        //$password =  $_POST['password'];
 
-        $count = $this->service->updateUser($email, $firstname, $lastname, sha1($password));
+        $count = $this->service->updateUser($id, $email);
     }
 
     public function logout()

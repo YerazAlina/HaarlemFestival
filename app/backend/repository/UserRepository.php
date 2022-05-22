@@ -40,7 +40,6 @@ class UserRepository extends Repository
     public function saveOne($data)
     {
         $this->stmt = $this->db->prepare($this->create_user_sql);
-
         return $this->stmt->execute($data) ?? false;
     }
 
@@ -78,18 +77,19 @@ class UserRepository extends Repository
         return $count;
     }
 
-    public function addUser($email, $firstname, $lastname, $password)
+    public function addUser($email, $firstname, $lastname, $password, $roleId)
     {
         $count = "";
 
-        $query = "INSERT INTO users (email, firstname, lastname, password) VALUES (:email, :firstname, :lastname, :password)";
+        $query = "INSERT INTO users (email, firstname, lastname, password, roleId) VALUES (:email, :firstname, :lastname, :password, :roleId)";
         $statement = $this->db->prepare($query);
         $statement->execute(
             array(
                 'email'        =>     $email,
                 'firstname'    =>     $firstname,
                 'lastname'     =>     $lastname,
-                'password'     =>     $password
+                'password'     =>     $password,
+                'roleId'       =>     $roleId
             )
         );
 
@@ -105,19 +105,20 @@ class UserRepository extends Repository
         $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
         $this->stmt->execute();
 
-        return $this->stmt->fetch(); //what does this return??
+        return $this->stmt->fetch();
     }
 
-    public function updateUser($email, $firstname, $lastname, $password)
+    public function updateUser($id, $email) //, $firstname, $lastname, $roleId)
     {
         //UPDATE users SET email = :email, firstname = :firstname WHERE id = 1;
         //TODO: IMPLEMENT 
-        $query = "UPDATE users SET email = :email, firstname = :firstname WHERE id = 0;";
+
+
+        $query = "UPDATE users SET email = :email WHERE id = :id;";
         $statement = $this->db->prepare($query);
         $statement->execute(
             array(
                 'email'        =>     $email,
-                'firstname'    =>     $firstname
             )
         );
 

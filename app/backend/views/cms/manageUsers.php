@@ -41,7 +41,7 @@
                         <th scope="row"> <?php echo $u['id'] ?> </th>
                         <td> <?php echo $u['firstname'] . ' ' . $u['lastname'] ?></td>
                         <td><?php echo $u['email'] ?></td>
-                        <td>superadministrator STATIC</td>
+                        <td> <?php echo $u['roleId'] ?> </td>
                         <td><a href="editAccount">
                                 <button class="btn"><i class="fa fa-pencil"></i></button>
                             </a>

@@ -8,4 +8,10 @@ class User
     public string $lastname;
     public string $Password;
     public int $roleId;
+
+
+    public function __toString()
+	{
+		return "User Account: $this->id";
+	}
 }
