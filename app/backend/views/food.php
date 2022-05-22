@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #A42323">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #A42323">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"> <img src="../../img/logo.png" alt="logo" width="116" height="34"> </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -67,7 +67,11 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
+    <?php
+
+include_once ('include/navbar.php')
+?>
     <header>
 
     <section><img class="foodbanner" src="images/food/foodBanner2.jpg"></section>
