@@ -5,7 +5,7 @@
 .line-up{
     position: absolute;
     width: 1441px;
-    height: 155px;
+    height: 110px;
     left: -1px;
     top: 574px;
     font-family: Overpass;
@@ -17,6 +17,10 @@
     color: #FFFFFF;
 
     background: rgba(239, 224, 224, 0.53);
+}
+
+.jazz-image{
+    width: 50px;
 }
 
 .title{
@@ -36,21 +40,15 @@
 }
 
 .day-buttons{
-    width: available;
-    height: available;
-    padding-top: 100px;
-    padding-left: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
+    padding-top: 50px;
+    justify-content: space-between;
 }
 
 .thursday-button, .friday-button, .saturday-button, .sunday-button{
     background-color: #EFE0E0;
-    border-style: none;
-    width: 280px;
-    height: 60px;
+    border-style: rgba(255, 165, 165, 0.564);
+    width: 250px;
+    height: 50px;
     font-family: Calibri;
     font-style: normal;
     font-weight: normal;
@@ -119,7 +117,6 @@
 
 
 .card-footer{
-    alignment: right;
     background: white;
     border: none;
 }
@@ -150,10 +147,17 @@
 .day-pass{
     border: none;
     margin-left: 100px;
+    align-content: center;
 }
 
-.day-pass-heading{
+.day-pass-3{
+    background-color: #A42323;
+}
+
+.day-pass-heading, .day-pass-subtitle{
     font-size: 25px;
+    color: white;
+    padding-left: 30px;
 
 }
 
@@ -174,6 +178,11 @@
     font-size: 32px;
     line-height: 37px;
     text-align: center;
+}
+
+.navbar{
+    background: linear(90deg, white 1%, #A42323 99%)
+    
 }
 
 /*  FOOD */

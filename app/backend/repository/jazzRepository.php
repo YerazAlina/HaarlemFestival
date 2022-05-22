@@ -17,34 +17,36 @@ class jazzRepository
         $this->db = DB::getInstance();
     }
 
-
-
     private string $all_events_sql = "SELECT * FROM jazzActivity
-                                      JOIN activity a on a.id = jazzActivity.activityId
+                                      JOIN activity a on a.id = jazzActivity.activityId AND a.date = '2022-07-28'
                                       RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
                                       JOIN location l on l.id = a.locationId";
 
+    private string $get_one_event_sql = "SELECT * FROM jazzActivity WHERE jazzActivity.id=:id";                            
+
+
+
     /*
 
-    private string $thursday_events = "SELECT * FROM jazzactivity 
-                                        JOIN artist a on jazzactivity.artistId = a.id
-                                        JOIN performance p on p.id = jazzactivity.performanceId
-                                        JOIN location l on l.id = p.locationId WHERE date='2022-07-28'";
+    private string $thursday_events = "SELECT * FROM jazzActivity
+                                      JOIN activity a on a.id = jazzActivity.activityId AND a.date = '2022-07-28'
+                                      RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
+                                      JOIN location l on l.id = a.locationId";
 
-    private string $friday_events = "SELECT * FROM jazzactivity 
-                                        JOIN artist a on jazzactivity.artistId = a.id
-                                        JOIN performance p on p.id = jazzactivity.performanceId
-                                        JOIN location l on l.id = p.locationId WHERE date='2022-07-29'";
+    private string $friday_events = "SELECT * FROM jazzActivity
+                                      JOIN activity a on a.id = jazzActivity.activityId AND a.date = '2022-07-29'
+                                      RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
+                                      JOIN location l on l.id = a.locationId";
 
-    private string $saturday_events = "SELECT * FROM jazzactivity 
-                                        JOIN artist a on jazzactivity.artistId = a.id
-                                        JOIN performance p on p.id = jazzactivity.performanceId
-                                        JOIN location l on l.id = p.locationId WHERE date='2022-07-30'";
+    private string $saturday_events = "SELECT * FROM jazzActivity
+                                      JOIN activity a on a.id = jazzActivity.activityId AND a.date = '2022-07-30'
+                                      RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
+                                      JOIN location l on l.id = a.locationId";
 
-    private string $sunday_events = "SELECT * FROM jazzactivity 
-                                        JOIN artist a on jazzactivity.artistId = a.id
-                                        JOIN performance p on p.id = jazzactivity.performanceId
-                                        JOIN location l on l.id = p.locationId WHERE date='2022-07-31'";
+    private string $sunday_events = "SELECT * FROM jazzActivity
+                                      JOIN activity a on a.id = jazzActivity.activityId AND a.date = '2022-07-31'
+                                      RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
+                                      JOIN location l on l.id = a.locationId";
     */
 
     public function findAll()
@@ -91,7 +93,16 @@ class jazzRepository
 
     public function findById($id)
     {
-        // TODO: Implement findById() method.
+        
+        $this->stmt = $this->db->prepare($this->get_one_event_sql);
+        $this->stmt->execute(['id' => $id]);
+
+        if ($this->stmt->rowCount() > 0) {
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return null;
+        }
+
     }
 
     public function saveOne($object)
