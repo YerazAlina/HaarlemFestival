@@ -3,6 +3,9 @@
 require_once('../db.php');
 require_once __DIR__ . ('../../model/activity.php');
 require_once __DIR__ . ('../../model/foodActivity.php');
+require_once __DIR__ . ('../../model/restaurant.php');
+require_once __DIR__ . ('../../model/restaurantTypelink.php');
+require_once __DIR__ . ('../../model/restaurantType.php');
 require_once __DIR__ . ('../../model/location.php');
 
 class foodRepository
@@ -23,7 +26,12 @@ class foodRepository
                                         INNER JOIN restaurant AS r ON r.id=f.restaurantId";
 
     
-private string $get_one_event_sql = "SELECT * FROM foodActivity WHERE foodActivity.id=:id";
+private string $get_one_event_sql = "SELECT r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, a.date, a.startTime, a.endTime, l.address, l.postalCode 
+                                FROM activity AS a 
+                                INNER JOIN location AS l ON a.locationId=l.id 
+                                INNER JOIN foodActivity AS f ON f.activityId=a.id 
+                                INNER JOIN restaurant AS r ON r.id=f.restaurantId 
+                                WHERE f.activityId=:id";
 
 
     public function findAll()

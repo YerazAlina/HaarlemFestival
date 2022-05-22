@@ -14,7 +14,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../../style/jazzevents.css?<?php echo time(); ?>" />
+    <link rel="stylesheet" type="text/css" href="../../style/food.css?<?php echo time(); ?>" />
     <title>Festival Info</title>
 
 </head>
@@ -74,14 +74,32 @@ include_once ('include/navbar.php')
 ?>
     <header>
 
-    <section><img class="foodbanner" src="images/food/foodBanner2.jpg"></section>
+        <section><img class="foodbanner" src="../img/food/food1.png"></section>
 
-    <section class="w3-display-topleft" style="padding:150px">
-        <span class="w3-jumbo  w3-text-black ">Welcome to Haarlem festival</span><br>
-        <span class="w3-display-bottommiddle w3-jumbo w3-text-black">Food</span><br>
-    </section>
+        <section class="w3-display-topleft" style="padding:150px">
+            <span class="w3-jumbo  w3-text-black ">Welcome to Haarlem festival</span><br>
+            <span class="w3-display-bottommiddle w3-jumbo w3-text-black">Food</span><br>
+        </section>
 
     </header>
+
+    <section class="w3-container">
+
+        <h1 class="w3-center"> Choose your restaurant</h1>
+
+        <!-- Dropdown button -->
+        
+
+        
+        <!-- Resturants cards start here -->
+
+        
+
+        <!-- Resturants cards end  here -->
+
+
+
+    </section>
 
 
 
