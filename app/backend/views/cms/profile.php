@@ -21,23 +21,25 @@
     <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
         <h3>Edit Personal Information</h3>
         <br>
+        
         <form action="profile" method="post">
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" name="email" class="form-control" value="<?php echo $_SESSION['email']; ?>">
+                <input type="text" name="email" class="form-control" value="<?php echo $userDetails->email; ?>">
             </div>
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label>Firstname</label>
-                <input type="text" name="firstname" class="form-control" value="<?php //echo $_SESSION['firstname']; ?>">
+                <input type="text" name="firstname" class="form-control" value="<?php echo $userDetails->firstname; ?>">
             </div>
             <div class="form-group">
                 <label>Lastname</label>
-                <input type="text" name="lastname" class="form-control" value="<?php //echo $_SESSION['lastname']; ?>">
+                <input type="text" name="lastname" class="form-control" value="<?php echo $userDetails->lastname; ?>">
             </div>
+            
             <div class="form-group">
                 <label>Password</label>
                 <input type="password" name="password" class="form-control">
-            </div> -->
+            </div> 
             <div class="form-group">
                 <input type="reset" class="btn btn-secondary" value="Cancel">
                 <a href="saveChanges">

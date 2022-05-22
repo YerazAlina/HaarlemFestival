@@ -42,10 +42,13 @@
                         <td> <?php echo $u['firstname'] . ' ' . $u['lastname'] ?></td>
                         <td><?php echo $u['email'] ?></td>
                         <td> <?php echo $u['roleId'] ?> </td>
-                        <td><a href="editAccount?<?php echo $u['id'];  //passing the id works but then what? ?>"> 
+
+                        <td><a href="editAccount"> 
                                 <button class="btn"><i class="fa fa-pencil"></i></button>
                             </a>
                         </td>
+
+
                         <td><a href="deleteAccount?<?php echo $u['id'];  ?>">
                                 <button class="btn"><i class="fa fa-trash"></i></button>
                             </a>
@@ -61,7 +64,7 @@
             <button type="button" class="btn btn-dark"> Add New User </button>
         </a>
     </div>
-    <?php require __DIR__ . '/include/footer.php'; ?>
+    <?php //require __DIR__ . '/include/footer.php'; ?>
 </body>
 
 </html>

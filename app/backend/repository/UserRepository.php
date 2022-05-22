@@ -13,7 +13,7 @@ class UserRepository extends Repository
     private string $create_user_sql = "insert into users (id, email, firstname, lastname, password) values (null, :email, :firstname, :lastname, :password, )";  //change this one
     private string $delete_user_sql = "delete from users where email = :email";
     private string $one_user_sql = "SELECT id from users where id = :id";
-    private string $one_userByEmail_sql = "SELECT id from users where email = :email";
+    private string $one_userByEmail_sql = "SELECT * from users where email = :email";
 
     public function __construct()
     {
@@ -27,6 +27,8 @@ class UserRepository extends Repository
 
         return $this->stmt->fetchAll();
     }
+
+    
 
     public function findById($id)
     {
@@ -63,7 +65,7 @@ class UserRepository extends Repository
     {
         //$count = "";
 
-        $query = "SELECT * FROM users WHERE email = :email AND password = :password";
+        $query = "SELECT * FROM users WHERE email =:email AND password =:password";
         $statement = $this->db->prepare($query);
         $statement->execute(
             array(

@@ -21,6 +21,13 @@ class UserController
         }
     }
 
+    public function getUserDetails(){
+        $email = $_SESSION['email'];
+        $userDetails = $this->service->searchByEmail($email);
+
+        return $userDetails;
+    }
+
     public function login()
     {
         $email =  $_POST['email'];
