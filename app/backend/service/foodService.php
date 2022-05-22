@@ -15,4 +15,8 @@ class foodService{
     public function getRestaurants(){
         return $this->foodrepository->findAll();
     }
+
+    public function findById($id){
+        return $this->foodrepository->findById($id);
+    }
 }

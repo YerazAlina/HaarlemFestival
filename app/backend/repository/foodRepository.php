@@ -22,6 +22,9 @@ class foodRepository
                                         INNER JOIN foodActivity AS f ON f.activityId=a.id
                                         INNER JOIN restaurant AS r ON r.id=f.restaurantId";
 
+    
+private string $get_one_event_sql = "SELECT * FROM foodActivity WHERE foodActivity.id=:id";
+
 
     public function findAll()
     {
@@ -67,7 +70,14 @@ class foodRepository
 
     public function findById($id)
     {
-        // TODO: Implement findById() method.
+        $this->stmt = $this->db->prepare($this->get_one_event_sql);
+        $this->stmt->execute(['id' => $id]);
+
+        if ($this->stmt->rowCount() > 0) {
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return null;
+        }
     }
 
     public function saveOne($object)
