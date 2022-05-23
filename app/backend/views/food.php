@@ -1,3 +1,13 @@
+<?php   
+
+ foreach ($restaurants as $r){ 
+     echo $r->name . "     "; 
+     echo $r->price; 
+     echo $r->description; 
+ }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
