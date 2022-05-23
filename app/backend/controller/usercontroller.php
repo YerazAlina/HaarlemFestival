@@ -44,22 +44,6 @@ class UserController
 
                     $_SESSION['logged_in'] = true;
 
-                    //$email2 = $user['email'];
-
-                    //echo $user;
-                    //echo implode(" ",$user); // this prints array wtf . WHYYYYYYY
-                    //$password = $user['password'];
-
-                    // $current_user = $this->service->searchByEmail($email);
-                    // $email = $current_user->getEmail();
-                    // echo $email;
-
-
-                    // $_SESSION['id'] = $count; //not correct, count is always 1
-
-                    // $_SESSION['firstname'] = 'blabla';
-                    // $_SESSION['lastname'] = 'blabla';
-
                     header('Location: home');
                 } else {
 

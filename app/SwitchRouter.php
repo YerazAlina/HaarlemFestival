@@ -59,6 +59,12 @@ class SwitchRouter
                 $userDetails = $controller->getUserDetails();
                 require __DIR__ . '/backend/views/cms/profile.php';
                 break;
+            case 'editaccount':
+                require __DIR__ . '/backend/controller/usercontroller.php';
+                $controller = new UserController();
+                $userDetails = $controller->getUserDetails();
+                require __DIR__ . '/backend/views/cms/editaccount.php';
+                break;
             case 'manageUsers':
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();

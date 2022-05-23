@@ -47,6 +47,7 @@
                 <a href="deleteAccount">
                     <button type="button" class="btn btn-danger"> Delete Account </button>
                 </a>
+            </div>
         </form>
     </div>
     </div>

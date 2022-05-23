@@ -43,7 +43,7 @@
                         <td><?php echo $u['email'] ?></td>
                         <td> <?php echo $u['roleId'] ?> </td>
 
-                        <td><a href="editAccount"> 
+                        <td><a href="editaccount"> 
                                 <button class="btn"><i class="fa fa-pencil"></i></button>
                             </a>
                         </td>
