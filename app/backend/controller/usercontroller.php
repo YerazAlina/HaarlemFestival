@@ -21,9 +21,17 @@ class UserController
         }
     }
 
-    public function getUserDetails(){
-        $email = $_SESSION['email'];
+    public function getUserDetails($email){
+        //$email = $_SESSION['email'];
         $userDetails = $this->service->searchByEmail($email);
+
+        return $userDetails;
+    }
+
+    public function getUserDetailsById(){
+        $id = $_POST['editaccount'];
+
+        $userDetails = $this->service->getOneUser($id);
 
         return $userDetails;
     }

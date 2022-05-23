@@ -43,16 +43,18 @@
                         <td><?php echo $u['email'] ?></td>
                         <td> <?php echo $u['roleId'] ?> </td>
 
-                        <td><a href="editaccount"> 
-                                <button class="btn"><i class="fa fa-pencil"></i></button>
-                            </a>
-                        </td>
+                        <form action="post">
+                            <td><a href="editaccount">
+                                    <!-- <button type="submit" id="editaccount" value="<?php echo $u['id'];?>" name="editaccount" class="btn"><i class="fa fa-pencil"></i></button> -->
+                                    <button type="submit" id="editaccount" name="editaccount" value="<?php echo $u['id']; ?>" formaction="editaccount" class="btn"><i class="fa fa-pencil"></i></button>
+                                </a>
+                            </td>
+                        </form>
 
-
-                        <td><a href="deleteAccount?<?php echo $u['id'];  ?>">
+                        <!-- <td><a href="deleteAccount">
                                 <button class="btn"><i class="fa fa-trash"></i></button>
                             </a>
-                        </td>
+                        </td> -->
                     </tr>
                 <?php }
                 ?>
@@ -64,7 +66,8 @@
             <button type="button" class="btn btn-dark"> Add New User </button>
         </a>
     </div>
-    <?php //require __DIR__ . '/include/footer.php'; ?>
+    <?php //require __DIR__ . '/include/footer.php'; 
+    ?>
 </body>
 
 </html>
