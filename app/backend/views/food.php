@@ -15,6 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../../style/food.css?<?php echo time(); ?>" />
+    <link rel="stylesheet" type="text/css" href="../../style/jazzevents.css?<?php echo time(); ?>" />
     <title>Festival Info</title>
 
 </head>
@@ -92,7 +93,7 @@ include_once ('include/navbar.php')
 
         
         <!-- Resturants cards start here -->
-
+        
         
 
         <!-- Resturants cards end  here -->
