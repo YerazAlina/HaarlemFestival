@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,15 +23,15 @@
         <form action="profile" method="post">
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" name="email" class="form-control" value="<?php echo $userDetails->email; ?>">
+                <input type="text" name="email" class="form-control" value="<?php echo $currentUserDetails->email; ?>">
             </div>
             <div class="form-group">
                 <label>Firstname</label>
-                <input type="text" name="firstname" class="form-control" value="<?php echo $userDetails->firstname; ?>">
+                <input type="text" name="firstname" class="form-control" value="<?php echo $currentUserDetails->firstname; ?>">
             </div>
             <div class="form-group">
                 <label>Lastname</label>
-                <input type="text" name="lastname" class="form-control" value="<?php echo $userDetails->lastname; ?>">
+                <input type="text" name="lastname" class="form-control" value="<?php echo $currentUserDetails->lastname; ?>">
             </div>
 
             <div class="form-group">

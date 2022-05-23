@@ -1,6 +1,14 @@
 <?php 
  
+ $controller = new UserController();
+ $controller->getUserDetailsById();
+ 
  echo $_POST['editAccount']; //this is the id 
+
+
+
+
+ echo $userDetails['firstname'];
 
 ?>
 

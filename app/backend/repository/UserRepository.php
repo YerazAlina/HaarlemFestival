@@ -28,8 +28,6 @@ class UserRepository extends Repository
         return $this->stmt->fetchAll();
     }
 
-    
-
     public function findById($id)
     {
         $this->stmt = $this->db->prepare($this->one_user_sql);

@@ -53,10 +53,9 @@ class SwitchRouter
                 $controller->logout();
                 break;
             case 'profile':
-                //require __DIR__ . '/backend/views/cms/profile.php';
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
-                $userDetails = $controller->getUserDetails($_SESSION['email']);
+                $currentUserDetails = $controller->getUserDetails($_SESSION['email']);
                 require __DIR__ . '/backend/views/cms/profile.php';
                 break;
             case 'editAccount':
