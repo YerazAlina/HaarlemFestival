@@ -17,7 +17,7 @@
 <body>
     <?php require __DIR__ . '/include/navbar.php'; ?>
     <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
-        <h3>Edit Information</h3>
+        <h3>Edit Personal Information</h3>
         <br>
         <form action="profile" method="post">
             <div class="form-group">

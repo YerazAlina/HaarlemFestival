@@ -1,3 +1,9 @@
+<?php 
+ 
+ echo $_POST['editAccount']; //this is the id 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +25,7 @@
     <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
         <h3>Edit Information</h3>
         <br>
-        <form action="profile" method="post">
+        <form action="editaccount" method="post">
             <div class="form-group">
                 <label>Email</label>
                 <input type="text" name="email" class="form-control" value="<?php echo $userDetails->email; ?>">

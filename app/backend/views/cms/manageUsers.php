@@ -43,10 +43,9 @@
                         <td><?php echo $u['email'] ?></td>
                         <td> <?php echo $u['roleId'] ?> </td>
 
-                        <form action="post">
-                            <td><a href="editaccount">
-                                    <!-- <button type="submit" id="editaccount" value="<?php echo $u['id'];?>" name="editaccount" class="btn"><i class="fa fa-pencil"></i></button> -->
-                                    <button type="submit" id="editaccount" name="editaccount" value="<?php echo $u['id']; ?>" formaction="editaccount" class="btn"><i class="fa fa-pencil"></i></button>
+                        <form action="editAccount" method="post">
+                            <td><a href="editAccount">
+                                    <button type="submit" id="editAccount" name="editAccount" value="<?php echo $u['id']; ?>" formaction="editAccount" class="btn"><i class="fa fa-pencil"></i></button>
                                 </a>
                             </td>
                         </form>

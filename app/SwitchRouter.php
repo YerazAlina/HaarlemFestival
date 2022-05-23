@@ -59,7 +59,7 @@ class SwitchRouter
                 $userDetails = $controller->getUserDetails($_SESSION['email']);
                 require __DIR__ . '/backend/views/cms/profile.php';
                 break;
-            case 'editaccount':
+            case 'editAccount':
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $userDetails = $controller->getUserDetailsById();
