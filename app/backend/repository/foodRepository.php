@@ -19,7 +19,7 @@ class foodRepository
     }
 
 
-    private string $all_restaurants_sql = "SELECT r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, a.date, a.startTime, a.endTime, l.address, l.postalCode
+    private string $all_restaurants_sql = "SELECT a.id, r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, a.date, a.startTime, a.endTime, l.address, l.postalCode
                                         FROM activity AS a 
                                         INNER JOIN location AS l ON a.locationId=l.id
                                         INNER JOIN foodActivity AS f ON f.activityId=a.id

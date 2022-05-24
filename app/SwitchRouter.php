@@ -27,6 +27,15 @@ class SwitchRouter
                 $controller->index();
                 break;
 
+            // case 'foodReservation':
+            //     require __DIR__ . '/backend/controller/foodController.php';
+            //     $controller = new foodController();
+            //     $controller->allfoodRestaurant();
+        
+            //     $controller = new cartController();
+            //     $controller->index();
+            //     break;
+
             case 'cart':
                 require __DIR__ . '/backend/controller/cartController.php';  
                 $controller = new cartController();
