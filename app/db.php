@@ -28,6 +28,13 @@ class DB extends PDO
         return self::$instance;
     }
 
+    public static function closeConnection(){
+
+        if (!empty(self::$instance)) {
+            self::$instance = null;
+        }
+    }
+
     static function getConfig()
     {
         return [
