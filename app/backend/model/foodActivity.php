@@ -4,9 +4,9 @@ require_once ("restaurant.php");
 
 class foodActivity {
     
-    private int $id;
-    private int $restaurantId;
-    private int $activityId;
+    public int $id;
+    public int $restaurantId;
+    public int $activityId;
 
     
     public function getId(): int

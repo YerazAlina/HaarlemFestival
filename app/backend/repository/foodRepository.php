@@ -21,17 +21,19 @@ class foodRepository
 
     private string $all_restaurants_sql = "SELECT a.id, r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, a.date, a.startTime, a.endTime, l.address, l.postalCode
                                         FROM activity AS a 
-                                        INNER JOIN location AS l ON a.locationId=l.id
-                                        INNER JOIN foodActivity AS f ON f.activityId=a.id
-                                        INNER JOIN restaurant AS r ON r.id=f.restaurantId";
+                                        JOIN location AS l ON a.locationId=l.id
+                                        JOIN foodActivity AS f ON f.activityId=a.id
+                                        RIGHT JOIN restaurant AS r ON r.id=f.restaurantId";
+
+    //private string $all_restaurants_sql = "SELECT * FROM restaurant";
 
     
-private string $get_one_event_sql = "SELECT r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, a.date, a.startTime, a.endTime, l.address, l.postalCode 
-                                FROM activity AS a 
-                                INNER JOIN location AS l ON a.locationId=l.id 
-                                INNER JOIN foodActivity AS f ON f.activityId=a.id 
-                                INNER JOIN restaurant AS r ON r.id=f.restaurantId 
-                                WHERE f.activityId=:id";
+    private string $get_one_event_sql = "SELECT r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, a.date, a.startTime, a.endTime, l.address, l.postalCode   
+                                        FROM activity AS a 
+                                        INNER JOIN location AS l ON a.locationId=l.id 
+                                        INNER JOIN foodActivity AS f ON f.activityId=a.id 
+                                        INNER JOIN restaurant AS r ON r.id=f.restaurantId 
+                                        WHERE f.activityId=:id";
 
 
     public function findAll()
@@ -41,6 +43,8 @@ private string $get_one_event_sql = "SELECT r.name, r.description, r.stars, r.se
         $this->stmt->execute();
         return $this->stmt->fetchAll();
     }
+
+   
 
     public function findEvents(){
 

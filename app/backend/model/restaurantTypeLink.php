@@ -5,9 +5,9 @@ require_once("restaurantType.php");
 
 class restaurantTypeLink {
 
-    private int $id;
-    private int $restaurantTypeId;
-    private int $restaurantId;
+    public int $id;
+    public int $restaurantTypeId;
+    public int $restaurantId;
 
     public function getId() : int
     {

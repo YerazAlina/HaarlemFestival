@@ -4,18 +4,18 @@ require_once("restaurantType.php");
 
 class restaurant {
 
-    private int $id;
-    private int $location;
-    private string $name;
-    private string $description;
-    private int $stars;
-    private int $seats;
-    private int $phoneNumber;
-    private float $price;
-    private string $parking;
-    private string $website;
-    private string $menu;
-    private string $contact;
+    public int $id;
+    public int $location;
+    public string $name;
+    public string $description;
+    public int $stars;
+    public int $seats;
+    public int $phoneNumber;
+    public float $price;
+    public string $parking;
+    public string $website;
+    public string $menu;
+    public string $contact;
 
     public function getId(): int
     {

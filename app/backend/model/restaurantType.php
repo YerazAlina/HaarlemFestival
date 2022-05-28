@@ -2,8 +2,8 @@
 
 class restaurantType {
     
-    private int $id;
-    private string $name;
+    public int $id;
+    public string $name;
 
     public function getId() : int
     {
