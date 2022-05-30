@@ -38,8 +38,9 @@ class SwitchRouter
 
             case 'cart':
                 require __DIR__ . '/backend/controller/cartController.php';  
-                $controller = new cartController();
-                $controller->getCartTickets();
+                $controller = new cartContoller();
+                $controller->addToCart();
+                break;
 
 
             default:

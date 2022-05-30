@@ -22,7 +22,12 @@ class jazzRepository
                                       RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
                                       JOIN location l on l.id = a.locationId";
 
-    private string $get_one_event_sql = "SELECT * FROM jazzActivity WHERE jazzActivity.id=:id";                            
+    //private string $get_one_event_sql = "SELECT * FROM jazzActivity WHERE jazzActivity.activityId=:id";                            
+
+    private string $get_one_event_sql = "SELECT * FROM jazzActivity
+                                        JOIN activity a on a.id = jazzActivity.activityId AND jazzActivity.activityId=:id
+                                        RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
+                                        JOIN location l on l.id = a.locationId";                            
 
 
 
@@ -84,24 +89,29 @@ class jazzRepository
         return $this->stmt->rowCount();
     }
 
-    public function purchaseTicket(){
 
-        if(isset($_POST['activityId'])){
-            $result = 'kio';
-        }
-    }
 
     public function findById($id)
     {
-        
+        /*
         $this->stmt = $this->db->prepare($this->get_one_event_sql);
-        $this->stmt->execute(['id' => $id]);
+        $this->stmt->bindParam(':activityId', $id);
+        $this->stmt->execute();
 
         if ($this->stmt->rowCount() > 0) {
             return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
         } else {
             return null;
         }
+
+        */
+
+        $this->stmt = $this->db->prepare($this->get_one_event_sql);
+        $this->stmt->bindParam(':activityId', $id);
+        $this->stmt->execute();
+        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+       
 
     }
 
