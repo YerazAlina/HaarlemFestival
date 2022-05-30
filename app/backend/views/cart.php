@@ -21,34 +21,6 @@
 		        <div class="block-heading">
 
 				
-					
-				<?php foreach($_SESSION["cart"] as $i){ ?>
-					<h4> <?php echo $_SESSION["cart"][$i] ?>
-					<form method="post">   
-                        <button type="submit" id="removeTicket" name="removeTicket" value="<?php echo $_SESSION["cart"][$i]?>" formaction="cart" class="btn btn-outline-warning btn-sm">Remove from cart</button>
-						
-                    </form> 
-				
-
-				<?php } ?>
-
-				
-
-				<!-- NEED TO SOMEHOW CALL THIS FROM THE CONTROLLER -->
-				<!-- WIIILLLL DOOOOOOOO IT       LAAAAAAAAAAAATTTTTTTERRRRRRRR-->
-						<?php
-						
-						if(isset($_POST['removeTicket'])){
-							$id = $_POST['removeTicket'];
-							unset($_SESSION["cart"][$id]);
-				
-						}
-				
-					
-						
-
-						?>
-
 		          <h2>Shopping Cart</h2>
 		          <p>You have "number" items in your shopping cart</p>
 
@@ -57,18 +29,24 @@
 	 				<div class="row">
 	 					<div class="col-md-12 col-lg-8">
 	 						<div class="cart-items">
+
+
+
+						 	<?php 
+							
+							 foreach($_SESSION['cart'] as $items=>$values){ ?>
 								
 				 				<div class="event">
 				 					<div class="row">
 					 					<div class="col-md-3">
-					 						<img class="img-fluid mx-auto d-block image" src="../img/jazz/backgrounds/haarlem-jazz-background.png">
+					 						<img class="img-fluid mx-auto d-block image" src="../img/jazz/artists/<?php echo $values['id']?>.png">
 					 					</div>
 					 					<div class="col-md-8">
 					 						<div class="info">
 						 						<div class="row">
 							 						<div class="col-md-5 event-name">
 							 							<div class="event-name">
-								 							<a href="#">Event title</a>
+								 							<a href="#"><?php echo $values['name']?></a>
 								 							<div class="event-info">
 									 							<div>Time: <span class="value">...</span></div>
 									 							<div>Date: <span class="value">...</span></div>
@@ -84,13 +62,40 @@
 							 						<div class="col-md-3 price">
 							 							<span>$...</span>
 							 						</div>
+
+													 <form method="post">   
+														<button type="submit" id="removeTicket" name="removeTicket" value="<?php echo $_SESSION["cart"][$i]?>" formaction="cart" class="btn btn-outline-warning btn-sm">Remove from cart</button>
+									
+													</form> 
+							
+
+									
 							 					</div>
 							 				</div>
 					 					</div>
 					 				</div>
 				 				</div>
 								
+							<?php } ?>	 
 
+								 
+									<!-- NEED TO SOMEHOW CALL THIS FROM THE CONTROLLER -->
+									<!-- WIIILLLL DOOOOOOOO IT       LAAAAAAAAAAAATTTTTTTERRRRRRRR-->
+									<?php
+											
+											if(isset($_POST['removeTicket'])){
+												$id = $_POST['removeTicket'];
+												unset($_SESSION["cart"][$id]);
+									
+											}
+									
+										
+													
+
+									?>
+								
+
+								<!--
 				 				<div class="event">
 				 					<div class="row">
 					 					<div class="col-md-3">
@@ -151,6 +156,9 @@
 					 					</div>
 					 				</div>
 				 				</div>
+
+										-->
+
                                 
 				 			</div>
 			 			</div>

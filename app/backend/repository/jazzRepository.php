@@ -27,7 +27,10 @@ class jazzRepository
     private string $get_one_event_sql = "SELECT * FROM jazzActivity
                                         JOIN activity a on a.id = jazzActivity.activityId AND jazzActivity.activityId=:id
                                         RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
-                                        JOIN location l on l.id = a.locationId";                            
+                                        JOIN location l on l.id = a.locationId";      
+                                        
+    private string $book_detail_sql = "SELECT * FROM books WHERE books.ISBN=:bookISBN";
+
 
 
 
@@ -107,9 +110,13 @@ class jazzRepository
         */
 
         $this->stmt = $this->db->prepare($this->get_one_event_sql);
-        $this->stmt->bindParam(':activityId', $id);
-        $this->stmt->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        $this->stmt->execute([':id' => $id]);
+
+        if ($this->stmt->rowCount() > 0) {
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return null;
+        }
 
        
 
