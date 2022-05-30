@@ -125,7 +125,6 @@ include_once ('include/navbar.php')
                             <p class="card-subtitle">Price: <?php echo $e->price ?> EUR</p>
                             <p class="card-subtitle">Address: <?php echo $e->address ?> </p>
                             <!-- <p class="card-subtitle"> $ <?php echo $e->price ?> </p> -->
-                            <!-- <br/> -->
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-outline-danger btn-sm"><svg xmlns="http://www.w3.org/2000/svg"

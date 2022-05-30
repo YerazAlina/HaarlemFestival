@@ -19,11 +19,15 @@ class foodRepository
     }
 
 
-    private string $all_restaurants_sql = "SELECT a.id, r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, a.date, a.startTime, a.endTime, l.address, l.postalCode
-                                        FROM activity AS a 
-                                        JOIN location AS l ON a.locationId=l.id
-                                        JOIN foodActivity AS f ON f.activityId=a.id
-                                        RIGHT JOIN restaurant AS r ON r.id=f.restaurantId";
+    // private string $all_restaurants_sql = "SELECT a.id, r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, a.date, a.startTime, a.endTime, l.address, l.postalCode
+    //                                     FROM activity AS a 
+    //                                     JOIN location AS l ON a.locationId=l.id
+    //                                     JOIN foodActivity AS f ON f.activityId=a.id
+    //                                     RIGHT JOIN restaurant AS r ON r.id=f.restaurantId";
+
+    private string $all_restaurants_sql = "SELECT r.id, r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, l.address, l.postalCode
+                                        FROM restaurant AS r 
+                                        JOIN location AS l ON r.locationId=l.id";
 
     //private string $all_restaurants_sql = "SELECT * FROM restaurant";
 
