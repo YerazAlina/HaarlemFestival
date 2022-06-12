@@ -8,8 +8,6 @@ class SwitchRouter
     {
         switch ($uri) {
             case '':
-            case 'login':
-                require __DIR__ . '/backend/views/cms/login.php';
                 break;
             case 'home':
                 require __DIR__ . '/backend/views/cms/home.php';
@@ -83,9 +81,38 @@ class SwitchRouter
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $controller->updateAccount();
+=======
+            case 'jazzevents':
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $controller->allJazzEvents();
+
+                $controller = new cartController();
+                $controller->index();
                 break;
-            case 'manageContent':
-                require __DIR__ . '/backend/views/cms/manageContent.php';
+
+            case 'food':
+                require __DIR__ . '/backend/controller/foodController.php';
+                $controller = new foodController();
+                $controller->allfoodRestaurant();
+    
+                $controller = new cartController();
+                $controller->index();
+                break;
+
+            // case 'foodReservation':
+            //     require __DIR__ . '/backend/controller/foodController.php';
+            //     $controller = new foodController();
+            //     $controller->allfoodRestaurant();
+        
+            //     $controller = new cartController();
+            //     $controller->index();
+            //     break;
+
+            case 'cart':
+                require __DIR__ . '/backend/controller/cartController.php';  
+                $controller = new cartContoller();
+                $controller->addToCart();
                 break;
             case 'jazzevents':
                 require __DIR__ . '/backend/controller/jazzController.php';

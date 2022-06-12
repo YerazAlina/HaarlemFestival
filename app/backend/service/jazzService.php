@@ -21,4 +21,8 @@ class jazzService{
     public function getOne($id){
         return $this->jazzrepository->findById($id);
     }
+    
+    public function getOne($id){
+        return $this->jazzrepository->findById($id);
+    }
 }
