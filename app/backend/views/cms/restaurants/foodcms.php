@@ -13,21 +13,15 @@
 </head>
 
 <body>
-    <?php require __DIR__ . '/include/navbar.php'; ?>
+    <?php require __DIR__ . '../../include/navbar.php'; ?>
+    <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
 
     <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
-        <h3>Manage Content</h3>
-        <p>The website can be edited here choose a page that you want to edit:</p>
-
-        <div class="list-group">
-            <a href="foodcms" class="list-group-item list-group-item-action">Food</a>
-            <a href="jazzcms" class="list-group-item list-group-item-action">Jazz</a>
-            <a href="#" class="list-group-item list-group-item-action disabled">History (currently unavailable)</a>
-            <a href="#" class="list-group-item list-group-item-action disabled">Music (currently unavailable)</a>
-        </div>
+        <h3>Manage Content Food</h3>
 
     </div>
-    <?php require __DIR__ . '/include/footer.php'; ?>
+    <?php require __DIR__ . '../../include/footer.php'; 
+    ?>
 </body>
 
 </html>

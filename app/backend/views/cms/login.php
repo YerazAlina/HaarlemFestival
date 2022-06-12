@@ -31,7 +31,7 @@
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login" name="login">
             </div>
-            <p>Don't have an account? <a href="register">Sign up now</a>.</p>
+            <p>Don't have an account? <a href="registerUser">Sign up now</a>.</p>
         </form>
     </div>
 

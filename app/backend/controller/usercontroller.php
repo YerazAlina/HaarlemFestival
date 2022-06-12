@@ -18,8 +18,17 @@ class UserController
 
             $this->service->deleteUserByEmail($email);
             header('Location: logoutUser');
-
         }
+    }
+
+    public function getUserDetails($email){
+        $userDetails = $this->service->searchByEmail($email);
+        return $userDetails;
+    }
+
+    public function getUserDetailsById($id){
+        $userDetails = $this->service->getOneUser($id);
+        return $userDetails;
     }
 
     public function login()
@@ -32,17 +41,16 @@ class UserController
 
                 $_SESSION['email'] = $_POST['email'];
 
-                $count = $this->service->login($email, $password);
+                $user = $this->service->login($email, sha1($password));
 
-                if ($count > 0) {
+                if (!empty($user)) {
 
                     $_SESSION['logged_in'] = true;
-                    header('Location: home');
 
+                    header('Location: home');
                 } else {
 
                     require __DIR__ . "../../views/cms/login.php";
-
                 }
             }
         }
@@ -57,21 +65,55 @@ class UserController
 
         $confirm_password = $_POST['confirm_password'];
 
-        // A check is performed to see whether a user has registered before using the same email address
-        if (!empty($email) && !empty($password) && ($password === $confirm_password)) {
-            
-            $count = $this->service->createUser($email, $firstname, $lastname, sha1($password));
+        $roleId = 0;
 
-            if ($count >= "1"){
+        // A check is performed to see whether a user has registered before using the same email address
+
+        // this checks if the email already exists in the db table users and returns uhhhh something idk what
+        //$something = $this->service->searchEmail($email);
+
+        $count = $this->service->createUser($email, $firstname, $lastname, sha1($password), $roleId);
+
+        if (!empty($email) && !empty($password) && ($password === $confirm_password)) {
+            if ($count >= 1) {
                 require __DIR__ . "../../views/cms/login.php";
-            }
-            else{
-                require __DIR__ . "../../views/cms/register.php";
+            } else {
+                require __DIR__ . "../../views/cms/users/register.php";
             }
         } else {
             header('Location: register');
-
         }
+    }
+
+    public function addUser()
+    {
+        $email =  $_POST['email'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $password =  $_POST['password'];
+
+        $confirm_password = $_POST['confirm_password'];
+
+        $roleId = 1;
+
+        // A check is performed to see whether a user has registered before using the same email address
+
+        // this checks if the email already exists in the db table users and returns uhhhh something idk what
+        //$something = $this->service->searchEmail($email);
+
+        $count = $this->service->createUser($email, $firstname, $lastname, sha1($password), $roleId);
+    }
+
+    //new
+    public function updateAccount()
+    {
+        $id =  1;
+        $email =  $_POST['email'];
+        //$firstname = $_POST['firstname'];
+        //$lastname = $_POST['lastname'];
+        //$password =  $_POST['password'];
+
+        $count = $this->service->updateUser($id, $email);
     }
 
     public function logout()
@@ -80,6 +122,12 @@ class UserController
         session_destroy();
 
         header('Location: login');
+    }
+
+    public function allUsers()
+    {
+        $users = $this->service->getAllUsers();
+        require __DIR__ . ('../../views/cms/users/manageUsers.php');
     }
 
     public function updateEmail()

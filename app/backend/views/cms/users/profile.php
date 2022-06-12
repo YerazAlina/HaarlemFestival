@@ -15,23 +15,24 @@
 <!-- user can edit email, name and password -->
 
 <body>
-    <?php require __DIR__ . '/include/navbar.php'; ?>
+    <?php require __DIR__ . '../../include/navbar.php'; ?>
     <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
         <h3>Edit Personal Information</h3>
         <br>
         <form action="profile" method="post">
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" name="email" class="form-control">
+                <input type="text" name="email" class="form-control" value="<?php echo $currentUserDetails->email; ?>">
             </div>
             <div class="form-group">
                 <label>Firstname</label>
-                <input type="text" name="firstname" class="form-control">
+                <input type="text" name="firstname" class="form-control" value="<?php echo $currentUserDetails->firstname; ?>">
             </div>
             <div class="form-group">
                 <label>Lastname</label>
-                <input type="text" name="lastname" class="form-control">
+                <input type="text" name="lastname" class="form-control" value="<?php echo $currentUserDetails->lastname; ?>">
             </div>
+
             <div class="form-group">
                 <label>Password</label>
                 <input type="password" name="password" class="form-control">
@@ -39,9 +40,9 @@
             <div class="form-group">
                 <input type="reset" class="btn btn-secondary" value="Cancel">
                 <a href="saveChanges">
-                    <button type="button" class="btn btn-primary"> Save Changes </button>
-                    <br>
+                    <input type="submit" class="btn btn-primary" value="Save">
                 </a>
+                <br>
                 <br>
                 <a href="deleteAccount">
                     <button type="button" class="btn btn-danger"> Delete Account </button>
@@ -51,7 +52,7 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-    <?php require __DIR__ . '/include/footer.php'; ?>
+    <?php require __DIR__ . '../../include/footer.php'; ?>
 </body>
 
 </html>

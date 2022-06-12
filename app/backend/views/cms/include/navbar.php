@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height:100px;">
     <div class="container">
         <a class="navbar-brand me-2">
-            <img src="?" height="40" alt="Haarlem Festival" loading="lazy" style="margin-top: -9px;" />
+            <h3>Haarlem Festival</h3>
         </a>
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
@@ -25,21 +25,7 @@
                     </li>
                 </ul>
             </div> 
-        <?php else : ?>
-            <div class="collapse navbar-collapse" id="navbarButtonsExample">
-                <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="home">Home</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="contactPage">Contact</a>
-                    </li>
-                </ul> -->
-            </div>
         <?php endif; ?>
-
     </div>
 
 
