@@ -85,6 +85,21 @@ class SwitchRouter
             case 'manageContent':
                 require __DIR__ . '/backend/views/cms/manageContent.php';
                 break;
+            case 'jazzevents':
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $controller->allJazzEvents();
+
+                $controller = new cartController();
+                $controller->index();
+                break;
+            case 'cart':
+                require __DIR__ . '/backend/controller/cartController.php';  
+                $controller = new cartContoller();
+                $controller->addToCart();
+                break;
+
+
             default:
                 echo '404 not found';
                 http_response_code(404);
