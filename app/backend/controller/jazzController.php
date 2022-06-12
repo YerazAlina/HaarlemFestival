@@ -21,4 +21,9 @@ class jazzController
         $events = $this->jazzservice->getEvents();
         require __DIR__ . ('../../views/cms/jazz/jazzcms.php');
     }
+
+    public function allJazzArtistscms(){
+        $artists = $this->jazzservice->getArtists();
+        require __DIR__ . ('../../views/cms/jazz/artistcms.php');
+    }
 }

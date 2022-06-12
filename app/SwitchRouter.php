@@ -8,6 +8,8 @@ class SwitchRouter
     {
         switch ($uri) {
             case '':
+            case 'login':
+                require __DIR__ . '/backend/views/cms/login.php';
                 break;
             case 'home':
                 require __DIR__ . '/backend/views/cms/home.php';
@@ -19,6 +21,11 @@ class SwitchRouter
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
                 $controller->allJazzEventscms();
+                break;
+            case 'artistcms':
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $controller->allJazzArtistscms();
                 break;
             case 'register':
                 require __DIR__ . '/backend/views/cms/users/register.php';
@@ -54,10 +61,9 @@ class SwitchRouter
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $currentUserDetails = $controller->getUserDetails($_SESSION['email']);
-                if($currentUserDetails->roleId >= 1){
+                if ($currentUserDetails->roleId >= 1) {
                     require __DIR__ . '/backend/views/cms/users/profile.php';
-                }
-                else{
+                } else {
                     echo 'access denied'; //TODO:CHANGE THIS 
                 }
                 break;
@@ -72,6 +78,9 @@ class SwitchRouter
                 $controller = new UserController();
                 $controller->allUsers();
                 break;
+            case 'manageContent':
+                require __DIR__ . '/backend/views/cms/manageContent.php';
+                break;
             case 'deleteAccount':
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
@@ -81,36 +90,35 @@ class SwitchRouter
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $controller->updateAccount();
-=======
             case 'jazzevents':
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
                 $controller->allJazzEvents();
 
-                $controller = new cartController();
-                $controller->index();
+                //$controller = new cartController();
+                //$controller->index();
                 break;
 
             case 'food':
                 require __DIR__ . '/backend/controller/foodController.php';
                 $controller = new foodController();
                 $controller->allfoodRestaurant();
-    
-                $controller = new cartController();
-                $controller->index();
+
+                // $controller = new cartController();
+                // $controller->index();
                 break;
 
-            // case 'foodReservation':
-            //     require __DIR__ . '/backend/controller/foodController.php';
-            //     $controller = new foodController();
-            //     $controller->allfoodRestaurant();
-        
-            //     $controller = new cartController();
-            //     $controller->index();
-            //     break;
+                // case 'foodReservation':
+                //     require __DIR__ . '/backend/controller/foodController.php';
+                //     $controller = new foodController();
+                //     $controller->allfoodRestaurant();
+
+                //     $controller = new cartController();
+                //     $controller->index();
+                //     break;
 
             case 'cart':
-                require __DIR__ . '/backend/controller/cartController.php';  
+                require __DIR__ . '/backend/controller/cartController.php';
                 $controller = new cartContoller();
                 $controller->addToCart();
                 break;
@@ -124,7 +132,7 @@ class SwitchRouter
                 //$controller->index();
                 break;
             case 'cart':
-                require __DIR__ . '/backend/controller/cartController.php';  
+                require __DIR__ . '/backend/controller/cartController.php';
                 $controller = new cartContoller();
                 $controller->addToCart();
                 break;

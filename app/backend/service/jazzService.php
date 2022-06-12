@@ -18,11 +18,12 @@ class jazzService{
         return $this->jazzrepository->findAll();
     }
 
+    public function getArtists(){
+        return $this->jazzrepository->findAllArtists();
+    }
+
     public function getOne($id){
         return $this->jazzrepository->findById($id);
     }
     
-    public function getOne($id){
-        return $this->jazzrepository->findById($id);
-    }
 }

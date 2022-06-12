@@ -17,44 +17,36 @@
     <div class="wrapper" style="margin: auto; padding: 30px;">
         <!-- <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
         <br> <br> <br> -->
-        <h3>Manage Jazz Events</h3>
+        <h3>Manage Jazz Artist</h3>
 
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Artist</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Start Time</th>
-                    <th scope="col">End Time</th>
-                    <th scope="col">Venue</th>
-                    <th scope="col">Ticket Price</th>
-                    <th scope="col">Number of Tickets</th>
+                    <th scope="col">Artist Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Pictures</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
 
             <tbody>
-                <?php foreach ($events as $e) {
+                <?php foreach ($artists as $a) {
                 ?>
                     <tr>
-                        <th scope="row"> <?php echo $e->activityId; ?> </th>
-                        <td><?php echo $e->artistname ?></td>
-                        <td><?php echo $e->date ?></td>
-                        <td><?php echo $e->startTime ?></td>
-                        <td><?php echo $e->endTime ?></td>
-                        <td><?php echo $e->activityHall ?></td>
-                        <td><?php echo $e->price ?></td>
-                        <td><?php echo "" ?></td>
+                        <th scope="row"> <?php echo $a->id?> </th>
+                        <td><?php echo $a->artistname ?></td>
+                        <td style="width:40%;"><?php echo $a->description ?></td>
+                        <td><?php echo "link" ?></td>
 
                         <form action="editAccount" method="post">
                             <td><a href="editEvent">
-                                    <button type="submit" id="editEvent" name="editEvent" value="<?php echo $e->activityId; ?>" formaction="editEvent" class="btn"><i class="fa fa-pencil"></i></button>
+                                    <button type="submit" id="editEvent" name="editEvent" value="<?php echo $a->id; ?>" formaction="editEvent" class="btn"><i class="fa fa-pencil"></i></button>
                                 </a>
                             </td>
                             <td><a href="deleteEvent">
-                                    <button type="submit" id="deleteEvent" name="deleteEvent" value="<?php echo $e->activityId; ?>" formaction="deleteEvent" class="btn"><i class="fa fa-trash"></i></button>
+                                    <button type="submit" id="deleteEvent" name="deleteEvent" value="<?php echo $a->id; ?>" formaction="deleteEvent" class="btn"><i class="fa fa-trash"></i></button>
                                 </a>
                             </td>
                         </form>
@@ -65,7 +57,7 @@
         </table>
 
         <a href="addEvent">
-            <button type="button" class="btn btn-dark"> Add Event </button>
+            <button type="button" class="btn btn-dark"> Add Artist </button>
         </a>
     </div>
     <?php //require __DIR__ . '../../include/footer.php'; ?>

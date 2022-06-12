@@ -80,8 +80,6 @@ class UserController
             } else {
                 require __DIR__ . "../../views/cms/users/register.php";
             }
-        } else {
-            header('Location: register');
         }
     }
 

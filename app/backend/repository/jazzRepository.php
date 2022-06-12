@@ -18,7 +18,7 @@ class jazzRepository
     }
 
     private string $all_events_sql = "SELECT * FROM jazzActivity
-                                      JOIN activity a on a.id = jazzActivity.activityId AND a.date = '2022-07-28'
+                                      JOIN activity a on a.id = jazzActivity.activityId AND a.date
                                       RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
                                       JOIN location l on l.id = a.locationId";
 
@@ -31,7 +31,7 @@ class jazzRepository
                                         
     private string $book_detail_sql = "SELECT * FROM books WHERE books.ISBN=:bookISBN";
 
-
+    private string $all_artists_sql = "SELECT * FROM artist";
 
 
     /*
@@ -61,6 +61,14 @@ class jazzRepository
     {
         $this->stmt = $this->db->prepare($this->all_events_sql);
         $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'jazzActivity');
+        $this->stmt->execute();
+        return $this->stmt->fetchAll();
+    }
+
+    public function findAllArtists()
+    {
+        $this->stmt = $this->db->prepare($this->all_artists_sql);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'artist');
         $this->stmt->execute();
         return $this->stmt->fetchAll();
     }
