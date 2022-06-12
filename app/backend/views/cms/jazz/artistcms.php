@@ -18,14 +18,14 @@
         <!-- <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
         <br> <br> <br> -->
         <h3>Manage Jazz Artist</h3>
-
-        <table class="table table-striped">
+        <br>
+        <table class="table table-striped" style="width:80%">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Artist Name</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Pictures</th>
+                    <!-- <th scope="col">Pictures</th> -->
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -38,15 +38,15 @@
                         <th scope="row"> <?php echo $a->id?> </th>
                         <td><?php echo $a->artistname ?></td>
                         <td style="width:40%;"><?php echo $a->description ?></td>
-                        <td><?php echo "link" ?></td>
+                        <!-- <td><?php //echo "link" ?></td> -->
 
-                        <form action="editAccount" method="post">
-                            <td><a href="editEvent">
-                                    <button type="submit" id="editEvent" name="editEvent" value="<?php echo $a->id; ?>" formaction="editEvent" class="btn"><i class="fa fa-pencil"></i></button>
+                        <form action="editArtist" method="post">
+                            <td><a href="editArtist">
+                                    <button type="submit" id="editArtist" name="editArtist" value="<?php echo $a->id; ?>" formaction="editArtist" class="btn"><i class="fa fa-pencil"></i></button>
                                 </a>
                             </td>
-                            <td><a href="deleteEvent">
-                                    <button type="submit" id="deleteEvent" name="deleteEvent" value="<?php echo $a->id; ?>" formaction="deleteEvent" class="btn"><i class="fa fa-trash"></i></button>
+                            <td><a href="deleteArtist">
+                                    <button type="submit" id="deleteArtist" name="deleteArtist" value="<?php echo $a->id; ?>" formaction="deleteArtist" class="btn"><i class="fa fa-trash"></i></button>
                                 </a>
                             </td>
                         </form>
@@ -56,7 +56,7 @@
             </tbody>
         </table>
 
-        <a href="addEvent">
+        <a href="addArtistView">
             <button type="button" class="btn btn-dark"> Add Artist </button>
         </a>
     </div>

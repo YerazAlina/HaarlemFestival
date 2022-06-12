@@ -11,6 +11,9 @@ class SwitchRouter
             case 'login':
                 require __DIR__ . '/backend/views/cms/login.php';
                 break;
+            case 'test':
+                require __DIR__ . '/backend/views/cms/jazz/test.php';
+                break;
             case 'home':
                 require __DIR__ . '/backend/views/cms/home.php';
                 break;
@@ -26,6 +29,12 @@ class SwitchRouter
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
                 $controller->allJazzArtistscms();
+                break;
+            case 'addArtistView':
+                require __DIR__ . '/backend/views/cms/jazz/addArtist.php';
+                break;
+            case 'addEventView':
+                require __DIR__ . '/backend/views/cms/jazz/addEvent.php';
                 break;
             case 'register':
                 require __DIR__ . '/backend/views/cms/users/register.php';
@@ -50,6 +59,13 @@ class SwitchRouter
                 $controller = new UserController();
                 $controller->addUser();
                 $controller->allUsers();
+                break;
+            case 'addArtist':
+                //add artist to db
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $controller->addArtist();
+                $controller->allJazzArtistscms();
                 break;
             case 'logoutUser':
                 require __DIR__ . '/backend/controller/usercontroller.php';
@@ -85,6 +101,11 @@ class SwitchRouter
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $controller->deleteUser();
+                break;
+            case 'deleteArtist':
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                //$controller->deleteArtist();
                 break;
             case 'saveChanges':
                 require __DIR__ . '/backend/controller/usercontroller.php';

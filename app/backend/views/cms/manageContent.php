@@ -25,7 +25,7 @@
             <a href="foodcms" class="list-group-item list-group-item-action">Restaurants Events</a>
             <a href="jazzcms" class="list-group-item list-group-item-action">Jazz Events</a>
             <a href="artistcms" class="list-group-item list-group-item-action">Jazz Artist</a>
-            <a href="jazzVenuecms" class="list-group-item list-group-item-action">Jazz Venue</a>
+            <!-- <a href="jazzVenuecms" class="list-group-item list-group-item-action">Jazz Venue</a> -->
             <a href="#" class="list-group-item list-group-item-action disabled">History (currently unavailable)</a>
             <a href="#" class="list-group-item list-group-item-action disabled">Music (currently unavailable)</a>
         </div>

@@ -26,4 +26,12 @@ class jazzController
         $artists = $this->jazzservice->getArtists();
         require __DIR__ . ('../../views/cms/jazz/artistcms.php');
     }
+
+    public function addArtist()
+    {
+        $artistname =  $_POST['artistname'];
+        $description = $_POST['description'];
+
+        $count = $this->jazzservice->addArtist($artistname, $description);
+    }
 }

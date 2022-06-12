@@ -139,4 +139,23 @@ class jazzRepository
     {
         // TODO: Implement deleteOne() method.
     }
+
+    public function addArtist($artistname, $description)
+    {
+        $count = "";
+
+        //INSERT INTO `artist`(`id`, `artistname`, `description`) VALUES ([value-1],[value-2],[value-3])
+        $query = "INSERT INTO artist (artistname, description) VALUES (:artistname, :description)";
+        $statement = $this->db->prepare($query);
+        $statement->execute(
+            array(
+                'artistname'        =>     $artistname,
+                'description'       =>     $description
+            )
+        );
+
+        $count = $statement->rowCount();
+
+        return $count;
+    }
 }

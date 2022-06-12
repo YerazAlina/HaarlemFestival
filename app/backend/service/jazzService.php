@@ -25,5 +25,9 @@ class jazzService{
     public function getOne($id){
         return $this->jazzrepository->findById($id);
     }
-    
+
+    public function addArtist($artistname, $description)
+    {
+        return $this->jazzrepository->addArtist($artistname, $description);
+    }
 }
