@@ -16,7 +16,7 @@
     <?php require __DIR__ . '../../include/navbar.php'; ?>
 
     <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
-    
+
     <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
         <h3>Manage Content Jazz</h3>
 
