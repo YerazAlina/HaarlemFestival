@@ -14,12 +14,59 @@
 
 <body>
     <?php require __DIR__ . '../../include/navbar.php'; ?>
+    <div class="wrapper" style="margin: auto; padding: 30px;">
+        <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
+        <br> <br> <br>
+        <h3>Manage Jazz Events</h3>
 
-    <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Artist</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Start Time</th>
+                    <th scope="col">End Time</th>
+                    <th scope="col">Venue</th>
+                    <th scope="col">Ticket Price</th>
+                    <th scope="col">Number of Tickets</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
 
-    <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
-        <h3>Manage Content Jazz</h3>
+            <tbody>
+                <?php foreach ($events as $e) {
+                ?>
+                    <tr>
+                        <th scope="row"> <?php echo $e->activityId; ?> </th>
+                        <td><?php echo $e->artistname ?></td>
+                        <td><?php echo $e->date ?></td>
+                        <td><?php echo $e->startTime ?></td>
+                        <td><?php echo $e->endTime ?></td>
+                        <td><?php echo $e->activityHall ?></td>
+                        <td><?php echo $e->price ?></td>
+                        <td><?php echo "" ?></td>
 
+                        <form action="editAccount" method="post">
+                            <td><a href="editEvent">
+                                    <button type="submit" id="editEvent" name="editEvent" value="<?php echo $e->activityId; ?>" formaction="editEvent" class="btn"><i class="fa fa-pencil"></i></button>
+                                </a>
+                            </td>
+                            <td><a href="deleteEvent">
+                                    <button type="submit" id="deleteEvent" name="deleteEvent" value="<?php echo $e->activityId; ?>" formaction="deleteEvent" class="btn"><i class="fa fa-trash"></i></button>
+                                </a>
+                            </td>
+                        </form>
+                    </tr>
+                <?php }
+                ?>
+            </tbody>
+        </table>
+
+        <a href="addEvent">
+            <button type="button" class="btn btn-dark"> Add Event </button>
+        </a>
     </div>
     <?php require __DIR__ . '../../include/footer.php'; ?>
 </body>

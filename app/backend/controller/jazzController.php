@@ -17,5 +17,8 @@ class jazzController
         require __DIR__ . ('/../views/jazzevents.php');
     }
 
-
+    public function allJazzEventscms(){
+        $events = $this->jazzservice->getEvents();
+        require __DIR__ . ('../../views/cms/jazz/jazzcms.php');
+    }
 }
