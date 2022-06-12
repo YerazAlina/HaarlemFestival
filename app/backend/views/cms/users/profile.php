@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +15,7 @@
 <!-- user can edit email, name and password -->
 
 <body>
-    <?php require __DIR__ . '/include/navbar.php'; ?>
+    <?php require __DIR__ . '../../include/navbar.php'; ?>
     <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
         <h3>Edit Personal Information</h3>
         <br>

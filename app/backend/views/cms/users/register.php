@@ -9,7 +9,7 @@ $email_err = $firstname_err = $lastname_err = $password_err = $confirm_password_
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Haarlem Festival </title>
@@ -20,7 +20,7 @@ $email_err = $firstname_err = $lastname_err = $password_err = $confirm_password_
 </head>
 
 <body>
-    <?php require __DIR__ . '/include/navbar.php'; ?>
+    <?php require __DIR__ . '../../include/navbar.php'; ?>
 
     <div class="wrapper" style="margin: auto; width: 360px; padding: 30px;">
         <h2>Sign Up</h2>
