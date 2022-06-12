@@ -28,6 +28,13 @@ class DB extends PDO
         return self::$instance;
     }
 
+    public static function closeConnection(){
+
+        if (!empty(self::$instance)) {
+            self::$instance = null;
+        }
+    }
+
     static function getConfig()
     {
         return [
@@ -35,7 +42,7 @@ class DB extends PDO
             'hostname' => $_ENV['PHP_DB_HOST'],
             'port' => 3306,
             'username' => $_ENV['MYSQL_USER'],
-            'password' => $_ENV['MYSQL_ROOT_PASSWORD'],
+            'password' => $_ENV['MYSQL_PASSWORD'],
             'name' => $_ENV['MYSQL_DATABASE']
         ];
     }
