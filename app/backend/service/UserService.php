@@ -31,6 +31,7 @@ class UserService
         return $this->userRepository->deleteUserByEmail($email);
     }
 
+    //use this
     public function getOneUser($id)
     {
         return $this->userRepository->findById($id);

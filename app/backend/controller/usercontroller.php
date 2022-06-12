@@ -23,15 +23,11 @@ class UserController
 
     public function getUserDetails($email){
         $userDetails = $this->service->searchByEmail($email);
-
         return $userDetails;
     }
 
-    public function getUserDetailsById(){
-        $id = $_POST['editAccount'];
-
+    public function getUserDetailsById($id){
         $userDetails = $this->service->getOneUser($id);
-
         return $userDetails;
     }
 
@@ -82,7 +78,7 @@ class UserController
             if ($count >= 1) {
                 require __DIR__ . "../../views/cms/login.php";
             } else {
-                require __DIR__ . "../../views/cms/register.php";
+                require __DIR__ . "../../views/cms/users/register.php";
             }
         } else {
             header('Location: register');
@@ -98,7 +94,7 @@ class UserController
 
         $confirm_password = $_POST['confirm_password'];
 
-        $roleId = 0;
+        $roleId = 1;
 
         // A check is performed to see whether a user has registered before using the same email address
 
@@ -131,7 +127,7 @@ class UserController
     public function allUsers()
     {
         $users = $this->service->getAllUsers();
-        require __DIR__ . ('/../views/cms/manageUsers.php');
+        require __DIR__ . ('../../views/cms/users/manageUsers.php');
     }
 
     public function updateEmail()

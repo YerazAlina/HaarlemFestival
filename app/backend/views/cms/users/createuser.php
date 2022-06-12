@@ -72,7 +72,7 @@
         </form>
 
     </div>
-    <?php //require __DIR__ . '/include/footer.php'; ?>
+    <?php require __DIR__ . '../../include/footer.php'; ?>
 </body>
 
 </html>

@@ -22,7 +22,7 @@
         <div class="list-group">
             <a href="foodcms" class="list-group-item list-group-item-action">Food</a>
             <a href="jazzcms" class="list-group-item list-group-item-action">Jazz</a>
-            <a href="historycms" class="list-group-item list-group-item-action">History</a>
+            <a href="#" class="list-group-item list-group-item-action disabled">History (currently unavailable)</a>
             <a href="#" class="list-group-item list-group-item-action disabled">Music (currently unavailable)</a>
         </div>
 

@@ -28,10 +28,21 @@ class UserRepository extends Repository
         return $this->stmt->fetchAll();
     }
 
+    public function findByEmail($email)
+    {
+        $this->stmt = $this->db->prepare($this->one_userByEmail_sql);
+        $this->stmt->bindParam(':email', $email);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        $this->stmt->execute();
+
+        return $this->stmt->fetch();
+    }
+
     public function findById($id)
     {
         $this->stmt = $this->db->prepare($this->one_user_sql);
         $this->stmt->bindParam(':id', $id);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
         $this->stmt->execute();
 
         return $this->stmt->fetch();
@@ -94,16 +105,6 @@ class UserRepository extends Repository
         $count = $statement->rowCount();
 
         return $count;
-    }
-
-    public function findByEmail($email)
-    {
-        $this->stmt = $this->db->prepare($this->one_userByEmail_sql);
-        $this->stmt->bindParam(':email', $email);
-        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
-        $this->stmt->execute();
-
-        return $this->stmt->fetch();
     }
 
     public function updateUser($id, $email) //, $firstname, $lastname, $roleId)

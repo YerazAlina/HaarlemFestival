@@ -1,3 +1,16 @@
+<?php
+
+// $controller = new UserController();
+// $userDetails = $controller->getUserDetailsById();
+
+echo $_POST['editAccount']; //this is the id 
+echo $userDetails['firstname'];
+
+
+
+//echo ;
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,21 +30,22 @@
 
 <body>
     <?php require __DIR__ . '/include/navbar.php'; ?>
+    <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
     <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
-        <h3>Edit Personal Information</h3>
+        <h3>Edit Information</h3>
         <br>
-        <form action="profile" method="post">
+        <form action="editaccount" method="post">
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" name="email" class="form-control" value="<?php echo $currentUserDetails->email; ?>">
+                <input type="text" name="email" class="form-control" value="<?php echo $userDetails->email; ?>">
             </div>
             <div class="form-group">
                 <label>Firstname</label>
-                <input type="text" name="firstname" class="form-control" value="<?php echo $currentUserDetails->firstname; ?>">
+                <input type="text" name="firstname" class="form-control" value="<?php echo $userDetails->firstname; ?>">
             </div>
             <div class="form-group">
                 <label>Lastname</label>
-                <input type="text" name="lastname" class="form-control" value="<?php echo $currentUserDetails->lastname; ?>">
+                <input type="text" name="lastname" class="form-control" value="<?php echo $userDetails->lastname; ?>">
             </div>
 
             <div class="form-group">
@@ -48,12 +62,13 @@
                 <a href="deleteAccount">
                     <button type="button" class="btn btn-danger"> Delete Account </button>
                 </a>
+            </div>
         </form>
     </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-    <?php require __DIR__ . '/include/footer.php'; ?>
+    <?php require __DIR__ . '../../include/footer.php'; ?>
 </body>
 
 </html>

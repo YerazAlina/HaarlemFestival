@@ -59,7 +59,7 @@ $email_err = $firstname_err = $lastname_err = $password_err = $confirm_password_
         </form>
     </div>
 
-    <?php //require __DIR__ . '/include/footer.php'; ?>
+    <?php require __DIR__ . '../../include/footer.php'; ?>
 </body>
 
 </html>

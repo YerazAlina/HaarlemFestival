@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <?php require __DIR__ . '/include/navbar.php'; ?>
+    <?php require __DIR__ . '../../include/navbar.php'; ?>
 
     <div class="wrapper" style="margin: auto; padding: 30px;">
         <h3>Manage Users</h3>
@@ -64,7 +64,7 @@
             <button type="button" class="btn btn-dark"> Add New User </button>
         </a>
     </div>
-    <?php require __DIR__ . '/include/footer.php'; 
+    <?php require __DIR__ . '../../include/footer.php'; 
     ?>
 </body>
 

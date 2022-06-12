@@ -15,20 +15,17 @@ class SwitchRouter
                 require __DIR__ . '/backend/views/cms/home.php';
                 break;
             case 'foodcms':
-                require __DIR__ . '/backend/views/cms/foodcms.php';
+                require __DIR__ . '/backend/views/cms/restaurants/foodcms.php';
                 break;
             case 'jazzcms':
-                require __DIR__ . '/backend/views/cms/jazzcms.php';
-                break;
-            case 'historycms':
-                require __DIR__ . '/backend/views/cms/historycms.php';
+                require __DIR__ . '/backend/views/cms/jazz/jazzcms.php';
                 break;
             case 'register':
-                require __DIR__ . '/backend/views/cms/register.php';
+                require __DIR__ . '/backend/views/cms/users/register.php';
                 break;
             case 'createUser':
                 //for creating a new user account as superadminuser
-                require __DIR__ . '/backend/views/cms/createuser.php';
+                require __DIR__ . '/backend/views/cms/users/createuser.php';
                 break;
             case 'loginUser':
                 require __DIR__ . '/backend/controller/usercontroller.php';
@@ -53,16 +50,22 @@ class SwitchRouter
                 $controller->logout();
                 break;
             case 'profile':
+                //only alowed for users
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $currentUserDetails = $controller->getUserDetails($_SESSION['email']);
-                require __DIR__ . '/backend/views/cms/profile.php';
+                if($currentUserDetails->roleId >= 1){
+                    require __DIR__ . '/backend/views/cms/users/profile.php';
+                }
+                else{
+                    echo 'access denied'; //TODO:CHANGE THIS 
+                }
                 break;
             case 'editAccount':
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
-                $userDetails = $controller->getUserDetailsById();
-                require __DIR__ . '/backend/views/cms/editaccount.php';
+                $userDetails = $controller->getUserDetailsById($_POST['editAccount']);
+                require __DIR__ . '/backend/views/cms/users/editaccount.php';
                 break;
             case 'manageUsers':
                 require __DIR__ . '/backend/controller/usercontroller.php';
