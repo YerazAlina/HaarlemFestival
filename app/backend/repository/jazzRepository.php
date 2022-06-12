@@ -33,6 +33,8 @@ class jazzRepository
 
     private string $all_artists_sql = "SELECT * FROM artist";
 
+    private string $delete_artist_sql = "delete from artist where id = :id";
+
 
     /*
 
@@ -137,7 +139,10 @@ class jazzRepository
 
     public function deleteOne($id)
     {
-        // TODO: Implement deleteOne() method.
+        $this->stmt = $this->db->prepare($this->delete_artist_sql);
+        $this->stmt->bindParam(':id', $id);
+
+        return $this->stmt->execute();
     }
 
     public function addArtist($artistname, $description)

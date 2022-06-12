@@ -33,7 +33,7 @@
             </div>
             <div class="form-group">
                 <label>Description</label>
-                <input type="text" name="description">
+                <textarea type="text" name="description" row="6"></textarea>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">

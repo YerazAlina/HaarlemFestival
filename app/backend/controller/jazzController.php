@@ -34,4 +34,14 @@ class jazzController
 
         $count = $this->jazzservice->addArtist($artistname, $description);
     }
+
+    public function deleteArtist()
+    {
+        $artistId = $_POST['deleteArtist'];
+
+        if (isset($_POST['deleteArtist'])) {
+            $this->jazzservice->deleteArtist($artistId);
+            header('Location: artistcms');
+        }
+    }
 }

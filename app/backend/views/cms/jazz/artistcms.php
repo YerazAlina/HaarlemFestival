@@ -35,16 +35,19 @@
                 <?php foreach ($artists as $a) {
                 ?>
                     <tr>
-                        <th scope="row"> <?php echo $a->id?> </th>
+                        <th scope="row"> <?php echo $a->id ?> </th>
                         <td><?php echo $a->artistname ?></td>
                         <td style="width:40%;"><?php echo $a->description ?></td>
-                        <!-- <td><?php //echo "link" ?></td> -->
+                        <!-- <td><?php //echo "link" 
+                                    ?></td> -->
 
                         <form action="editArtist" method="post">
                             <td><a href="editArtist">
                                     <button type="submit" id="editArtist" name="editArtist" value="<?php echo $a->id; ?>" formaction="editArtist" class="btn"><i class="fa fa-pencil"></i></button>
                                 </a>
                             </td>
+                        </form>
+                        <form action="deleteArtist" method="post">
                             <td><a href="deleteArtist">
                                     <button type="submit" id="deleteArtist" name="deleteArtist" value="<?php echo $a->id; ?>" formaction="deleteArtist" class="btn"><i class="fa fa-trash"></i></button>
                                 </a>
@@ -60,7 +63,8 @@
             <button type="button" class="btn btn-dark"> Add Artist </button>
         </a>
     </div>
-    <?php //require __DIR__ . '../../include/footer.php'; ?>
+    <?php //require __DIR__ . '../../include/footer.php'; 
+    ?>
 </body>
 
 </html>

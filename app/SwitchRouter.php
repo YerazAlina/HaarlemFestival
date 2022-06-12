@@ -105,7 +105,7 @@ class SwitchRouter
             case 'deleteArtist':
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
-                //$controller->deleteArtist();
+                $controller->deleteArtist();
                 break;
             case 'saveChanges':
                 require __DIR__ . '/backend/controller/usercontroller.php';

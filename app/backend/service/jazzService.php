@@ -30,4 +30,9 @@ class jazzService{
     {
         return $this->jazzrepository->addArtist($artistname, $description);
     }
+
+    public function deleteArtist($id)
+    {
+        return $this->jazzrepository->deleteOne($id);
+    }
 }
