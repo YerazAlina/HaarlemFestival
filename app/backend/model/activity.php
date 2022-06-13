@@ -25,6 +25,8 @@ class activity
      * @param int $ticketsLeft
      */
 
+     
+
     /**
      * @return int
      */
