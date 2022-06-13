@@ -37,11 +37,16 @@
 							
 							if(!empty($_SESSION['cart'])) {
 
-								foreach($_SESSION['cart'] as $items=>$values){ ?>
+								
+								foreach($_SESSION['cart'] as $items=>$values){ 
+									printf($values['id']) ;
+									?>
 									
+
 									<div class="event">
 										<div class="row">
 											<div class="col-md-3">
+											
 												<img class="img-fluid mx-auto d-block image" src="../img/jazz/artists/<?php echo $values['name']?>.png">
 											</div>
 											<div class="col-md-8">
@@ -60,9 +65,10 @@
 														<div class="col-md-4 cart-quantity">
 															<form method="post">
 																<button type="submit" id="addQuantity" name="addQuantity" value="<?php echo $values['id']?>" formaction="cart"> + </button>
-																<label for="cart-quantity"> <?php echo $_SESSION['quantity'][$values['id']] ?> </label>
+															</form>	
+																<label for="cart-quantity"> <?php echo $values['quantity'] ?> </label>
 																<button type="submit"> - </button>
-															</form>
+														
 
 														</div>
 														
@@ -70,6 +76,7 @@
 															<span>$<?php echo $values['price']?></span>
 														</div>
 
+														
 														<form method="post">   
 															<button type="submit" id="removeTicket" name="removeTicket" value="<?php echo $values['id']?>" formaction="cart" class="btn btn-outline-warning btn-sm">Remove from cart</button>
 										

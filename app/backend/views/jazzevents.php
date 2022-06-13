@@ -161,18 +161,16 @@ include_once ('include/navbar.php')
         <div class="col-md-4 mb-4">
             <div class="card">
                 <div class="card-top">
-                    <img src="../img/jazz/artists/<?php echo $e->artistname ?>.png" class="card-img-top img-fluid" alt="..." height="200px">
+                    <img src="../img/jazz/artists/<?php echo $e->name ?>.png" class="card-img-top img-fluid" alt="..." height="200px">
                 </div>
 
                 
                     <div class="card-body-event">
-                        <h5 class="card-title" name="artistname" id="artistname" > <?php echo $e->artistname ?> </h5>
+                        <h5 class="card-title" name="artistname" id="artistname" > <?php echo $e->name ?> </h5>
                         <p class="event-time">  <?php echo $e->date ?> at <?php echo $e->startTime ?>  -  <?php echo $e->endTime ?> 
                         <p class="card-text"> <?php echo $e->description ?> </p>
                         <p class="card-subtitle"> <?php echo $e->startTime ?> - <?php echo $e->endTime ?> </p>
-                        <?php
-                        if($e->activityHall != "None"){ ?> <p class="card-subtitle"> <?php echo $e->name ?></p>
-                        <?php } else {   ?> <p class="card-subtitle"> <?php echo $e->name ?> </p> <?php } ?>
+                        <p class="card-subtitle"> <?php echo $e->locationName?></p>
                         <p class="card-subtitle"> $ <?php echo $e->price ?> </p>
                         <br/>
                     </div>

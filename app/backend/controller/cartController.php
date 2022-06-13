@@ -41,6 +41,25 @@ class cartContoller{
         }
     }
 
+    public function updateQuantity(){
+
+        if(isset($_POST['addQuantity'])){
+
+            $id = $_POST['addQuantity'];
+           
+            foreach($_SESSION['cart'] as $items=>$values){
+                if($id == $values['id']){
+                    $values['quantity'] += 1;
+                    print($values['quantity']);
+                }
+            }
+
+        }
+
+        require __DIR__ . ('/../views/cart.php');
+    }
+
+
 
     public function addToCart(){
 
@@ -48,12 +67,22 @@ class cartContoller{
 
         // $activityId = null;
         // $cart = null;
-       
+
 
         if(!empty($_POST['addTicket'])){
 
             $activityId = $_POST['addTicket'];
-            $type = $this->activityservice->getType($activityId);
+            $getType = $this->activityservice->getType($activityId);
+
+            $type = "";
+
+            foreach($getType as $t){
+                $type = $t['type'];
+            }
+
+            //printf($type);
+
+            $details = "";
 
             if($type == "jazz"){
 
@@ -61,30 +90,24 @@ class cartContoller{
 
             }
 
-            else if($type == "food"){
+            else if($type == "Food"){
 
                 $details = $this->foodservice->findById($activityId);
 
             }
 
-
-            $details = $this->jazzservice->getOne($activityId);
-                    
             foreach($details as $detail){
-
-                
 
                 $cart = array (
 
-                    'name' => $detail['artistname'],
+                    'name' => $detail['name'],
                     'startTime' => $detail['startTime'],
                     'endTime' => $detail['endTime'],
-                    'location' => $detail['name'],
+                    'location' => $detail['locationName'],
                     'date' => $detail['date'],
                     'price' => $detail['price'],
                     'id' => $detail['activityId'],
-                    'quantity' => $_SESSION['quantity']['id']
-    
+                    'quantity' => 56
                 );
             
             }
@@ -94,28 +117,12 @@ class cartContoller{
             
           
         }
-        require __DIR__ . ('/../views/cart.php');
-
-    }
-
-    public function updateQuantity(){
-
-        if(isset($_POST['addQuantity'])){
-
-            $id = $_POST['addQuantity'];
-
-            foreach($_SESSION['quantity'] as $items=>$values){
-                if($id == $values['id']){
-                    $_SESSION['quantity'][$id] + 1;
-                }
-            }
-
-        }
 
         require __DIR__ . ('/../views/cart.php');
 
     }
 
+   
    
 
     public function removeFromCart(){
