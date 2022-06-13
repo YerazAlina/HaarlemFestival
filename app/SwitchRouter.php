@@ -44,7 +44,10 @@ class SwitchRouter
                     $_POST['action'] = "addToCart";
                 }elseif(isset($_POST['removeTicket'])){
                     $_POST['action'] = "removeFromCart";
+                }else if(isset($_POST['addQuantity'])){
+                    $_POST['action'] = "updateCart";
                 }
+
                 else{
                     $_POST['action'] = "clearCart";
 

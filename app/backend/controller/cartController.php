@@ -2,15 +2,23 @@
 <?php
 
 require_once __DIR__ . ('../../service/jazzService.php');
+require_once __DIR__ . ('../../service/activityService.php');
+require_once __DIR__ . ('../../service/foodService.php');
+
+
 
 class cartContoller{
 
     
     private jazzService $jazzservice;
+    private activityService $activityservice;
+    private foodService $foodservice;
 
 
     public function __construct(){
         $this->jazzservice = new jazzService();
+        $this->activityservice = new activityService();
+        $this->foodservice = new foodService();
     }
 
     public function run(){
@@ -24,7 +32,10 @@ class cartContoller{
                     break; 
                 case 'clearCart':
                     $this->clearCart();
-                    break;       
+                    break;      
+                case 'updateCart':
+                    $this->updateQuantity();
+                    break;     
                 
             }
         }
@@ -35,18 +46,33 @@ class cartContoller{
 
         //unset($_SESSION['cart']);
 
-        $activityId = null;
-       
+        // $activityId = null;
+        // $cart = null;
        
 
         if(!empty($_POST['addTicket'])){
 
-            
-            
             $activityId = $_POST['addTicket'];
-            $details = $this->jazzservice->getOne($activityId);
+            $type = $this->activityservice->getType($activityId);
 
+            if($type == "jazz"){
+
+                $details = $this->jazzservice->getOne($activityId);
+
+            }
+
+            else if($type == "food"){
+
+                $details = $this->foodservice->findById($activityId);
+
+            }
+
+
+            $details = $this->jazzservice->getOne($activityId);
+                    
             foreach($details as $detail){
+
+                
 
                 $cart = array (
 
@@ -56,17 +82,35 @@ class cartContoller{
                     'location' => $detail['name'],
                     'date' => $detail['date'],
                     'price' => $detail['price'],
-                    'id' => $detail['activityId']
+                    'id' => $detail['activityId'],
+                    'quantity' => $_SESSION['quantity']['id']
     
                 );
-               
+            
             }
 
             $_SESSION['cart'][] = $cart;
+
+            
           
         }
+        require __DIR__ . ('/../views/cart.php');
 
-       
+    }
+
+    public function updateQuantity(){
+
+        if(isset($_POST['addQuantity'])){
+
+            $id = $_POST['addQuantity'];
+
+            foreach($_SESSION['quantity'] as $items=>$values){
+                if($id == $values['id']){
+                    $_SESSION['quantity'][$id] + 1;
+                }
+            }
+
+        }
 
         require __DIR__ . ('/../views/cart.php');
 

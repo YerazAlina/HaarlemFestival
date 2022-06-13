@@ -58,8 +58,12 @@
 															</div>
 														</div>
 														<div class="col-md-4 cart-quantity">
-															<label for="cart-quantity">Quantity:</label>
-															<input id="cart-quantity" type="number" value ="1" class="form-control cart-quantity-input">
+															<form method="post">
+																<button type="submit" id="addQuantity" name="addQuantity" value="<?php echo $values['id']?>" formaction="cart"> + </button>
+																<label for="cart-quantity"> <?php echo $_SESSION['quantity'][$values['id']] ?> </label>
+																<button type="submit"> - </button>
+															</form>
+
 														</div>
 														
 														<div class="col-md-3 price">
@@ -69,7 +73,6 @@
 														<form method="post">   
 															<button type="submit" id="removeTicket" name="removeTicket" value="<?php echo $values['id']?>" formaction="cart" class="btn btn-outline-warning btn-sm">Remove from cart</button>
 										
-															<?php  echo $values['id'] ?>
 														</form> 
 								
 
