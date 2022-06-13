@@ -1,13 +1,3 @@
-<?php   
-
-//  foreach ($restaurants as $r){ 
-//      echo $r->name . "     "; 
-//      echo $r->price; 
-//      echo $r->description; 
-//  }
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,54 +21,6 @@
 </head>
 
 <body>
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #A42323">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"> <img src="../../img/logo.png" alt="logo" width="116" height="34"> </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">FOOD</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">JAZZ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">DANCE</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">HISTORY</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="shoppingCart">cart :)</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            English
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Dutch</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <img src="">
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">HISTORY</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav> -->
     <?php
 
 include_once ('include/navbar.php')
@@ -122,9 +64,8 @@ include_once ('include/navbar.php')
                             <h5 class="card-title"> <?php echo $e->name ?> </h5>
                             <p class="card-text"> <?php echo $e->description ?> </p>
                             <p class="card-subtitle">Stars: <?php echo $e->stars ?> </p>
-                            <p class="card-subtitle">Price: <?php echo $e->price ?> EUR</p>
+                            <p class="card-subtitle">Price: <?php echo $e->price ?>.00 EUR</p>
                             <p class="card-subtitle">Address: <?php echo $e->address ?> </p>
-                            <!-- <p class="card-subtitle"> $ <?php echo $e->price ?> </p> -->
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-outline-danger btn-sm"><svg xmlns="http://www.w3.org/2000/svg"
@@ -133,8 +74,7 @@ include_once ('include/navbar.php')
                                         d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                 </svg></button>
                             <form method="post">
-                                <p><button type="submit" id="addTicket" name="addTicket" value="<?php echo $e->id ?>"
-                                        formaction="food" class="btn btn-outline-success btn-sm">Add to cart</button></p>
+                                <p><button type="submit" id="addTicket" name="addTicket" value="<?php echo $e->activityId ?>" formaction="cart" class="btn btn-outline-success btn-sm">Add to cart</button></p>
                             </form>
                         </div>
                     </div>

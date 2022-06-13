@@ -29,9 +29,11 @@ class SwitchRouter
 
             // case 'foodReservation':
             //     require __DIR__ . '/backend/controller/foodController.php';
+            //     require __DIR__ . '/backend/model/activity.php';
+            //     $id = ($_GET['activityId']);
             //     $controller = new foodController();
-            //     $controller->allfoodRestaurant();
-        
+            //     $controller->getRestaurantById($id);
+    
             //     $controller = new cartController();
             //     $controller->index();
             //     break;
