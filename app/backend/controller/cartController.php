@@ -21,7 +21,10 @@ class cartContoller{
                     break;
                 case 'removeFromCart':
                     $this->removeFromCart();
-                    break;    
+                    break; 
+                case 'clearCart':
+                    $this->clearCart();
+                    break;       
                 
             }
         }
@@ -31,6 +34,9 @@ class cartContoller{
     public function addToCart(){
 
         //unset($_SESSION['cart']);
+
+        $activityId = null;
+       
        
 
         if(!empty($_POST['addTicket'])){
@@ -40,22 +46,16 @@ class cartContoller{
             $activityId = $_POST['addTicket'];
             $details = $this->jazzservice->getOne($activityId);
 
-          
-
-            //$_SESSION["cart"][$activityId] = $detail['artistname'];
-
-            //$_SESSION["cart"] = [
-             //   $activityId => [
-                    //'name': 'medon';
-               // ]
-            //]
-
             foreach($details as $detail){
 
                 $cart = array (
 
                     'name' => $detail['artistname'],
+                    'startTime' => $detail['startTime'],
+                    'endTime' => $detail['endTime'],
+                    'location' => $detail['name'],
                     'date' => $detail['date'],
+                    'price' => $detail['price'],
                     'id' => $detail['activityId']
     
                 );
@@ -63,50 +63,9 @@ class cartContoller{
             }
 
             $_SESSION['cart'][] = $cart;
-
-            
           
-
-            //foreach($details as $detail){
-              //  $_SESSION['cart'][] = array('artistname'=> $detail['artistname']);
-            //}
-
-           //$_SESSION["cart"][] = array('name'=>$details['artistname']);
-
-
-            
-            /*foreach($details as $d){
-          
-
-            $_SESSION["cart"] = [
-                $activityId =>[
-                    'name': $d['artistname'];
-                    'time': $d['startTime']
-                ] 
-                
-                
-            ] 
-
-                  
-            }*/
-
-            //$name = null;
-            //$date = null;
-
-            /*
-
-
-            foreach($details as $detail){
-                $name = $detail['artistname'];
-                $date = $detail['date'];
-
-            }
-
-            //$_SESSION["cart"][] = array('name'=>'medon', 'date'=> 'ugh');
-
-            */
-
         }
+
        
 
         require __DIR__ . ('/../views/cart.php');
@@ -117,15 +76,35 @@ class cartContoller{
 
     public function removeFromCart(){
 
+        // if(isset($_POST['removeTicket'])){
+        //     $_SESSION['cart'][] = $cart;
+
+        //     unset($cart[$_POST['removeTicket']]);
+
+        // }
+
         if(isset($_POST['removeTicket'])){
             $id = $_POST['removeTicket'];
-            unset($_SESSION["cart"][$id]);
 
+            foreach($_SESSION['cart'] as $items=>$values){
+                if($id == $values['id']){
+                    unset($_SESSION['cart'][$items]);
+                }
+            }
         }
 
-    
+       
         
         require __DIR__ . ('/../views/cart.php');
+    }
+
+
+    public function clearCart(){
+
+        unset($_SESSION['cart']);
+	    $_SESSION['message'] = 'Cart cleared successfully';
+        require __DIR__ . ('/../views/cart.php');
+
     }
 
   

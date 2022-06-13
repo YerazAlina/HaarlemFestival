@@ -20,7 +20,19 @@ class SwitchRouter
             case 'cart':
                 require __DIR__ . '/backend/controller/cartController.php';  
                 $controller = new cartContoller();
-                $controller->addToCart();
+
+                if(isset($_POST['addTicket'])){
+                    $_POST['action'] = "addToCart";
+                }elseif(isset($_POST['removeTicket'])){
+                    $_POST['action'] = "removeFromCart";
+                }
+                else{
+                    $_POST['action'] = "clearCart";
+
+                }
+                
+                $controller->run();
+
                 break;
 
 
