@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
                 <input type="reset" class="btn btn-secondary" value="Cancel">
-                <a href="saveChanges">
+                <a href="manageUsers">
                     <input type="submit" class="btn btn-primary" value="Save">
                 </a>
                 <br>

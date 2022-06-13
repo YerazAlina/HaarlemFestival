@@ -11,9 +11,6 @@ class SwitchRouter
             case 'login':
                 require __DIR__ . '/backend/views/cms/login.php';
                 break;
-            case 'test':
-                require __DIR__ . '/backend/views/cms/jazz/test.php';
-                break;
             case 'home':
                 require __DIR__ . '/backend/views/cms/home.php';
                 break;
@@ -117,7 +114,9 @@ class SwitchRouter
             case 'updateUser':
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
-                $controller->updateAccount();
+                $currentUserDetails = $controller->getUserDetails($_SESSION['email']);
+                $controller->updateAccount($currentUserDetails->id);
+                break;
             case 'jazzevents':
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();

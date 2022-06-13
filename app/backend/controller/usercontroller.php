@@ -102,7 +102,7 @@ class UserController
             $count = $this->service->createUser($email, $firstname, $lastname, sha1($password), $roleId);
 
             if (!empty($email) && !empty($password) && ($password === $confirm_password)) {
-                header('Location: manageUsers');
+                require __DIR__ . "../../views/cms/users/manageUsers.php";
             }
         } else {
             echo "A user with this email adress is already registered";
@@ -110,9 +110,8 @@ class UserController
     }
 
     //new
-    public function updateAccount()
+    public function updateAccount($id)
     {
-        $id = 13;
         $email =  $_POST['email'];
 
         $firstname = $_POST['firstname'];
@@ -120,6 +119,13 @@ class UserController
         $password =  $_POST['password'];
 
         $count = $this->service->updateUser($id, $email, $firstname, $lastname, sha1($password));
+
+        if(empty($count)){
+            require __DIR__ . "../../views/cms/users/profile.php"; //TODO: 
+        }
+        else{
+            require __DIR__ . "../../views/cms/users/manageUsers.php";
+        }
     }
 
     public function logout()
