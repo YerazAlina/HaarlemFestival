@@ -10,6 +10,7 @@ class UserRepository extends Repository
 
     //sql statements 
     private string $all_users_sql = "SELECT * FROM users";
+    private string $all_roles_sql = "SELECT * FROM roles";
     private string $create_user_sql = "insert into users (id, email, firstname, lastname, password) values (null, :email, :firstname, :lastname, :password, )";  //change this one
     private string $delete_user_sql = "delete from users where email = :email";
     private string $one_user_sql = "SELECT id from users where id = :id";
@@ -23,6 +24,14 @@ class UserRepository extends Repository
     public function findAll()
     {
         $this->stmt = $this->db->prepare($this->all_users_sql);
+        $this->stmt->execute();
+
+        return $this->stmt->fetchAll();
+    }
+
+    public function findAllRoles()
+    {
+        $this->stmt = $this->db->prepare($this->all_roles_sql);
         $this->stmt->execute();
 
         return $this->stmt->fetchAll();

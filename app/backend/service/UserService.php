@@ -16,6 +16,11 @@ class UserService
         return $this->userRepository->findAll();
     }
 
+    public function getAllRoles()
+    {
+        return $this->userRepository->findAllRoles();
+    }
+
     public function createUser($email, $firstname, $lastname ,$password, $roleId)
     {
         return $this->userRepository->addUser($email, $firstname, $lastname ,$password, $roleId);

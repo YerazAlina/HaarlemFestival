@@ -1,17 +1,3 @@
-<?php
-
-// $controller = new UserController();
-// $userDetails = $controller->getUserDetailsById();
-
-echo $_POST['editAccount']; //this is the id 
-echo $userDetails['firstname'];
-
-
-
-//echo ;
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
