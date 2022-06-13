@@ -114,7 +114,7 @@ class SwitchRouter
                 $controller = new jazzController();
                 $controller->deleteArtist();
                 break;
-            case 'saveChanges':
+            case 'updateUser':
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $controller->updateAccount();

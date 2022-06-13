@@ -116,32 +116,23 @@ class UserRepository extends Repository
         return $count;
     }
 
-    public function updateUser($id, $email) //, $firstname, $lastname, $roleId)
+    public function updateUser($id, $email, $firstname, $lastname, $password)
     {
         //UPDATE users SET email = :email, firstname = :firstname WHERE id = 1;
         //TODO: IMPLEMENT 
 
-
-        $query = "UPDATE users SET email = :email WHERE id = :id;";
+        $query = "UPDATE users SET (email, firstname, lastname, password) VALUES (:email, :firstname, :lastname, :password) WHERE id = :id; ";
         $statement = $this->db->prepare($query);
         $statement->execute(
             array(
-                'email'        =>     $email
+                'id'           =>     $id,
+                'email'        =>     $email,
+                'firstname'    =>     $firstname,
+                'lastname'     =>     $lastname,
+                'password'     =>     $password
             )
         );
 
         $count = $statement->rowCount();
-    }
-
-    public function updateEmail($email, $id)
-    {
-        /*    $query = "UPDATE users SET email = :email WHERE id = :id";
-        $statement = $this->db->prepare($query);
-        $statement->execute(
-            array(
-                'email'        =>     $email,
-                'id'           =>     $id
-            )
-        ); */
     }
 }

@@ -112,13 +112,14 @@ class UserController
     //new
     public function updateAccount()
     {
-        $id =  1;
+        $id = 13;
         $email =  $_POST['email'];
-        //$firstname = $_POST['firstname'];
-        //$lastname = $_POST['lastname'];
-        //$password =  $_POST['password'];
 
-        $count = $this->service->updateUser($id, $email);
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $password =  $_POST['password'];
+
+        $count = $this->service->updateUser($id, $email, $firstname, $lastname, sha1($password));
     }
 
     public function logout()
