@@ -67,6 +67,13 @@ class SwitchRouter
                 $controller->addArtist();
                 $controller->allJazzArtistscms();
                 break;
+            case 'addEvent':
+                //add jazz event to db
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $controller->addEvent();
+                $controller->allJazzEventscms();
+                break;
             case 'logoutUser':
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();

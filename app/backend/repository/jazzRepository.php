@@ -27,8 +27,8 @@ class jazzRepository
     private string $get_one_event_sql = "SELECT * FROM jazzActivity
                                         JOIN activity a on a.id = jazzActivity.activityId AND jazzActivity.activityId=:id
                                         RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
-                                        JOIN location l on l.id = a.locationId";      
-                                        
+                                        JOIN location l on l.id = a.locationId";
+
     private string $book_detail_sql = "SELECT * FROM books WHERE books.ISBN=:bookISBN";
 
     private string $all_artists_sql = "SELECT * FROM artist";
@@ -75,7 +75,8 @@ class jazzRepository
         return $this->stmt->fetchAll();
     }
 
-    public function findEvents(){
+    public function findEvents()
+    {
 
         /*
         if(isset($_POST["thursdayEvents"])){
@@ -127,9 +128,6 @@ class jazzRepository
         } else {
             return null;
         }
-
-       
-
     }
 
     public function saveOne($object)
@@ -156,6 +154,31 @@ class jazzRepository
             array(
                 'artistname'        =>     $artistname,
                 'description'       =>     $description
+            )
+        );
+
+        $count = $statement->rowCount();
+
+        return $count;
+    }
+
+    public function addEvent($type, $date, $startTime, $endTime, $locationId, $price, $ticketsLeft)
+    {
+        $count = "";
+
+        // INSERT INTO `activity`(`id`, `type`, `date`, `startTime`, `endTime`, `locationId`, `price`, `ticketsLeft`)
+
+        $query = "INSERT INTO activity (type, date, startTime, endTime, locationId, price, ticketsLeft) VALUES (:type, :date, :startTime, :endTime, :locationId; :price, :ticketsLeft)";
+        $statement = $this->db->prepare($query);
+        $statement->execute(
+            array(
+                'type'           =>     $type,
+                'date'           =>     $date,
+                'startTime'      =>     $startTime,
+                'endTime'        =>     $endTime,
+                'locationId'     =>     $locationId,
+                'price'          =>     $price,
+                'ticketsLeft'    =>     $ticketsLeft
             )
         );
 

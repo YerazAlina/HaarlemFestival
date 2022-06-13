@@ -31,6 +31,11 @@ class jazzService{
         return $this->jazzrepository->addArtist($artistname, $description);
     }
 
+    public function addEvent($type, $date, $startTime, $endTime, $locationId, $price, $ticketsLeft)
+    {
+        return $this->jazzrepository->addEvent($type, $date, $startTime, $endTime, $locationId, $price, $ticketsLeft);
+    }
+
     public function deleteArtist($id)
     {
         return $this->jazzrepository->deleteOne($id);
