@@ -2,15 +2,17 @@
 <?php
 
 require_once __DIR__ . ('../../service/jazzService.php');
+require_once __DIR__ . ('../../service/foodService.php');
 
 class cartContoller{
 
     
     private jazzService $jazzservice;
-
+    private foodService $foodservice;
 
     public function __construct(){
         $this->jazzservice = new jazzService();
+        $this->foodservice = new foodService();
     }
 
     public function run(){
@@ -44,13 +46,13 @@ class cartContoller{
             
             
             $activityId = $_POST['addTicket'];
-            $details = $this->jazzservice->getOne($activityId);
+            $details = $this->foodservice->findById($activityId);
 
             foreach($details as $detail){
 
                 $cart = array (
 
-                    'name' => $detail['artistname'],
+                    'name' => $detail['name'],
                     'startTime' => $detail['startTime'],
                     'endTime' => $detail['endTime'],
                     'location' => $detail['name'],

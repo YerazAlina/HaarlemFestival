@@ -25,18 +25,19 @@ class foodRepository
     //                                     JOIN foodActivity AS f ON f.activityId=a.id
     //                                     RIGHT JOIN restaurant AS r ON r.id=f.restaurantId";
 
-    private string $all_restaurants_sql = "SELECT f.activityId, r.id, r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, l.address, l.postalCode
-                                        FROM restaurant AS r 
-                                        JOIN foodActivity AS f ON f.restaurantId=r.id
-                                        JOIN location AS l ON r.locationId=l.id
-                                        WHERE f.activityId=25 OR 
-                                        	f.activityId=37 OR 
-                                            f.activityId=49 OR 
-                                            f.activityId=57 OR 
-                                            f.activityId=69 OR 
-                                            f.activityId=81 OR 
-                                            f.activityId=93 OR 
-                                            f.activityId=105";
+    private string $all_restaurants_sql = "SELECT f.activityId, r.id, r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, l.address, l.postalCode, a.date, a.startTime, a.endTime, a.ticketsLeft
+                                            FROM restaurant AS r 
+                                            JOIN location AS l ON r.locationId=l.id
+                                            JOIN foodActivity AS f ON f.restaurantId=r.id 
+                                            JOIN activity AS a ON a.id=f.activityId 
+                                            WHERE f.activityId=25 OR 
+                                                f.activityId=37 OR 
+                                                f.activityId=49 OR 
+                                                f.activityId=57 OR 
+                                                f.activityId=69 OR 
+                                                f.activityId=81 OR 
+                                                f.activityId=93 OR 
+                                                f.activityId=105";
 
     //private string $all_restaurants_sql = "SELECT * FROM restaurant";
 
