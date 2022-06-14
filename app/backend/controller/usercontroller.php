@@ -10,15 +10,10 @@ class UserController
         $this->service = new UserService();
     }
 
-    public function deleteUser()
+    public function deleteUser($email)
     {
-        $email = $_SESSION['email'];
-
-        if (isset($_SESSION['email'])) {
-
-            $this->service->deleteUserByEmail($email);
-            header('Location: logoutUser');
-        }
+        $this->service->deleteUserByEmail($email);
+        header('Location: logoutUser');
     }
 
     public function getUserDetails($email)
@@ -50,7 +45,7 @@ class UserController
 
                     $_SESSION['userId'] = $userInfo->id;
                     $_SESSION['logged_in'] = true;
-                    
+
                     header('Location: home');
                 } else {
 

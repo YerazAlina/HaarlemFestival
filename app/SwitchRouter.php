@@ -98,6 +98,9 @@ class SwitchRouter
                 require __DIR__ . '/backend/views/cms/users/editaccount.php';
                 break;
             case 'manageUsers':
+
+                //admin can edit information from the users
+                //super admin can add, edit and delete 
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $controller->allUsers();
@@ -108,7 +111,7 @@ class SwitchRouter
             case 'deleteAccount':
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
-                $controller->deleteUser();
+                $controller->deleteUser($_SESSION['email']);
                 break;
             case 'deleteArtist':
                 require __DIR__ . '/backend/controller/jazzController.php';
