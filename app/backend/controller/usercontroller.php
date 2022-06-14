@@ -116,7 +116,9 @@ class UserController
         //$password =  $_POST['password'];
 
         $count = $this->service->updateUser($id, $email, $firstname, $lastname, $password, $roleId);
-        $_SESSION['email'] = $email;
+        if(! (isset($_SESSION['updateId']))){
+            $_SESSION['email'] = $email;
+        }
 
         header('Location: home');
     }

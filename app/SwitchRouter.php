@@ -54,7 +54,7 @@ class SwitchRouter
                         $controller->updateAccount($currentUserDetails->id, $currentUserDetails->password, $currentUserDetails->roleId);
                     }
                 } else {
-                    echo 'access denied'; 
+                    echo 'access denied';
                 }
 
                 break;
@@ -78,32 +78,37 @@ class SwitchRouter
 
 
                 //manage users
-            case 'editAccount':
+            case 'manageUsers': //all users 
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
-                $details = $controller->getUserDetailsById($_POST['editAcc']);
+                $currentUserDetails = $controller->getUserDetails($_SESSION['email']);
+
+                if ($currentUserDetails->roleId >= 2) {
+                    $controller->allUsers();
+                } else {
+                    echo 'access denied';
+                }
+                break;
+            case 'editAccount': //edit
+                require __DIR__ . '/backend/controller/usercontroller.php';
+                $controller = new UserController();
+                $_SESSION['updateId'] = $_POST['editAcc'];
+                $details = $controller->getUserDetailsById($_SESSION['updateId']);
                 require __DIR__ . '/backend/views/cms/users/editaccount.php';
                 break;
-            case 'registerUseraccount':
-                //for creating a new user account as superadminuser
+            case 'updateUserCMS': //edit 
+                require __DIR__ . '/backend/controller/usercontroller.php';
+                $controller = new UserController();
+                $details = $controller->getUserDetailsById($_SESSION['updateId']);
+                $controller->updateAccount($details->id, $details->password, $details->roleId);
+                break;
+            case 'registerUseraccount': //add
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $controller->addUser();
                 $controller->allUsers();
                 break;
-            case 'manageUsers':
-                require __DIR__ . '/backend/controller/usercontroller.php';
-                $controller = new UserController();
-                $currentUserDetails = $controller->getUserDetails($_SESSION['email']);
-
-                if ($currentUserDetails->roleId >= 2) {     
-                    $controller->allUsers();
-                } else {
-                    echo 'access denied';
-                }
-
-                break;
-            case 'deleteAccount':
+            case 'deleteAccount': //delete
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $controller->deleteUser($_SESSION['email']);
@@ -151,7 +156,7 @@ class SwitchRouter
 
 
 
-                
+
                 //JUST VIEWS
             case 'home':
                 require __DIR__ . '/backend/views/cms/home.php';

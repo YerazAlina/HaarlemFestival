@@ -18,7 +18,7 @@
     <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
         <h3>Edit Information</h3>
         <br>
-        <form action="editaccount" method="post">
+        <form action="updateUserCMS" method="post">
             <div class="form-group">
                 <label>Email</label>
                 <input type="text" name="email" class="form-control" value="<?php echo $details->email; ?>">
