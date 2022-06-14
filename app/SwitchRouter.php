@@ -173,27 +173,28 @@ class SwitchRouter
                 $controller->allLocations();
                 break;
             case 'addLocation': //add
-                require __DIR__ . '/backend/controller/jazzController.php';
-                $controller = new jazzController();
-                $controller->addArtist();
-                $controller->allJazzArtistscms();
+                // require __DIR__ . '/backend/controller/jazzController.php';
+                // $controller = new jazzController();
+                // $controller->addArtist();
+                // $controller->allJazzArtistscms();
                 break;
             case 'editLocation': //edit
-                require __DIR__ . '/backend/controller/jazzController.php';
-                $controller = new jazzController();
-                $_SESSION['updateId'] = $_POST['editArtist'];
-                $artist = $controller->getArtist($_SESSION['updateId']);
-                require __DIR__ . '/backend/views/cms/jazz/editArtist.php';
+                require __DIR__ . '/backend/controller/locationcontroller.php';
+                $controller = new LocationController();
+                $_SESSION['updateId'] = $_POST['editLocation'];
+                $location = $controller->getLocation($_SESSION['updateId']);
+                require __DIR__ . '/backend/views/cms/location/editLocation.php';
                 break;
             case 'updateLocationCMS': //edit 
-                require __DIR__ . '/backend/controller/jazzController.php';
-                $controller = new jazzController();
-                $controller->updateArtist($_SESSION['updateId']);
+                require __DIR__ . '/backend/controller/locationcontroller.php';
+                $controller = new LocationController();
+                $controller->updateLocation($_SESSION['updateId']);
+                header('Location: locationcms');
                 break;
             case 'deleteLocation': //delete
-                require __DIR__ . '/backend/controller/jazzController.php';
-                $controller = new jazzController();
-                $controller->deleteArtist();
+                // require __DIR__ . '/backend/controller/jazzController.php';
+                // $controller = new jazzController();
+                // $controller->deleteArtist();
                 break;
 
 

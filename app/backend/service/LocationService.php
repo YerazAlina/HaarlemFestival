@@ -15,4 +15,13 @@ class LocationService
     {
         return $this->locationRepository->findAll();
     }
+
+    public function findOne($id){
+        return $this->locationRepository->findById($id);
+    }
+
+    public function updateLocation($id, $name, $address, $postalCode, $city, $capacity)
+    {
+        return $this->locationRepository->updateLocation($id, $name, $address, $postalCode, $city, $capacity);
+    }
 }

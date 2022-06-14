@@ -13,7 +13,7 @@ class LocationRepository extends Repository
     // private string $all_roles_sql = "SELECT * FROM roles";
     // private string $create_user_sql = "insert into users (id, email, firstname, lastname, password) values (null, :email, :firstname, :lastname, :password, )";  //change this one
     // private string $delete_user_sql = "delete from users where email = :email";
-    // private string $one_user_sql = "SELECT * from users where id = :id";
+    private string $one_location_sql = "SELECT * from location where id = :id";
     // private string $one_userByEmail_sql = "SELECT * from users where email = :email";
 
     public function __construct()
@@ -31,7 +31,12 @@ class LocationRepository extends Repository
 
     public function findById($id)
     {
-        //todo
+        $this->stmt = $this->db->prepare($this->one_location_sql);
+        $this->stmt->bindParam(':id', $id);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'location');
+        $this->stmt->execute();
+
+        return $this->stmt->fetch();
     }
 
     public function saveOne($object)
@@ -42,5 +47,23 @@ class LocationRepository extends Repository
     public function deleteOne($id)
     {
         //todo
+    }
+
+    public function updateLocation($id, $name, $address, $postalCode, $city, $capacity)
+    {
+        $query = "UPDATE location SET name=:name, address=:address, postalCode=:postalCode, city=:city, capacity=:capacity WHERE id = :id;";
+        $statement = $this->db->prepare($query);
+        $statement->execute(
+            array(
+                'id'                 =>     $id,
+                'name'               =>     $name,
+                'address'            =>     $address,
+                'postalCode'         =>     $postalCode,
+                'city'               =>     $city,
+                'capacity'           =>     $capacity
+            )
+        );
+
+        $count = $statement->rowCount();
     }
 }
