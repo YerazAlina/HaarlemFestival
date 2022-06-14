@@ -9,7 +9,11 @@ class SwitchRouter
         switch ($uri) {
             case '':
             case 'login':
-                require __DIR__ . '/backend/views/cms/login.php';
+                if (isset($_SESSION['logged_in'])) {
+                    echo "You are already logged in";
+                } else {
+                    require __DIR__ . '/backend/views/cms/login.php';
+                }
                 break;
             case 'home':
                 require __DIR__ . '/backend/views/cms/home.php';

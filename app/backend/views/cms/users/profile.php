@@ -33,10 +33,10 @@
                 <input type="text" name="lastname" class="form-control" value="<?php echo $currentUserDetails->lastname; ?>">
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label>Password</label>
                 <input type="password" name="password" class="form-control">
-            </div>
+            </div> -->
             <div class="form-group">
                 <input type="reset" class="btn btn-secondary" value="Cancel">
                 <a href="manageUsers">
