@@ -94,7 +94,7 @@ class SwitchRouter
             case 'editAccount':
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
-                $userDetails = $controller->getUserDetailsById($_POST['editAccount']);
+                $details = $controller->getUserDetailsById($_POST['editAcc']);
                 require __DIR__ . '/backend/views/cms/users/editaccount.php';
                 break;
             case 'manageUsers':
@@ -104,7 +104,7 @@ class SwitchRouter
                 $controller = new UserController();
                 $currentUserDetails = $controller->getUserDetails($_SESSION['email']);
 
-                if ($currentUserDetails->roleId >= 1) {     //TODO THIS SHOULD BE 2
+                if ($currentUserDetails->roleId >= 2) {     //TODO THIS SHOULD BE 2
                     $controller->allUsers();
                     //$roles = $controller->findAllRoles(); 
                 } else {

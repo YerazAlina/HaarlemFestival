@@ -55,21 +55,24 @@
                             </td>
 
                             <form action="editAccount" method="post">
-                                <td><a href="editAccount">
-                                        <button type="submit" id="editAccount" name="editAccount" value="<?php echo $u['id']; ?>" formaction="editAccount" class="btn"><i class="fa fa-pencil"></i></button>
+                                <td>
+                                    <a href="editAccount">
+                                        <button type="submit" name="editAcc" value="<?php echo $u['id']; ?>" class="btn"><i class="fa fa-pencil"></i></button>
                                     </a>
                                 </td>
-                                <?php
-                                if ($_SESSION['currentUserRole'] >= 3) {
-                                ?>
-                                    <td><a href="deleteAccount">
-                                            <button type="submit" id="deleteAccount" name="deleteAccount" value="<?php echo $u['id']; ?>" formaction="deleteAccount" class="btn"><i class="fa fa-trash"></i></button>
-                                        </a>
-                                    </td>
-                                <?php
-                                }
-                                ?>
                             </form>
+
+                            <?php
+                            if ($_SESSION['currentUserRole'] >= 3) {
+                            ?>
+                                <td>
+                                    <a href="deleteAccount">
+                                        <button type="submit" name="deleteAccount" value="<?php echo $u['id']; ?>" formaction="deleteAccount" class="btn"><i class="fa fa-trash"></i></button>
+                                    </a>
+                                </td>
+                            <?php
+                            }
+                            ?>
                         </tr>
                 <?php
                     }

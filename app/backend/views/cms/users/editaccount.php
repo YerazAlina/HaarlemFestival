@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="../../public/css/cms.css">
 </head>
 
-<!-- user can edit email, name and password -->
-
 <body>
 <?php require __DIR__ . '../../include/navbar.php'; ?>
     <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
@@ -23,15 +21,15 @@
         <form action="editaccount" method="post">
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" name="email" class="form-control" value="<?php echo $userDetails->email; ?>">
+                <input type="text" name="email" class="form-control" value="<?php echo $details->email; ?>">
             </div>
             <div class="form-group">
                 <label>Firstname</label>
-                <input type="text" name="firstname" class="form-control" value="<?php echo $userDetails->firstname; ?>">
+                <input type="text" name="firstname" class="form-control" value="<?php echo $details->firstname; ?>">
             </div>
             <div class="form-group">
                 <label>Lastname</label>
-                <input type="text" name="lastname" class="form-control" value="<?php echo $userDetails->lastname; ?>">
+                <input type="text" name="lastname" class="form-control" value="<?php echo $details->lastname; ?>">
             </div>
 <!-- 
             <div class="form-group">

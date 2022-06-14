@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="../../public/css/cms.css">
 </head>
 
-<!-- user can edit email, name and password -->
-
 <body>
     <?php require __DIR__ . '../../include/navbar.php'; ?>
     <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
