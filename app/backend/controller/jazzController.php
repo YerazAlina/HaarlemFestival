@@ -66,7 +66,6 @@ class jazzController
         }
     }
 
-
     public function deleteArtist()
     {
         $artistId = $_POST['deleteArtist'];

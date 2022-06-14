@@ -166,6 +166,39 @@ class SwitchRouter
 
 
 
+                //Location CMS 
+            case 'locationcms':
+                require __DIR__ . '/backend/controller/locationController.php';
+                $controller = new LocationController();
+                $controller->allLocations();
+                break;
+            case 'addLocation': //add
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $controller->addArtist();
+                $controller->allJazzArtistscms();
+                break;
+            case 'editLocation': //edit
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $_SESSION['updateId'] = $_POST['editArtist'];
+                $artist = $controller->getArtist($_SESSION['updateId']);
+                require __DIR__ . '/backend/views/cms/jazz/editArtist.php';
+                break;
+            case 'updateLocationCMS': //edit 
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $controller->updateArtist($_SESSION['updateId']);
+                break;
+            case 'deleteLocation': //delete
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $controller->deleteArtist();
+                break;
+
+
+
+
 
 
 
