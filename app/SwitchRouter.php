@@ -98,12 +98,19 @@ class SwitchRouter
                 require __DIR__ . '/backend/views/cms/users/editaccount.php';
                 break;
             case 'manageUsers':
-
                 //admin can edit information from the users
-                //super admin can add, edit and delete 
+                //super admin can add, edit and delete other users
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
-                $controller->allUsers();
+                $currentUserDetails = $controller->getUserDetails($_SESSION['email']);
+
+                if ($currentUserDetails->roleId >= 1) {     //TODO THIS SHOULD BE 2
+                    $controller->allUsers();
+                    //$roles = $controller->findAllRoles(); 
+                } else {
+                    echo 'access denied'; 
+                }
+                
                 break;
             case 'manageContent':
                 require __DIR__ . '/backend/views/cms/manageContent.php';

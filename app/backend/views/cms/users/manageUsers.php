@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +43,11 @@
                         <th scope="row"> <?php echo $u['id'] ?> </th>
                         <td> <?php echo $u['firstname'] . ' ' . $u['lastname'] ?></td>
                         <td><?php echo $u['email'] ?></td>
-                        <td> <?php echo $u['roleId'] ?> </td>
+                        <td>
+                            <?php
+                            echo $roles[$u['roleId']]["type"];
+                            ?>
+                        </td>
 
                         <form action="editAccount" method="post">
                             <td><a href="editAccount">
@@ -64,8 +70,8 @@
             <button type="button" class="btn btn-dark"> Add New User </button>
         </a>
     </div>
-    <?php require __DIR__ . '../../include/footer.php';
-    ?>
+    <!-- <?php require __DIR__ . '../../include/footer.php';
+    ?> -->
 </body>
 
 </html>

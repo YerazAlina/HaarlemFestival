@@ -131,6 +131,7 @@ class UserController
     public function allUsers()
     {
         $users = $this->service->getAllUsers();
+        $roles = $this->service->getAllRoles();
         require __DIR__ . ('../../views/cms/users/manageUsers.php');
     }
 
