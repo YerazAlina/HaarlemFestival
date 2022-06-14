@@ -2,16 +2,22 @@
 <?php
 
 require_once __DIR__ . ('../../service/jazzService.php');
+require_once __DIR__ . ('../../service/activityService.php');
 require_once __DIR__ . ('../../service/foodService.php');
+
+
 
 class cartContoller{
 
     
     private jazzService $jazzservice;
+    private activityService $activityservice;
     private foodService $foodservice;
+
 
     public function __construct(){
         $this->jazzservice = new jazzService();
+        $this->activityservice = new activityService();
         $this->foodservice = new foodService();
     }
 
@@ -26,27 +32,69 @@ class cartContoller{
                     break; 
                 case 'clearCart':
                     $this->clearCart();
-                    break;       
+                    break;      
+                case 'updateCart':
+                    $this->updateQuantity();
+                    break;     
                 
             }
         }
     }
+
+    public function updateQuantity(){
+
+        if(isset($_POST['addQuantity'])){
+
+            $id = $_POST['addQuantity'];
+           
+            foreach($_SESSION['cart'] as $items=>$values){
+                if($id == $values['id']){
+                    $values['quantity'] += 1;
+                    print($values['quantity']);
+                }
+            }
+
+        }
+
+        require __DIR__ . ('/../views/cart.php');
+    }
+
 
 
     public function addToCart(){
 
         //unset($_SESSION['cart']);
 
-        $activityId = null;
-       
-       
+        // $activityId = null;
+        // $cart = null;
+
 
         if(!empty($_POST['addTicket'])){
 
-            
-            
             $activityId = $_POST['addTicket'];
-            $details = $this->foodservice->findById($activityId);
+            $getType = $this->activityservice->getType($activityId);
+
+            $type = "";
+
+            foreach($getType as $t){
+                $type = $t['type'];
+            }
+
+            //printf($type);
+
+            $details = "";
+
+            if($type == "jazz"){
+
+                $details = $this->jazzservice->getOne($activityId);
+
+            }
+
+            else if($type == "Food"){
+
+                $details = $this->foodservice->findById($activityId);
+
+            }
 
             foreach($details as $detail){
 
@@ -55,25 +103,26 @@ class cartContoller{
                     'name' => $detail['name'],
                     'startTime' => $detail['startTime'],
                     'endTime' => $detail['endTime'],
-                    'location' => $detail['name'],
+                    'location' => $detail['locationName'],
                     'date' => $detail['date'],
                     'price' => $detail['price'],
-                    'id' => $detail['activityId']
-    
+                    'id' => $detail['activityId'],
+                    'quantity' => 56
                 );
-               
+            
             }
 
             $_SESSION['cart'][] = $cart;
+
+            
           
         }
-
-       
 
         require __DIR__ . ('/../views/cart.php');
 
     }
 
+   
    
 
     public function removeFromCart(){
