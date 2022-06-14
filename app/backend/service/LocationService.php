@@ -29,4 +29,9 @@ class LocationService
     {
         return $this->locationRepository->addLocation($name, $address, $postalCode, $city, $capacity);
     }
+
+    public function deleteLocation($id)
+    {
+        return $this->locationRepository->deleteOne($id);
+    }
 }

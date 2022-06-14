@@ -198,7 +198,7 @@ class SwitchRouter
 
                 require __DIR__ . '/backend/controller/locationcontroller.php';
                 $controller = new LocationController();
-                //$controller->deleteLocation();
+                $controller->deleteLocation();
                 break;
 
 

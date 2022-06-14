@@ -10,11 +10,8 @@ class LocationRepository extends Repository
 
     //sql statements 
     private string $all_locations_sql = "SELECT * FROM location";
-    // private string $all_roles_sql = "SELECT * FROM roles";
-    // private string $create_user_sql = "insert into users (id, email, firstname, lastname, password) values (null, :email, :firstname, :lastname, :password, )";  //change this one
-    // private string $delete_user_sql = "delete from users where email = :email";
+    private string $delete_location_sql = "DELETE from location where id = :id";
     private string $one_location_sql = "SELECT * from location where id = :id";
-    // private string $one_userByEmail_sql = "SELECT * from users where email = :email";
 
     public function __construct()
     {
@@ -46,7 +43,10 @@ class LocationRepository extends Repository
 
     public function deleteOne($id)
     {
-        //todo
+        $this->stmt = $this->db->prepare($this->delete_location_sql);
+        $this->stmt->bindParam(':id', $id);
+
+        return $this->stmt->execute();
     }
 
     public function updateLocation($id, $name, $address, $postalCode, $city, $capacity)

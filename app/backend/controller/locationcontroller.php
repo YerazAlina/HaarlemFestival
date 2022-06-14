@@ -44,4 +44,14 @@ class LocationController
         $count = $this->service->addLocation($name, $address, $postalCode, $city, $capacity);
     }
 
+    public function deleteLocation()
+    {
+        $locationId = $_POST['deleteLocation'];
+
+        if (isset($_POST['deleteLocation'])) {
+            $this->service->deleteLocation($locationId);
+            header('Location: locationcms');
+        }
+    }
+
 }
