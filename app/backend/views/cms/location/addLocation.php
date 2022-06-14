@@ -22,14 +22,38 @@
 
     <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
 
+    <!-- id -- name -- address -- postalCode -- city -- capacity -->
     <div class="wrapper" style="margin: auto; padding: 30px; width: 400px;">
         <h2>Add Location</h2>
         <p>Add a new location for the Haarlem Festival events</p>
         <form action="addLocation" method="post">
+
             <div class="form-group">
-                <label>Location name</label>
+                <label>Name</label>
                 <input type="text" name="name">
             </div>
+
+            <div class="form-group">
+                <label>Address</label>
+                <input type="text" name="address">
+            </div>
+
+            <div class="form-group">
+                <label>Postal Code</label>
+                <input type="text" name="postalCode">
+            </div>
+
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" name="city">
+            </div>
+
+            <div class="form-group">
+                <label>Capacity</label>
+                <input type="text" name="capacity">
+            </div>
+
+
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-secondary ml-2" value="Reset">

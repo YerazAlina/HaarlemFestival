@@ -33,4 +33,15 @@ class LocationController
         $count = $this->service->updateLocation($id, $name, $address, $postalCode, $city, $capacity);
     }
 
+    public function addLocation()
+    {
+        $name =  $_POST['name'];
+        $address = $_POST['address'];
+        $postalCode =  $_POST['postalCode'];
+        $city = $_POST['city'];
+        $capacity =  $_POST['capacity'];
+
+        $count = $this->service->addLocation($name, $address, $postalCode, $city, $capacity);
+    }
+
 }

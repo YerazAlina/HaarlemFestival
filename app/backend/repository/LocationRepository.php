@@ -66,4 +66,25 @@ class LocationRepository extends Repository
 
         $count = $statement->rowCount();
     }
+
+    public function addLocation($name, $address, $postalCode, $city, $capacity)
+    {
+        $count = "";
+
+        $query = "INSERT INTO location (name, address, postalCode, city, capacity) VALUES (:name, :address, :postalCode, :city, :capacity)";
+        $statement = $this->db->prepare($query);
+        $statement->execute(
+            array(
+                'name'               =>     $name,
+                'address'            =>     $address,
+                'postalCode'         =>     $postalCode,
+                'city'               =>     $city,
+                'capacity'           =>     $capacity
+            )
+        );
+
+        $count = $statement->rowCount();
+
+        return $count;
+    }
 }
