@@ -58,7 +58,16 @@
 																<div class="event-info">
 																	<div>Time: <span class="value"><?php echo $values['startTime'] ?> - <?php echo $values['endTime']?></span></div>
 																	<div>Date: <span class="value"><?php echo $values['date']?></span></div>
-																	<div>Location: <span class="value"><?php echo $values['location']?></span></div>
+																	<div>Location: <span class="value"><?php
+
+																	if(empty($values['location'])){
+																		echo $values['address'];
+																	}else{
+																		echo $values['location'];
+																	}
+																	
+																	
+																	?></span></div>
 																</div>
 															</div>
 														</div>
@@ -66,10 +75,12 @@
 															
 															<form method="post">
 																<button type="submit" id="addQuantity" name="addQuantity" value="<?php echo $values['id']?>" formaction="cart"> + </button>
+																<label for="cart-quantity"> <?php echo $values['quantity']?> </label>
+																<button type="submit" id="subtractQuantity" name="subtractQuantity" value="<?php echo $values['id']?>" formaction="cart"> - </button>
+
 																
-																<label for="cart-quantity"> <?php echo $values['quantity'] ?> </label>
-																<button type="submit"> - </button>
-															</form>
+															</form>	
+															
 														
 
 														</div>
@@ -171,7 +182,7 @@
 			 				<div class="cart-summary">
 			 					<h3>Summary</h3>
 			 					<div class="summary-item"><span class="text">Subtotal</span><span class="price">$...</span></div>
-			 					<div class="summary-item"><span class="text">Discount</span><span class="price">$...</span></div>
+			 					<div class="summary-item"><span class="text">VAT (21%)</span><span class="price">$...</span></div>
 			 					<div class="summary-item"><span class="text">Total</span><span class="price">$...</span></div>
 			 					<button type="button" class="btn btn-danger btn-lg btn-block">Checkout</button>
 				 			</div>
