@@ -100,7 +100,7 @@ class UserController
             $count = $this->service->createUser($email, $firstname, $lastname, sha1($password), $roleId);
 
             if (!empty($email) && !empty($password) && ($password === $confirm_password)) {
-                require __DIR__ . "../../views/cms/users/manageUsers.php";
+                header('Location: manageUsers');
             }
         } else {
             echo "A user with this email adress is already registered";
