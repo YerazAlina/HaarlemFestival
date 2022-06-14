@@ -39,7 +39,7 @@
 
 								
 								foreach($_SESSION['cart'] as $items=>$values){ 
-									printf($values['id']) ;
+									//printf($values['id']) ;
 									?>
 									
 
@@ -62,12 +62,14 @@
 																</div>
 															</div>
 														</div>
-														<div class="col-md-4 cart-quantity">
+														<div class="col-md-4 cart-quantity"> 
+															
 															<form method="post">
 																<button type="submit" id="addQuantity" name="addQuantity" value="<?php echo $values['id']?>" formaction="cart"> + </button>
-															</form>	
+																
 																<label for="cart-quantity"> <?php echo $values['quantity'] ?> </label>
 																<button type="submit"> - </button>
+															</form>
 														
 
 														</div>

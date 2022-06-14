@@ -41,25 +41,6 @@ class cartContoller{
         }
     }
 
-    public function updateQuantity(){
-
-        if(isset($_POST['addQuantity'])){
-
-            $id = $_POST['addQuantity'];
-           
-            foreach($_SESSION['cart'] as $items=>$values){
-                if($id == $values['id']){
-                    $values['quantity'] += 1;
-                    print($values['quantity']);
-                }
-            }
-
-        }
-
-        require __DIR__ . ('/../views/cart.php');
-    }
-
-
 
     public function addToCart(){
 
@@ -107,7 +88,7 @@ class cartContoller{
                     'date' => $detail['date'],
                     'price' => $detail['price'],
                     'id' => $detail['activityId'],
-                    'quantity' => 56
+                    'quantity' => $_POST['addQuantity']
                 );
             
             }
@@ -121,6 +102,35 @@ class cartContoller{
         require __DIR__ . ('/../views/cart.php');
 
     }
+
+    
+    public function updateQuantity(){
+
+        if(isset($_POST['addQuantity'])){
+
+            $id = $_POST['addQuantity'];
+            //$_SESSION['cart'][$id]['quantity'] += 1;
+            // $newValue = $_SESSION['cart']['quantity'][$id] ++;
+            // array_replace($newValue, $_SESSION['cart'][$id]['quantity']);
+            // print($_SESSION['cart'][$id]['quantity']);
+
+           
+            foreach($_SESSION['cart'] as $items=>$values){
+                if($id == $values['id']){
+
+                    $values['quantity']++;
+                    print($values['quantity']);
+
+                    break;
+                }
+            }
+
+        }
+
+        require __DIR__ . ('/../views/cart.php');
+    }
+
+
 
    
    
