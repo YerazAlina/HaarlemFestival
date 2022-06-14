@@ -12,6 +12,12 @@ class jazzController
         $this->jazzservice = new jazzService();
     }
 
+    public function getArtist($id)
+    {
+        $artist = $this->jazzservice->findOneArtist($id);
+        return $artist;
+    }
+
     public function allJazzEvents(){
         $events = $this->jazzservice->getEvents();
         require __DIR__ . ('/../views/jazzevents.php');
@@ -20,6 +26,19 @@ class jazzController
     public function allJazzEventscms(){
         $events = $this->jazzservice->getEvents();
         require __DIR__ . ('../../views/cms/jazz/jazzcms.php');
+    }
+
+    public function addEvent()
+    {
+        $type =  $_POST['type'];
+        $date = $_POST['date'];
+        $startTime =  $_POST['startTime'];
+        $endTime = $_POST['endTime'];
+        $locationId =  $_POST['locationId'];
+        $price = $_POST['price'];
+        $ticketsLeft = $_POST['ticketsLeft'];
+
+        $count = $this->jazzservice->addEvent($type, $date, $startTime, $endTime, $locationId, $price, $ticketsLeft);
     }
 
     public function allJazzArtistscms(){
@@ -35,18 +54,18 @@ class jazzController
         $count = $this->jazzservice->addArtist($artistname, $description);
     }
 
-    public function addEvent()
+    public function updateArtist($id)
     {
-        $type =  $_POST['type'];
-        $date = $_POST['date'];
-        $startTime =  $_POST['startTime'];
-        $endTime = $_POST['endTime'];
-        $locationId =  $_POST['locationId'];
-        $price = $_POST['price'];
-        $ticketsLeft = $_POST['ticketsLeft'];
+        $artist =  $_POST['artist'];
+        $description = $_POST['description'];
 
-        $count = $this->jazzservice->addEvent($type, $date, $startTime, $endTime, $locationId, $price, $ticketsLeft);
+        $count = $this->jazzservice->updateArtist($id, $artist, $description);
+
+        if(empty($count)){
+            header("Location: artistcms");
+        }
     }
+
 
     public function deleteArtist()
     {

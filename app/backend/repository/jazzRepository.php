@@ -35,6 +35,7 @@ class jazzRepository
 
     private string $delete_artist_sql = "delete from artist where id = :id";
 
+    private string $get_one_artist_sql = "SELECT * FROM artist WHERE id=:id";
 
     /*
 
@@ -130,6 +131,16 @@ class jazzRepository
         }
     }
 
+    public function findByIdArtist($id)
+    {
+        $this->stmt = $this->db->prepare($this->get_one_artist_sql);
+        $this->stmt->bindParam(':id', $id);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'artist');
+        $this->stmt->execute();
+
+        return $this->stmt->fetch();
+    }
+
     public function saveOne($object)
     {
         // TODO: Implement saveOne() method.
@@ -185,5 +196,20 @@ class jazzRepository
         $count = $statement->rowCount();
 
         return $count;
+    }
+
+    public function updateArtist($id, $artistname, $description)
+    {
+        $query = "UPDATE artist SET artistname=:artistname, description=:description WHERE id = :id;";
+        $statement = $this->db->prepare($query);
+        $statement->execute(
+            array(
+                'id'                 =>     $id,
+                'artistname'         =>     $artistname,
+                'description'        =>     $description
+            )
+        );
+
+        $count = $statement->rowCount();
     }
 }

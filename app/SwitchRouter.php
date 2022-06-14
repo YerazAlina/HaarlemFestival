@@ -132,30 +132,31 @@ class SwitchRouter
 
 
 
-                //Jazz CMS
-            case 'jazzcms':
-                require __DIR__ . '/backend/controller/jazzController.php';
-                $controller = new jazzController();
-                $controller->allJazzEventscms();
-                break;
+                //Jazz Artist CMS 
             case 'artistcms':
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
                 $controller->allJazzArtistscms();
                 break;
-            case 'addArtist':
+            case 'addArtist': //add
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
                 $controller->addArtist();
                 $controller->allJazzArtistscms();
                 break;
-            case 'addEvent':
+            case 'editArtist': //edit
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
-                $controller->addEvent();
-                $controller->allJazzEventscms();
+                $_SESSION['updateId'] = $_POST['editArtist'];
+                $artist = $controller->getArtist($_SESSION['updateId']);
+                require __DIR__ . '/backend/views/cms/jazz/editArtist.php';
                 break;
-            case 'deleteArtist':
+            case 'updateArtistCMS': //edit 
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $controller->updateArtist($_SESSION['updateId']);
+                break;
+            case 'deleteArtist': //delete
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
                 $controller->deleteArtist();
@@ -163,6 +164,25 @@ class SwitchRouter
 
 
 
+
+
+
+
+
+
+
+                //Jazz Event CMS
+            case 'jazzcms':
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $controller->allJazzEventscms();
+                break;
+            case 'addEvent':
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $controller->addEvent();
+                $controller->allJazzEventscms();
+                break;
 
 
 

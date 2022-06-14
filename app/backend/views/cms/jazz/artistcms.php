@@ -38,9 +38,6 @@
                         <th scope="row"> <?php echo $a->id ?> </th>
                         <td><?php echo $a->artistname ?></td>
                         <td style="width:40%;"><?php echo $a->description ?></td>
-                        <!-- <td><?php //echo "link" 
-                                    ?></td> -->
-
                         <form action="editArtist" method="post">
                             <td><a href="editArtist">
                                     <button type="submit" id="editArtist" name="editArtist" value="<?php echo $a->id; ?>" formaction="editArtist" class="btn"><i class="fa fa-pencil"></i></button>

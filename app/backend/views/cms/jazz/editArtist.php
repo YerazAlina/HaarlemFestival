@@ -23,20 +23,21 @@
     <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
 
     <div class="wrapper" style="margin: auto; padding: 30px; width: 400px;">
-        <h2>Add Artist</h2>
-        <p>Add a new artist for the Jazz events</p>
-        <form action="addArtist" method="post">
+        <h2>Edit Artist</h2>
+        <p>edit the information of the artist. Please note that this might also effect the events.</p>
+        <form action="updateArtistCMS" method="post">
             <div class="form-group">
                 <label>Artist name</label>
-                <input type="text" name="artistname">
+                <input type="text" name="artist" value="<?php echo $artist->artistname; ?>">
             </div>
             <div class="form-group">
                 <label>Description</label>
-                <textarea type="text" name="description" row="6"></textarea>
+                <textarea type="text" name="description" row="15"><?php echo $artist->description; ?></textarea>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-secondary ml-2" value="Reset">
+                <a href="saveChanges">
+                    <input type="submit" class="btn btn-primary" value="Save">
+                </a>
             </div>
         </form>
 
