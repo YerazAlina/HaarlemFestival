@@ -47,7 +47,7 @@
 										<div class="row">
 											<div class="col-md-3">
 											
-												<img class="img-fluid mx-auto d-block image" src="../img/jazz/artists/<?php echo $values['name']?>.png">
+												<img class="img-fluid mx-auto d-block image" src="../img/cart/<?php echo $values['name']?>.png">
 											</div>
 											<div class="col-md-8">
 												<div class="info">
