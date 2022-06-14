@@ -119,7 +119,7 @@ class SwitchRouter
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $currentUserDetails = $controller->getUserDetails($_SESSION['email']);
-                $controller->updateAccount($currentUserDetails->id);
+                $controller->updateAccount($currentUserDetails->id, $currentUserDetails->password, $currentUserDetails->roleId);
                 break;
             case 'jazzevents':
                 require __DIR__ . '/backend/controller/jazzController.php';

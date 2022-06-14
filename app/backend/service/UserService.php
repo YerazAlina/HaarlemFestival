@@ -42,9 +42,9 @@ class UserService
     }
 
     //new
-    public function updateUser($id, $email, $firstname, $lastname, $password)
+    public function updateUser($id, $email, $firstname, $lastname, $password, $roleId)
     {
-        return $this->userRepository->updateUser($id, $email, $firstname, $lastname, $password);
+        return $this->userRepository->updateUser($id, $email, $firstname, $lastname ,$password, $roleId);
     }
 
     public function searchByEmail($email)

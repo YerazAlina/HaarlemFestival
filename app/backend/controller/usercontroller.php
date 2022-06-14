@@ -42,13 +42,15 @@ class UserController
             if (!empty($_POST["email"]) && !empty($_POST['email'])) {
 
                 $_SESSION['email'] = $_POST['email'];
-
                 $user = $this->service->login($email, sha1($password));
 
                 if (!empty($user)) {
 
-                    $_SESSION['logged_in'] = true;
+                    $userInfo = $this->service->searchByEmail($email);
 
+                    $_SESSION['userId'] = $userInfo->id;
+                    $_SESSION['logged_in'] = true;
+                    
                     header('Location: home');
                 } else {
 
@@ -110,22 +112,17 @@ class UserController
     }
 
     //new
-    public function updateAccount($id)
+    public function updateAccount($id, $password, $roleId)
     {
         $email =  $_POST['email'];
-
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
-        $password =  $_POST['password'];
+        //$password =  $_POST['password'];
 
-        $count = $this->service->updateUser($id, $email, $firstname, $lastname, sha1($password));
+        $count = $this->service->updateUser($id, $email, $firstname, $lastname, $password, $roleId);
+        $_SESSION['email'] = $email;
 
-        if(empty($count)){
-            require __DIR__ . "../../views/cms/users/profile.php"; //TODO: 
-        }
-        else{
-            require __DIR__ . "../../views/cms/users/manageUsers.php";
-        }
+        header('Location: home');
     }
 
     public function logout()
@@ -145,19 +142,5 @@ class UserController
     public function findAllRoles()
     {
         return $listOfRoles = $this->service->getAllRoles();
-    }
-
-    public function updateEmail()
-    {
-        /* $new_email =  $_POST["username_new"];
-
-        if (isset($_POST["email_new"])) {
-            if (!empty($_POST["email_new"])) {
-
-                $_SESSION['email'] = $_POST['email_new'];
-
-                $this->service->updateEmail($new_email, 26);
-            }
-        } */
     }
 }
