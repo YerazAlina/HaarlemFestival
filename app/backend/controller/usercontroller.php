@@ -13,8 +13,15 @@ class UserController
     public function deleteUser($email)
     {
         $this->service->deleteUserByEmail($email);
-        header('Location: logoutUser');
+
+        if(! (isset($_POST['deleteAccount']))){
+            header('Location: logoutUser');
+        }
+        else{
+            header('Location: manageUsers');
+        }
     }
+
 
     public function getUserDetails($email)
     {

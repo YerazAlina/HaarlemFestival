@@ -31,20 +31,9 @@
                 <label>Lastname</label>
                 <input type="text" name="lastname" class="form-control" value="<?php echo $details->lastname; ?>">
             </div>
-<!-- 
             <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control">
-            </div> -->
-            <div class="form-group">
-                <input type="reset" class="btn btn-secondary" value="Cancel">
                 <a href="saveChanges">
                     <input type="submit" class="btn btn-primary" value="Save">
-                </a>
-                <br>
-                <br>
-                <a href="deleteAccount">
-                    <button type="button" class="btn btn-danger"> Delete Account </button>
                 </a>
             </div>
         </form>

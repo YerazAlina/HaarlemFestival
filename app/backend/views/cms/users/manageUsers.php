@@ -63,13 +63,14 @@
                             </form>
 
                             <?php
-                            if ($_SESSION['currentUserRole'] >= 3) {
-                            ?>
-                                <td>
-                                    <a href="deleteAccount">
-                                        <button type="submit" name="deleteAccount" value="<?php echo $u['id']; ?>" formaction="deleteAccount" class="btn"><i class="fa fa-trash"></i></button>
-                                    </a>
-                                </td>
+                            if ($_SESSION['currentUserRole'] >= 3) { ?>
+                                <form action="deleteUserCMS" method="post">
+                                    <td>
+                                        <a href="deleteUserCMS">
+                                            <button type="submit" name="deleteAccount" value="<?php echo $u['email']; ?>" class="btn"><i class="fa fa-trash"></i></button>
+                                        </a>
+                                    </td>
+                                </form>
                             <?php
                             }
                             ?>
@@ -92,7 +93,7 @@
         }
         ?>
     </div>
- <?php require __DIR__ . '../../include/footer.php';?> 
+    <?php require __DIR__ . '../../include/footer.php'; ?>
 </body>
 
 </html>

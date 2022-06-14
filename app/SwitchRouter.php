@@ -66,6 +66,16 @@ class SwitchRouter
                 $controller->updateAccount($currentUserDetails->id, $currentUserDetails->password, $currentUserDetails->roleId);
                 break;
 
+            case 'deleteAccount':
+                require __DIR__ . '/backend/controller/usercontroller.php';
+                $controller = new UserController();
+                $controller->deleteUser($_SESSION['email']);
+                break;
+
+
+
+
+
 
 
 
@@ -108,10 +118,10 @@ class SwitchRouter
                 $controller->addUser();
                 $controller->allUsers();
                 break;
-            case 'deleteAccount': //delete
+            case 'deleteUserCMS':
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
-                $controller->deleteUser($_SESSION['email']);
+                $controller->deleteUser($_POST['deleteAccount']);
                 break;
 
 
