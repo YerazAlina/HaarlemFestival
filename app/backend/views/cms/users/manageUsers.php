@@ -14,58 +14,86 @@
 </head>
 
 <body>
-    <?php require __DIR__ . '../../include/navbar.php'; ?>
+    <?php require __DIR__ . '/../include/navbar.php'; ?>
 
     <div class="wrapper" style="margin: auto; padding: 30px;">
         <h3>Manage Users</h3>
-        <!-- A superadministrator can create, edit or delete other administrators and users -->
-        <!-- name (firstname + lastname) -- email -- role -- edit -- delete -->
-        <!-- button to create a new user + checkbox for someone who is an administrator -->
-
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Name</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Firstname</th>
+                    <th scope="col">Lastname</th>
                     <th scope="col">Role</th>
                     <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
+
+                    <?php
+                    if ($_SESSION['currentUserRole'] >= 3) {
+                    ?>
+                        <th scope="col">Delete</th>
+                    <?php
+                    }
+                    ?>
+
                 </tr>
             </thead>
 
             <tbody>
                 <?php foreach ($users as $u) {
+                    if (!($u['id'] == $_SESSION['userId'])) {
                 ?>
-                    <tr>
-                        <th scope="row"> <?php echo $u['id'] ?> </th>
-                        <td> <?php echo $u['firstname'] . ' ' . $u['lastname'] ?></td>
-                        <td><?php echo $u['email'] ?></td>
-                        <td> <?php echo $u['roleId'] ?> </td>
+                        <tr>
+                            <th scope="row"> <?php echo $u['id'] ?> </th>
+                            <td><?php echo $u['email'] ?></td>
+                            <td><?php echo $u['firstname'] ?></td>
+                            <td><?php echo $u['lastname'] ?></td>
+                            <td>
+                                <?php
+                                echo $roles[$u['roleId'] - 1]["type"];
+                                ?>
+                            </td>
 
-                        <form action="editAccount" method="post">
-                            <td><a href="editAccount">
-                                    <button type="submit" id="editAccount" name="editAccount" value="<?php echo $u['id']; ?>" formaction="editAccount" class="btn"><i class="fa fa-pencil"></i></button>
-                                </a>
-                            </td>
-                            <td><a href="deleteAccount">
-                                    <button type="submit" id="deleteAccount" name="deleteAccount" value="<?php echo $u['id']; ?>" formaction="deleteAccount" class="btn"><i class="fa fa-trash"></i></button>
-                                </a>
-                            </td>
-                        </form>
-                    </tr>
-                <?php }
+                            <form action="editAccount" method="post">
+                                <td>
+                                    <a href="editAccount">
+                                        <button type="submit" name="editAcc" value="<?php echo $u['id']; ?>" class="btn"><i class="fa fa-pencil"></i></button>
+                                    </a>
+                                </td>
+                            </form>
+
+                            <?php
+                            if ($_SESSION['currentUserRole'] >= 3) { ?>
+                                <form action="deleteUserCMS" method="post">
+                                    <td>
+                                        <a href="deleteUserCMS">
+                                            <button type="submit" name="deleteAccount" value="<?php echo $u['email']; ?>" class="btn"><i class="fa fa-trash"></i></button>
+                                        </a>
+                                    </td>
+                                </form>
+                            <?php
+                            }
+                            ?>
+                        </tr>
+                <?php
+                    }
+                }
                 ?>
 
             </tbody>
         </table>
 
-        <a href="createUser">
-            <button type="button" class="btn btn-dark"> Add New User </button>
-        </a>
+        <?php
+        if ($_SESSION['currentUserRole'] >= 3) {
+        ?>
+            <a href="createUser">
+                <button type="button" class="btn btn-dark"> Add New User </button>
+            </a>
+        <?php
+        }
+        ?>
     </div>
-    <?php require __DIR__ . '../../include/footer.php'; 
-    ?>
+    <?php require __DIR__ . '../../include/footer.php'; ?>
 </body>
 
 </html>

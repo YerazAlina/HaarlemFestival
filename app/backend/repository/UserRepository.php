@@ -10,9 +10,10 @@ class UserRepository extends Repository
 
     //sql statements 
     private string $all_users_sql = "SELECT * FROM users";
+    private string $all_roles_sql = "SELECT * FROM roles";
     private string $create_user_sql = "insert into users (id, email, firstname, lastname, password) values (null, :email, :firstname, :lastname, :password, )";  //change this one
     private string $delete_user_sql = "delete from users where email = :email";
-    private string $one_user_sql = "SELECT id from users where id = :id";
+    private string $one_user_sql = "SELECT * from users where id = :id";
     private string $one_userByEmail_sql = "SELECT * from users where email = :email";
 
     public function __construct()
@@ -23,6 +24,14 @@ class UserRepository extends Repository
     public function findAll()
     {
         $this->stmt = $this->db->prepare($this->all_users_sql);
+        $this->stmt->execute();
+
+        return $this->stmt->fetchAll();
+    }
+
+    public function findAllRoles()
+    {
+        $this->stmt = $this->db->prepare($this->all_roles_sql);
         $this->stmt->execute();
 
         return $this->stmt->fetchAll();
@@ -107,32 +116,25 @@ class UserRepository extends Repository
         return $count;
     }
 
-    public function updateUser($id, $email) //, $firstname, $lastname, $roleId)
+    public function updateUser($id, $email, $firstname, $lastname, $password, $roleId)
     {
         //UPDATE users SET email = :email, firstname = :firstname WHERE id = 1;
         //TODO: IMPLEMENT 
 
-
-        $query = "UPDATE users SET email = :email WHERE id = :id;";
+        //$query = "UPDATE users SET (email, firstname, lastname, password) VALUES (:email, :firstname, :lastname, :password) WHERE id = :id;";
+        $query = "UPDATE users SET email=:email, firstname=:firstname, lastname=:lastname, password=:password, roleId=:roleId WHERE id = :id;";
         $statement = $this->db->prepare($query);
         $statement->execute(
             array(
-                'email'        =>     $email
+                'id'           =>     $id,
+                'email'        =>     $email,
+                'firstname'    =>     $firstname,
+                'lastname'     =>     $lastname,
+                'password'     =>     $password,
+                'roleId'       =>     $roleId
             )
         );
 
         $count = $statement->rowCount();
-    }
-
-    public function updateEmail($email, $id)
-    {
-        /*    $query = "UPDATE users SET email = :email WHERE id = :id";
-        $statement = $this->db->prepare($query);
-        $statement->execute(
-            array(
-                'email'        =>     $email,
-                'id'           =>     $id
-            )
-        ); */
     }
 }

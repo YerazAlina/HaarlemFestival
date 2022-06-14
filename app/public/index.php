@@ -24,6 +24,6 @@ $router->route($uri,
     $path
 );
 
-DB::closeConnection();
+//DB::closeConnection();
 
 

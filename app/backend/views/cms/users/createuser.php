@@ -1,3 +1,10 @@
+<?php
+require __DIR__ . '../../../../controller/usercontroller.php';
+
+$controller = new UserController();
+$roles = $controller->findAllRoles();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +21,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -23,8 +29,8 @@
     <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
 
     <div class="wrapper" style="margin: auto; padding: 30px; width: 400px;">
-        <h2>Create New User</h2>
-        <p>create a new user account</p>
+        <h2>Create New Account</h2>
+        <p>create a new account</p>
         <form action="registerUseraccount" method="post">
             <div class="form-group">
                 <label>Email</label>
@@ -51,20 +57,17 @@
                 <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
                 <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             </div>
-
-
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown button
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
+            <div class="roles">
+                <?php
+                foreach ($roles as $r) {
+                ?>
+                    <input type="radio" name="role" value="<?php echo $r['roleId']; ?>" />
+                    <label><?php echo $r['type']; ?></label> <br>
+                <?php
+                }
+                ?>
             </div>
-
-
+            <br>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-secondary ml-2" value="Reset">
@@ -72,7 +75,19 @@
         </form>
 
     </div>
-    <?php require __DIR__ . '../../include/footer.php'; ?>
 </body>
+<!-- <script>
+    // selecting radio button
+    const buttons = document.querySelectorAll("input[type='radio']");
+
+    // adding event to all radio buttons
+    buttons.forEach(button => {
+        button.onclick = () => {
+            if (button.checked) {
+                $_SESSION['roleId'] = button.value; 
+            }
+        }
+    })
+</script> -->
 
 </html>
