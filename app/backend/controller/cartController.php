@@ -125,6 +125,7 @@ class cartContoller{
                     if($values['id'] == $_POST['addQuantity']){
 
                         $_SESSION['cart'][$items]['quantity'] += 1;
+                        //$_SESSION['cart'][$items]['price'] = $values['price'] * $_SESSION['cart'][$items]['quantity'] ;
                         //print($values['quantity']);
     
                     }
@@ -133,6 +134,8 @@ class cartContoller{
                     if($values['id'] == $_POST['subtractQuantity']){
 
                         $_SESSION['cart'][$items]['quantity'] -=1;
+                        //$_SESSION['cart'][$items]['price'] = $values['price'] * $_SESSION['cart'][$items]['quantity'];
+
                         if($_SESSION['cart'][$items]['quantity'] == 0){
                                 unset($_SESSION['cart'][$items]);
                         
@@ -153,12 +156,6 @@ class cartContoller{
         require __DIR__ . ('/../views/cart.php');
     }
 
-    public function getTotal(){
-        
-    }
-
-
-   
    
 
     public function removeFromCart(){

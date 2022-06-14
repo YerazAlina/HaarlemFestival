@@ -58,6 +58,7 @@
 																<div class="event-info">
 																	<div>Time: <span class="value"><?php echo $values['startTime'] ?> - <?php echo $values['endTime']?></span></div>
 																	<div>Date: <span class="value"><?php echo $values['date']?></span></div>
+																	<div>Price: <span class="value">$<?php echo $values['price']?></span></div>
 																	<div>Location: <span class="value"><?php
 
 																	if(empty($values['location'])){
@@ -84,10 +85,10 @@
 														
 
 														</div>
-														
+<!-- 														
 														<div class="col-md-3 price">
 															<span>$<?php echo $values['price']?></span>
-														</div>
+														</div> -->
 
 														
 														<form method="post">   
@@ -181,9 +182,18 @@
 			 			<div class="col-md-12 col-lg-4">
 			 				<div class="cart-summary">
 			 					<h3>Summary</h3>
-			 					<div class="summary-item"><span class="text">Subtotal</span><span class="price">$...</span></div>
-			 					<div class="summary-item"><span class="text">VAT (21%)</span><span class="price">$...</span></div>
-			 					<div class="summary-item"><span class="text">Total</span><span class="price">$...</span></div>
+			 					<div class="summary-item"><span class="text">Subtotal</span><span class="price"><?php 
+																												$total = 0;
+																												if(!empty($_SESSION['cart'])){
+																													foreach($_SESSION['cart'] as $items=>$values){
+																														$total += $values['price'] * $values['quantity'];
+																													} 
+																												}	
+																												echo '$'. $total;
+																												
+																												?></span></div>
+			 					<div class="summary-item"><span class="text">VAT (21%)</span><span class="price"><?php echo '$'. $total * (0.21) ?></span></div>
+			 					<div class="summary-item"><span class="text">Total</span><span class="price"><?php echo '$'. ($total * (0.21)) + $total ?></span></div>
 			 					<button type="button" class="btn btn-danger btn-lg btn-block">Checkout</button>
 				 			</div>
 			 			</div>
