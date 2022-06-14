@@ -43,6 +43,7 @@ class UserController
 
                     $userInfo = $this->service->searchByEmail($email);
 
+                    $_SESSION['currentUserRole'] = $userInfo->roleId;
                     $_SESSION['userId'] = $userInfo->id;
                     $_SESSION['logged_in'] = true;
 
