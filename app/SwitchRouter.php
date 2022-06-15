@@ -166,6 +166,8 @@ class SwitchRouter
 
 
 
+
+
                 //Location CMS 
             case 'locationcms':
                 require __DIR__ . '/backend/controller/locationController.php';
@@ -192,10 +194,6 @@ class SwitchRouter
                 header('Location: locationcms');
                 break;
             case 'deleteLocation': //delete
-                // require __DIR__ . '/backend/controller/jazzController.php';
-                // $controller = new jazzController();
-                // $controller->deleteArtist();
-
                 require __DIR__ . '/backend/controller/locationcontroller.php';
                 $controller = new LocationController();
                 $controller->deleteLocation();
@@ -213,13 +211,13 @@ class SwitchRouter
             case 'jazzcms':
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
-                $controller->allJazzEventscms();
+                //$controller->allJazzEventscms();
                 break;
             case 'addEvent':
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
-                $controller->addEvent();
-                $controller->allJazzEventscms();
+                //$controller->addEvent();
+                //$controller->allJazzEventscms();
                 break;
 
 

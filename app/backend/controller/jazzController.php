@@ -28,19 +28,7 @@ class jazzController
         require __DIR__ . ('../../views/cms/jazz/jazzcms.php');
     }
 
-    public function addEvent()
-    {
-        $type =  $_POST['type'];
-        $date = $_POST['date'];
-        $startTime =  $_POST['startTime'];
-        $endTime = $_POST['endTime'];
-        $locationId =  $_POST['locationId'];
-        $price = $_POST['price'];
-        $ticketsLeft = $_POST['ticketsLeft'];
-
-        $count = $this->jazzservice->addEvent($type, $date, $startTime, $endTime, $locationId, $price, $ticketsLeft);
-    }
-
+    //JAZZ ARTISTS CMS
     public function allJazzArtistscms(){
         $artists = $this->jazzservice->getArtists();
         require __DIR__ . ('../../views/cms/jazz/artistcms.php');
