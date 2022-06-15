@@ -113,7 +113,7 @@ class SwitchRouter
                 $controller = new jazzController();
                 $_SESSION['updateId'] = $_POST['editArtist'];
                 $artist = $controller->getArtist($_SESSION['updateId']);
-                require __DIR__ . '/backend/views/cms/jazz/editArtist.php';
+                require __DIR__ . '/backend/views/cms/artist/editArtist.php';
                 break;
             case 'updateArtistCMS': //edit 
                 require __DIR__ . '/backend/controller/jazzController.php';
