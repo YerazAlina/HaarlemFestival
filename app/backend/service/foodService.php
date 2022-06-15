@@ -19,4 +19,21 @@ class foodService{
     public function findById($id){
         return $this->foodrepository->findById($id);
     }
+
+    //FOR CMS
+    public function getAllRestaurants(){
+        return $this->foodrepository->findAllRestaurants();
+    }
+
+    public function addRestaurant($location, $name, $description, $stars, $seats, $phoneNumber, $price, $parking, $website, $menu, $contact)
+    {
+        return $this->foodrepository->addRestaurant($location, $name, $description, $stars, $seats, $phoneNumber, $price, $parking, $website, $menu, $contact);
+    }
+
+    public function deleteRestaurant($id)
+    {
+        return $this->foodrepository->deleteOne($id);
+    }
+
+
 }

@@ -19,6 +19,9 @@ class foodRepository
     }
 
 
+    private string $get_all_restaurants_sql = "SELECT * FROM restaurant";
+    private string $delete_restaurant_sql = "DELETE from restaurant where id = :id";
+
     // private string $all_restaurants_sql = "SELECT a.id, r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, a.date, a.startTime, a.endTime, l.address, l.postalCode
     //                                     FROM activity AS a 
     //                                     JOIN location AS l ON a.locationId=l.id
@@ -41,7 +44,7 @@ class foodRepository
 
     //private string $all_restaurants_sql = "SELECT * FROM restaurant";
 
-    
+
     private string $get_one_event_sql = "SELECT r.id, r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, f.activityId , a.date, a.startTime, a.endTime, l.address, l.postalCode   
                                         FROM activity AS a 
                                         INNER JOIN location AS l ON a.locationId=l.id 
@@ -58,9 +61,17 @@ class foodRepository
         return $this->stmt->fetchAll();
     }
 
-   
+    public function findAllRestaurants()
+    {
+        $this->stmt = $this->db->prepare($this->get_all_restaurants_sql);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'restaurant');
+        $this->stmt->execute();
+        return $this->stmt->fetchAll();
+    }
 
-    public function findEvents(){
+
+    public function findEvents()
+    {
 
         /*
         if(isset($_POST["thursdayEvents"])){
@@ -87,9 +98,10 @@ class foodRepository
         return $this->stmt->rowCount();
     }
 
-    public function purchaseTicket(){
+    public function purchaseTicket()
+    {
 
-        if(isset($_POST['activityId'])){
+        if (isset($_POST['activityId'])) {
             $result = 'kio';
         }
     }
@@ -113,6 +125,36 @@ class foodRepository
 
     public function deleteOne($id)
     {
-        // TODO: Implement deleteOne() method.
+        $this->stmt = $this->db->prepare($this->delete_restaurant_sql);
+        $this->stmt->bindParam(':id', $id);
+
+        return $this->stmt->execute();
+    }
+
+    public function addRestaurant($location, $name, $description, $stars, $seats, $phoneNumber, $price, $parking, $website, $menu, $contact)
+    {
+        $count = "";
+
+        $query = "INSERT INTO restaurant (locationId, name, description, stars, seats, phoneNumber, price, parking, website, menu, contact) VALUES (:location, :name, :description, :stars, :seats, :phoneNumber, :price, :parking, :website, :menu, :contact)";
+        $statement = $this->db->prepare($query);
+        $statement->execute(
+            array(
+                'location'           =>     $location,
+                'name'               =>     $name,
+                'description'        =>     $description,
+                'stars'              =>     $stars,
+                'seats'              =>     $seats,
+                'phoneNumber'        =>     $phoneNumber,
+                'price'              =>     $price,
+                'parking'            =>     $parking,
+                'website'            =>     $website,
+                'menu'               =>     $menu,
+                'contact'            =>     $contact
+            )
+        );
+
+        $count = $statement->rowCount();
+
+        return $count;
     }
 }

@@ -167,6 +167,42 @@ class SwitchRouter
                 //$controller->addEvent();
                 //$controller->allJazzEventscms();
                 break;
+                ///////////////////////////////////////////////////////////////////// RESTAURANTS CMS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+            case 'foodcms':
+                require __DIR__ . '/backend/controller/foodController.php';
+                $controller = new foodController();
+                $controller->allRestaurants();
+                break;
+            case 'addRestaurant': //add
+                require __DIR__ . '/backend/controller/foodController.php';
+                $controller = new foodController();
+                $controller->addRestaurant();
+                $controller->allRestaurants();
+                break;
+            case 'editRestaurant': //edit
+                require __DIR__ . '/backend/controller/foodController.php';
+                $controller = new foodController();
+                // $_SESSION['updateId'] = $_POST['editLocation'];
+                // $location = $controller->getLocation($_SESSION['updateId']);
+                // require __DIR__ . '/backend/views/cms/location/editLocation.php';
+                break;
+            case 'updateRestaurantCMS': //edit 
+                require __DIR__ . '/backend/controller/foodController.php';
+                $controller = new foodController();
+                // $controller->updateLocation($_SESSION['updateId']);
+                header('Location: foodcms');
+                break;
+            case 'deleteRestaurant': //delete
+                require __DIR__ . '/backend/controller/foodController.php';
+                $controller = new foodController();
+                $controller->deleteRestaurant();
+                break;
+
+
+
+
+
+
 
 
 
@@ -206,9 +242,6 @@ class SwitchRouter
 
 
                 //JUST VIEWS
-            case 'foodcms':
-                require __DIR__ . '/backend/views/cms/restaurants/foodcms.php';
-                break;
             case 'addArtistView':
                 require __DIR__ . '/backend/views/cms/artist/addArtist.php';
                 break;
@@ -217,6 +250,9 @@ class SwitchRouter
                 break;
             case 'addLocationView':
                 require __DIR__ . '/backend/views/cms/location/addLocation.php';
+                break;
+            case 'addRestaurantView':
+                require __DIR__ . '/backend/views/cms/restaurants/addRestaurant.php';
                 break;
             case 'register':
                 require __DIR__ . '/backend/views/cms/users/register.php';

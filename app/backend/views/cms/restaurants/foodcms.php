@@ -18,7 +18,7 @@
     <div class="wrapper" style="margin: auto; padding: 30px;">
         <h3>Manage Restaurants</h3>
         <br>
-        <table class="table table-striped" style="width:88%">
+        <table class="table table-striped" style="width:88%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
@@ -26,59 +26,42 @@
                     <th scope="col">Restaurant Name</th>
                     <th scope="col">Description</th>
                     <th scope="col">Number of Stars (*)</th>
-                    <th scope="col">Venue</th>
-                    <th scope="col">Ticket Price</th>
-                    <th scope="col">Number of Tickets</th>
+                    <th scope="col">Seats</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Parking Information</th>
+                    <th scope="col">Website (link)</th>
+                    <th scope="col">Menu (link)</th>
+                    <th scope="col">Contact (link)</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
 
             <tbody>
-                <?php foreach ($events as $e) {
+                <?php foreach ($restaurants as $r) {
                 ?>
                     <tr>
-                        <th scope="row"> <?php echo $e->activityId; ?> </th>
-                        <td><?php echo $e->artistname ?></td>
-                        <td><?php echo $e->date ?></td>
-                        <td><?php echo $e->startTime ?></td>
-                        <td><?php echo $e->endTime ?></td>
-                        <td>
-                            <?php
-                            if ($e->activityHall == "None") {
-                                echo "Grote Markt";
-                            } else {
-                                echo $e->activityHall . " Hall, Patronaat";
-                            }
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                            if ($e->price == 0) {
-                                echo "Free Event";
-                            } else {
-                                echo $e->price;
-                            }
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                            if ($e->ticketsLeft == 0) {
-                                echo "No Maximum";
-                            } else {
-                                echo $e->ticketsLeft;
-                                //TODO:THIS SHOULD BE TOTAL NR OF TICKETS 
-                            }
-                            ?>
-                        </td>
+                        <th scope="row"> <?php echo $r->id; ?> </th>
+                        <td><?php echo $r->locationId; ?></td>
+                        <td><?php echo $r->name; ?></td>
+                        <td><?php echo $r->description; ?></td>
+                        <td><?php echo $r->stars; ?></td>
+                        <td><?php echo $r->seats; ?></td>
+                        <td><?php echo $r->phoneNumber; ?></td>
+                        <td><?php echo $r->price; ?></td>
+                        <td><?php echo $r->parking; ?></td>
+                        <td><?php echo $r->website; ?></td>
+                        <td><?php echo $r->menu; ?></td>
+                        <td><?php echo $r->contact; ?></td>
 
-                        <form action="editAccount" method="post">
-                            <td><a href="editEvent">
-                                    <button type="submit" id="editEvent" name="editEvent" value="<?php echo $e->activityId; ?>" formaction="editEvent" class="btn"><i class="fa fa-pencil"></i></button>
+                        <form action="editRestaurant" method="post">
+                            <td><a href="editRestaurant">
+                                    <button type="submit" id="editRestaurant" name="editRestaurant" value="<?php echo $r->id; ?>" formaction="editRestaurant" class="btn"><i class="fa fa-pencil"></i></button>
                                 </a>
                             </td>
-                            <td><a href="deleteEvent">
-                                    <button type="submit" id="deleteEvent" name="deleteEvent" value="<?php echo $e->activityId; ?>" formaction="deleteEvent" class="btn"><i class="fa fa-trash"></i></button>
+                            <td><a href="deleteRestaurant">
+                                    <button type="submit" id="deleteRestaurant" name="deleteRestaurant" value="<?php echo $r->id; ?>" formaction="deleteRestaurant" class="btn"><i class="fa fa-trash"></i></button>
                                 </a>
                             </td>
                         </form>
@@ -88,8 +71,8 @@
             </tbody>
         </table>
 
-        <a href="addEventView">
-            <button type="button" class="btn btn-dark"> Add Event </button>
+        <a href="addRestaurantView">
+            <button type="button" class="btn btn-dark"> Add Restaurant </button>
         </a>
     </div>
     <?php //require __DIR__ . '../../include/footer.php'; 
