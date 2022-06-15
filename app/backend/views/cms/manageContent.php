@@ -20,9 +20,17 @@
         <p>The website can be edited here choose a page that you want to edit:</p>
 
         <div class="list-group">
-            <a href="foodcms" class="list-group-item list-group-item-action">Food</a>
-            <a href="jazzcms" class="list-group-item list-group-item-action">Jazz</a>
-            <a href="historycms" class="list-group-item list-group-item-action">History</a>
+            <!-- works -->
+            <a href="locationcms" class="list-group-item list-group-item-action">All Locations and Venues</a> 
+            <a href="artistcms" class="list-group-item list-group-item-action">Jazz Artist</a>
+
+            <a href="jazzcms" class="list-group-item list-group-item-action">Jazz Events</a>
+
+            <a href="foodcms" class="list-group-item list-group-item-action">Restaurants</a>
+            <a href="foodcms" class="list-group-item list-group-item-action">Restaurants Reservations</a>
+            <a href="foodcms" class="list-group-item list-group-item-action">Restaurants Events</a>
+
+            <a href="#" class="list-group-item list-group-item-action disabled">History (currently unavailable)</a>
             <a href="#" class="list-group-item list-group-item-action disabled">Music (currently unavailable)</a>
         </div>
 

@@ -23,6 +23,7 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link active" href="">FOOD</a>
                             <a class="nav-link active" href="food">FOOD</a>
                         </li>
 
