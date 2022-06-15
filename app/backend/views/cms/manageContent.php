@@ -15,9 +15,9 @@
 <body>
     <?php require __DIR__ . '/include/navbar.php'; ?>
 
-    <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
-        <h3>Manage Content</h3>
-        <p>The website can be edited here choose a page that you want to edit:</p>
+    <div class="wrapper" style="margin: auto; width: 500px; padding: 30px;">
+        <h3>Content Management System</h3>
+        <p>The website can be edited here choose a category that you want to edit</p>
 
         <div class="list-group">
             <!-- works -->
