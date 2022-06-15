@@ -206,9 +206,6 @@ class SwitchRouter
 
 
                 //JUST VIEWS
-                // case 'home':
-                //     require __DIR__ . '/backend/views/cms/home.php';
-                //     break;
             case 'foodcms':
                 require __DIR__ . '/backend/views/cms/restaurants/foodcms.php';
                 break;
