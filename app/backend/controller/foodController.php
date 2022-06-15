@@ -21,6 +21,7 @@ class foodController
     // get a restaurant by Id
     public function getRestaurantById() {
         $id = ($_POST['addTicket']);
+        //$id = ($_POST['bookNow']);
         // if(Is_null($id)) {
         //     header("Location: food");
         //     exit();

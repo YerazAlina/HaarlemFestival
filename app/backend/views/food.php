@@ -76,6 +76,7 @@ include_once ('include/navbar.php')
                                 </svg></button>
                             <form method="post">
                                 <p><button type="submit" id="addTicket" name="addTicket" value="<?php echo $e->activityId ?>" formaction="cart" class="btn btn-outline-success btn-sm">add to cart</button></p>
+                                <!-- <p><button type="submit" id="bookNow" name="bookNow" value="<?php echo $e->activityId ?>" formaction="foodReservation" class="btn btn-outline-success btn-sm">Book now</button></p> -->
                             </form>
                         </div>
                     </div>
