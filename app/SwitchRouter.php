@@ -9,7 +9,7 @@ class SwitchRouter
     public function route($uri, $method, $body, $path)
     {
         switch ($uri) {
-                //login/register/logout
+                ///////////////////////////////////////////////////////////////////// LOGIN/LOGOUT/REGISTER CMS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
             case '':
             case 'login':
                 if (isset($_SESSION['logged_in'])) {
@@ -33,15 +33,7 @@ class SwitchRouter
                 $controller = new UserController();
                 $controller->logout();
                 break;
-
-
-
-
-
-
-
-
-                //personal info
+                ///////////////////////////////////////////////////////////////////// PERSONAL INFO PAGES CMS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
             case 'profile':
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
@@ -56,38 +48,19 @@ class SwitchRouter
                 } else {
                     echo 'access denied';
                 }
-
                 break;
-
             case 'updateUser':
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $currentUserDetails = $controller->getUserDetails($_SESSION['email']);
                 $controller->updateAccount($currentUserDetails->id, $currentUserDetails->password, $currentUserDetails->roleId);
                 break;
-
             case 'deleteAccount':
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
                 $controller->deleteUser($_SESSION['email']);
                 break;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                //manage users
+                ///////////////////////////////////////////////////////////////////// MANAGE USERS CMS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
             case 'manageUsers': //all users 
                 require __DIR__ . '/backend/controller/usercontroller.php';
                 $controller = new UserController();
@@ -123,16 +96,7 @@ class SwitchRouter
                 $controller = new UserController();
                 $controller->deleteUser($_POST['deleteAccount']);
                 break;
-
-
-
-
-
-
-
-
-
-                //Jazz Artist CMS 
+                ///////////////////////////////////////////////////////////////////// JAZZ ARTIST CMS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
             case 'artistcms':
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
@@ -161,14 +125,7 @@ class SwitchRouter
                 $controller = new jazzController();
                 $controller->deleteArtist();
                 break;
-
-
-
-
-
-
-
-                //Location CMS 
+                ///////////////////////////////////////////////////////////////////// LOCATION CMS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
             case 'locationcms':
                 require __DIR__ . '/backend/controller/locationController.php';
                 $controller = new LocationController();
@@ -198,7 +155,18 @@ class SwitchRouter
                 $controller = new LocationController();
                 $controller->deleteLocation();
                 break;
-
+                ///////////////////////////////////////////////////////////////////// JAZZ EVENTS CMS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+            case 'jazzcms':
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $controller->allJazzEventscms();
+                break;
+            case 'addEvent':
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                //$controller->addEvent();
+                //$controller->allJazzEventscms();
+                break;
 
 
 
@@ -207,59 +175,40 @@ class SwitchRouter
 
             case 'foodReservation':
                 require __DIR__ . '/backend/controller/foodController.php';
-                
+
                 $controller = new foodController();
                 $restaurant = $controller->getRestaurantById();
 
                 //require __DIR__ . '/backend/controller/cartController.php';
                 //$controller = new cartController();
-               // $controller->index();
+                // $controller->index();
                 break;
 
             case 'cart':
-                require __DIR__ . '/backend/controller/cartController.php';  
+                require __DIR__ . '/backend/controller/cartController.php';
                 $controller = new cartContoller();
 
-                if(isset($_POST['addTicket'])){
+                if (isset($_POST['addTicket'])) {
                     $_POST['action'] = "addToCart";
-
-                }elseif(isset($_POST['removeTicket'])){
+                } elseif (isset($_POST['removeTicket'])) {
                     $_POST['action'] = "removeFromCart";
-                    
-                }else if(isset($_POST['addQuantity'])){
+                } else if (isset($_POST['addQuantity'])) {
                     $_POST['action'] = "updateCart";
-                }
-
-                else{
+                } else {
                     $_POST['action'] = "clearCart";
-
                 }
-                
+
                 $controller->run();
 
 
-
-                //Jazz Event CMS
-            case 'jazzcms':
-                require __DIR__ . '/backend/controller/jazzController.php';
-                $controller = new jazzController();
-                //$controller->allJazzEventscms();
-                break;
-            case 'addEvent':
-                require __DIR__ . '/backend/controller/jazzController.php';
-                $controller = new jazzController();
-                //$controller->addEvent();
-                //$controller->allJazzEventscms();
-
-                break;
 
 
 
 
                 //JUST VIEWS
-            case 'home':
-                require __DIR__ . '/backend/views/cms/home.php';
-                break;
+                // case 'home':
+                //     require __DIR__ . '/backend/views/cms/home.php';
+                //     break;
             case 'foodcms':
                 require __DIR__ . '/backend/views/cms/restaurants/foodcms.php';
                 break;
@@ -279,6 +228,7 @@ class SwitchRouter
                 //for creating a new user account as superadminuser
                 require __DIR__ . '/backend/views/cms/users/createuser.php';
                 break;
+            case 'home':
             case 'manageContent':
                 require __DIR__ . '/backend/views/cms/manageContent.php';
                 break;
