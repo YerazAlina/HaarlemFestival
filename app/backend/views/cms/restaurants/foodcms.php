@@ -15,12 +15,84 @@
 <body>
     <?php require __DIR__ . '../../include/navbar.php'; ?>
     <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
+    <div class="wrapper" style="margin: auto; padding: 30px;">
+        <h3>Manage Restaurants</h3>
+        <br>
+        <table class="table table-striped" style="width:88%">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Location ID</th>
+                    <th scope="col">Restaurant Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Number of Stars (*)</th>
+                    <th scope="col">Venue</th>
+                    <th scope="col">Ticket Price</th>
+                    <th scope="col">Number of Tickets</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
 
-    <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
-        <h3>Manage Content Food</h3>
+            <tbody>
+                <?php foreach ($events as $e) {
+                ?>
+                    <tr>
+                        <th scope="row"> <?php echo $e->activityId; ?> </th>
+                        <td><?php echo $e->artistname ?></td>
+                        <td><?php echo $e->date ?></td>
+                        <td><?php echo $e->startTime ?></td>
+                        <td><?php echo $e->endTime ?></td>
+                        <td>
+                            <?php
+                            if ($e->activityHall == "None") {
+                                echo "Grote Markt";
+                            } else {
+                                echo $e->activityHall . " Hall, Patronaat";
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            if ($e->price == 0) {
+                                echo "Free Event";
+                            } else {
+                                echo $e->price;
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            if ($e->ticketsLeft == 0) {
+                                echo "No Maximum";
+                            } else {
+                                echo $e->ticketsLeft;
+                                //TODO:THIS SHOULD BE TOTAL NR OF TICKETS 
+                            }
+                            ?>
+                        </td>
 
+                        <form action="editAccount" method="post">
+                            <td><a href="editEvent">
+                                    <button type="submit" id="editEvent" name="editEvent" value="<?php echo $e->activityId; ?>" formaction="editEvent" class="btn"><i class="fa fa-pencil"></i></button>
+                                </a>
+                            </td>
+                            <td><a href="deleteEvent">
+                                    <button type="submit" id="deleteEvent" name="deleteEvent" value="<?php echo $e->activityId; ?>" formaction="deleteEvent" class="btn"><i class="fa fa-trash"></i></button>
+                                </a>
+                            </td>
+                        </form>
+                    </tr>
+                <?php }
+                ?>
+            </tbody>
+        </table>
+
+        <a href="addEventView">
+            <button type="button" class="btn btn-dark"> Add Event </button>
+        </a>
     </div>
-    <?php require __DIR__ . '../../include/footer.php'; 
+    <?php //require __DIR__ . '../../include/footer.php'; 
     ?>
 </body>
 

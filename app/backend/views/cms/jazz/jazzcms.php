@@ -18,9 +18,8 @@
 
 <body>
     <?php require __DIR__ . '../../include/navbar.php'; ?>
+    <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
     <div class="wrapper" style="margin: auto; padding: 30px;">
-        <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
-        <br> <br> <br>
         <h3>Manage Jazz Events</h3>
         <br>
         <table class="table table-striped" style="width:88%">

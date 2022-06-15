@@ -210,7 +210,7 @@ class SwitchRouter
                 require __DIR__ . '/backend/views/cms/restaurants/foodcms.php';
                 break;
             case 'addArtistView':
-                require __DIR__ . '/backend/views/cms/jazz/addArtist.php';
+                require __DIR__ . '/backend/views/cms/artist/addArtist.php';
                 break;
             case 'addEventView':
                 require __DIR__ . '/backend/views/cms/jazz/addEvent.php';
