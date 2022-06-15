@@ -2,15 +2,23 @@
 <?php
 
 require_once __DIR__ . ('../../service/jazzService.php');
+require_once __DIR__ . ('../../service/activityService.php');
+require_once __DIR__ . ('../../service/foodService.php');
+
+
 
 class cartContoller{
 
     
     private jazzService $jazzservice;
+    private activityService $activityservice;
+    private foodService $foodservice;
 
 
     public function __construct(){
         $this->jazzservice = new jazzService();
+        $this->activityservice = new activityService();
+        $this->foodservice = new foodService();
     }
 
     public function run(){
@@ -21,7 +29,13 @@ class cartContoller{
                     break;
                 case 'removeFromCart':
                     $this->removeFromCart();
-                    break;    
+                    break; 
+                case 'clearCart':
+                    $this->clearCart();
+                    break;      
+                case 'updateCart':
+                    $this->updateQuantity();
+                    break;     
                 
             }
         }
@@ -31,101 +45,127 @@ class cartContoller{
     public function addToCart(){
 
         //unset($_SESSION['cart']);
-       
+
+        // $activityId = null;
+        // $cart = null;
+
 
         if(!empty($_POST['addTicket'])){
 
-            
-            
             $activityId = $_POST['addTicket'];
-            $details = $this->jazzservice->getOne($activityId);
+            $getType = $this->activityservice->getType($activityId);
 
-          
+            $type = "";
 
-            //$_SESSION["cart"][$activityId] = $detail['artistname'];
+            foreach($getType as $t){
+                $type = $t['type'];
+            }
 
-            //$_SESSION["cart"] = [
-             //   $activityId => [
-                    //'name': 'medon';
-               // ]
-            //]
+            //printf($type);
+
+            $details = "";
+
+            if($type == "jazz"){
+
+                $details = $this->jazzservice->getOne($activityId);
+
+            }
+
+            else if($type == "Food"){
+
+                $details = $this->foodservice->findById($activityId);
+
+            }
 
             foreach($details as $detail){
 
                 $cart = array (
 
-                    'name' => $detail['artistname'],
+                    'name' => $detail['name'],
+                    'startTime' => $detail['startTime'],
+                    'endTime' => $detail['endTime'],
+                    'location' => $detail['locationName'],
                     'date' => $detail['date'],
-                    'id' => $detail['activityId']
-    
+                    'price' => $detail['price'],
+                    'id' => $detail['activityId'],
+                    'quantity' => $_POST['addQuantity']
                 );
-               
+            
             }
 
             $_SESSION['cart'][] = $cart;
 
             
           
-
-            //foreach($details as $detail){
-              //  $_SESSION['cart'][] = array('artistname'=> $detail['artistname']);
-            //}
-
-           //$_SESSION["cart"][] = array('name'=>$details['artistname']);
-
-
-            
-            /*foreach($details as $d){
-          
-
-            $_SESSION["cart"] = [
-                $activityId =>[
-                    'name': $d['artistname'];
-                    'time': $d['startTime']
-                ] 
-                
-                
-            ] 
-
-                  
-            }*/
-
-            //$name = null;
-            //$date = null;
-
-            /*
-
-
-            foreach($details as $detail){
-                $name = $detail['artistname'];
-                $date = $detail['date'];
-
-            }
-
-            //$_SESSION["cart"][] = array('name'=>'medon', 'date'=> 'ugh');
-
-            */
-
         }
-       
 
         require __DIR__ . ('/../views/cart.php');
 
     }
 
+    
+    public function updateQuantity(){
+
+        if(isset($_POST['addQuantity'])){
+
+            $id = $_POST['addQuantity'];
+            //$_SESSION['cart'][$id]['quantity'] += 1;
+            // $newValue = $_SESSION['cart']['quantity'][$id] ++;
+            // array_replace($newValue, $_SESSION['cart'][$id]['quantity']);
+            // print($_SESSION['cart'][$id]['quantity']);
+
+           
+            foreach($_SESSION['cart'] as $items=>$values){
+                if($id == $values['id']){
+
+                    $values['quantity']++;
+                    print($values['quantity']);
+
+                    break;
+                }
+            }
+
+        }
+
+        require __DIR__ . ('/../views/cart.php');
+    }
+
+
+
+   
    
 
     public function removeFromCart(){
 
+        // if(isset($_POST['removeTicket'])){
+        //     $_SESSION['cart'][] = $cart;
+
+        //     unset($cart[$_POST['removeTicket']]);
+
+        // }
+
         if(isset($_POST['removeTicket'])){
             $id = $_POST['removeTicket'];
-            unset($_SESSION["cart"][$id]);
 
+            foreach($_SESSION['cart'] as $items=>$values){
+                if($id == $values['id']){
+                    unset($_SESSION['cart'][$items]);
+                }
+            }
         }
 
-    
+       
         
         require __DIR__ . ('/../views/cart.php');
+    }
+
+
+    public function clearCart(){
+
+        unset($_SESSION['cart']);
+	    $_SESSION['message'] = 'Cart cleared successfully';
+        require __DIR__ . ('/../views/cart.php');
+
     }
 
   

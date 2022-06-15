@@ -205,6 +205,38 @@ class SwitchRouter
 
 
 
+            case 'foodReservation':
+                require __DIR__ . '/backend/controller/foodController.php';
+                
+                $controller = new foodController();
+                $restaurant = $controller->getRestaurantById();
+
+                //require __DIR__ . '/backend/controller/cartController.php';
+                //$controller = new cartController();
+               // $controller->index();
+                break;
+
+            case 'cart':
+                require __DIR__ . '/backend/controller/cartController.php';  
+                $controller = new cartContoller();
+
+                if(isset($_POST['addTicket'])){
+                    $_POST['action'] = "addToCart";
+
+                }elseif(isset($_POST['removeTicket'])){
+                    $_POST['action'] = "removeFromCart";
+                    
+                }else if(isset($_POST['addQuantity'])){
+                    $_POST['action'] = "updateCart";
+                }
+
+                else{
+                    $_POST['action'] = "clearCart";
+
+                }
+                
+                $controller->run();
+
 
 
                 //Jazz Event CMS
@@ -218,6 +250,7 @@ class SwitchRouter
                 $controller = new jazzController();
                 //$controller->addEvent();
                 //$controller->allJazzEventscms();
+
                 break;
 
 

@@ -38,6 +38,7 @@
 
 .shopping-cart .cart-items{
 	margin: auto;
+	margin-left: 20px;
 }
 
 .shopping-cart .cart-items .event{
