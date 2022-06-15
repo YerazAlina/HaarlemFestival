@@ -68,4 +68,10 @@ class foodController
             header('Location: foodcms');
         }
     }
+
+    public function getRestaurantByIdCMS($id)
+    {
+        $restaurant = $this->foodservice->findOne($id);
+        return $restaurant;
+    }
 }

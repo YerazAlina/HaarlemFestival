@@ -18,7 +18,7 @@
     <div class="wrapper" style="margin: auto; padding: 30px;">
         <h3>Manage Restaurants</h3>
         <br>
-        <table class="table table-striped" style="width:88%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
@@ -45,12 +45,12 @@
                         <th scope="row"> <?php echo $r->id; ?> </th>
                         <td><?php echo $r->locationId; ?></td>
                         <td><?php echo $r->name; ?></td>
-                        <td><?php echo $r->description; ?></td>
+                        <td><?php echo substr($r->description, 0, 18) . '...'; ?></td>
                         <td><?php echo $r->stars; ?></td>
                         <td><?php echo $r->seats; ?></td>
                         <td><?php echo $r->phoneNumber; ?></td>
                         <td><?php echo $r->price; ?></td>
-                        <td><?php echo $r->parking; ?></td>
+                        <td><?php echo substr($r->parking, 0, 18) . '...'; ?></td>
                         <td><?php echo $r->website; ?></td>
                         <td><?php echo $r->menu; ?></td>
                         <td><?php echo $r->contact; ?></td>

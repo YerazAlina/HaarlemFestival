@@ -35,5 +35,10 @@ class foodService{
         return $this->foodrepository->deleteOne($id);
     }
 
+    public function findOne($id){
+        return $this->foodrepository->findByIdCMS($id);
+    }
+
+
 
 }

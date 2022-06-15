@@ -26,9 +26,54 @@
         <h2>Edit Restaurant</h2>
         <p>Edit the information of the restaurant. Please note that this might also effect the events.</p>
         <form action="updateRestaurantCMS" method="post">
+            <!-- <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" value=">
+            </div> -->
+
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" name="location" value="<?php echo $restaurant->locationId; ?>">
+            </div>
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" name="name" value="<?php echo $restaurant->name; ?>">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input type="text" name="description" value="<?php echo $restaurant->description; ?>">
+            </div>
+            <div class="form-group">
+                <label>Number of Stars</label>
+                <input type="text" name="stars" value="<?php echo $restaurant->stars; ?>">
+            </div>
+            <div class="form-group">
+                <label>Number of Seats</label>
+                <input type="text" name="seats" value="<?php echo $restaurant->seats; ?>">
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" name="phoneNumber" value="<?php echo $restaurant->phoneNumber; ?>">
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input type="text" name="price" value="<?php echo $restaurant->price; ?>">
+            </div>
+            <div class="form-group">
+                <label>Parking Information</label>
+                <input type="text" name="parking" value="<?php echo $restaurant->parking; ?>">
+            </div>
+            <div class="form-group">
+                <label>Website (link)</label>
+                <input type="text" name="website" value="<?php echo $restaurant->website; ?>">
+            </div>
+            <div class="form-group">
+                <label>Menu (link)</label>
+                <input type="text" name="menu" value="<?php echo $restaurant->menu; ?>">
+            </div>
+            <div class="form-group">
+                <label>Contact (link)</label>
+                <input type="text" name="contact" value="<?php echo $restaurant->contact; ?>">
             </div>
 
             <div class="form-group">
@@ -39,7 +84,7 @@
         </form>
 
     </div>
-    <?php require __DIR__ . '../../include/footer.php'; ?>
+    <?php //require __DIR__ . '../../include/footer.php'; ?>
 </body>
 
 </html>

@@ -20,7 +20,8 @@ class foodRepository
 
 
     private string $get_all_restaurants_sql = "SELECT * FROM restaurant";
-    private string $delete_restaurant_sql = "DELETE from restaurant where id = :id";
+    private string $delete_restaurant_sql = "DELETE FROM restaurant WHERE id = :id";
+    private string $get_one_restaurant__sql = "SELECT * FROM restaurant WHERE id = :id";
 
     // private string $all_restaurants_sql = "SELECT a.id, r.name, r.description, r.stars, r.seats, r.phoneNumber, r.price, r.parking, r.website, r.menu, r.contact, a.date, a.startTime, a.endTime, l.address, l.postalCode
     //                                     FROM activity AS a 
@@ -157,4 +158,15 @@ class foodRepository
 
         return $count;
     }
+
+    public function findByIdCMS($id)
+    {
+        $this->stmt = $this->db->prepare($this->get_one_restaurant__sql);
+        $this->stmt->bindParam(':id', $id);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'restaurant');
+        $this->stmt->execute();
+
+        return $this->stmt->fetch();
+    }
+    
 }

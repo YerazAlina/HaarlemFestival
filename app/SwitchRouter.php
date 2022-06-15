@@ -182,14 +182,14 @@ class SwitchRouter
             case 'editRestaurant': //edit
                 require __DIR__ . '/backend/controller/foodController.php';
                 $controller = new foodController();
-                // $_SESSION['updateId'] = $_POST['editLocation'];
-                // $location = $controller->getLocation($_SESSION['updateId']);
-                // require __DIR__ . '/backend/views/cms/location/editLocation.php';
+                $_SESSION['updateId'] = $_POST['editRestaurant'];
+                $restaurant = $controller->getRestaurantByIdCMS($_SESSION['updateId']);
+                require __DIR__ . '/backend/views/cms/restaurants/editRestaurant.php';
                 break;
             case 'updateRestaurantCMS': //edit 
                 require __DIR__ . '/backend/controller/foodController.php';
                 $controller = new foodController();
-                // $controller->updateLocation($_SESSION['updateId']);
+                //$controller->updateRestaurant($_SESSION['updateId']);
                 header('Location: foodcms');
                 break;
             case 'deleteRestaurant': //delete
