@@ -34,7 +34,7 @@
                 ?>
                     <tr>
                         <th scope="row"> <?php echo $a->id ?> </th>
-                        <td><?php echo $a->artistname ?></td>
+                        <td><?php echo $a->name ?></td>
                         <td style="width:40%;"><?php echo $a->description ?></td>
                         <form action="editArtist" method="post">
                             <td><a href="editArtist">

@@ -28,7 +28,7 @@
         <form action="updateArtistCMS" method="post">
             <div class="form-group">
                 <label>Artist name</label>
-                <input type="text" name="artist" value="<?php echo $artist->artistname; ?>">
+                <input type="text" name="artist" value="<?php echo $artist->name; ?>">
             </div>
             <div class="form-group">
                 <label>Description</label>

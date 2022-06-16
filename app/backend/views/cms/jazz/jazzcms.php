@@ -43,7 +43,7 @@
                 ?>
                     <tr>
                         <th scope="row"> <?php echo $e->activityId; ?> </th>
-                        <td><?php echo $e->artistname ?></td>
+                        <td><?php echo $e->name ?></td>
                         <td><?php echo $e->date ?></td>
                         <td><?php echo $e->startTime ?></td>
                         <td><?php echo $e->endTime ?></td>

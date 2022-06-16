@@ -7,7 +7,7 @@ require_once("location.php");
 class artist {
 
     public int $id;
-    public string $artistname;
+    public string $name;
     public string $artistdescription;
 
     /**

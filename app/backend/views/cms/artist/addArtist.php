@@ -28,7 +28,7 @@
         <form action="addArtist" method="post">
             <div class="form-group">
                 <label>Artist name</label>
-                <input type="text" name="artistname">
+                <input type="text" name="name">
             </div>
             <div class="form-group">
                 <label>Description</label>

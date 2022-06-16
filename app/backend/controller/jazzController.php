@@ -36,10 +36,10 @@ class jazzController
 
     public function addArtist()
     {
-        $artistname =  $_POST['artistname'];
+        $name =  $_POST['name'];
         $description = $_POST['description'];
 
-        $count = $this->jazzservice->addArtist($artistname, $description);
+        $count = $this->jazzservice->addArtist($name, $description);
     }
 
     public function updateArtist($id)
