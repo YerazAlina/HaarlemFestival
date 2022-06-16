@@ -58,9 +58,18 @@ class SwitchRouter
                 $controller->run();
 
                 break;
-
+            case 'purchase':
+                require __DIR__ . '/backend/controller/orderController.php';  
+                $controller = new orderContoller();
+                $controller->purchase();
+                break;
+            case 'confirmation':
+                require __DIR__ . '/backend/views/confirmation.php';  
+               
+                break;
 
             default:
+
                 echo '404 not found';
                 http_response_code(404);
         }

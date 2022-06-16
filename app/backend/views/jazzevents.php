@@ -98,11 +98,10 @@ include_once ('include/navbar.php')
     <div class="line-up-box">
         <div class="line-up">
             <p>
-                Gumbo Kings . Evolve . Ntjam Rosie .Wicked Jazz Sounds . Tom Thomsom Assemble .
+                Gumbo Kings . Evolve . Ntjam Rosie . Wicked Jazz Sounds . Tom Thomsom Assemble .
                 Jonna Frazer .  Fox & The Mayors . Uncle Sue . Chris Allen . Myles Sanko . Ruis Soundsystem .
-                The Family XL . Gare du Nord . Rilan & The Bombadiers . Soul Six  . Han Bennink . The Nordanians
+                The Family XL . Gare du Nord . Rilan & The Bombadiers . Soul Six  . Han Bennink . The Nordanians .
                 Lilith Merlot
-
             </p>
         </div>
     </div>

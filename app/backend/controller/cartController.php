@@ -53,6 +53,7 @@ class cartContoller{
         // $activityId = null;
         // $cart = null;
 
+        //$_SESSION['cart'][] =array();
 
         if(!empty($_POST['addTicket'])){
 
@@ -81,7 +82,10 @@ class cartContoller{
 
             }
 
+
             foreach($details as $detail){
+
+
 
                 $cart = array (
 
@@ -99,8 +103,6 @@ class cartContoller{
             }
 
             $_SESSION['cart'][] = $cart;
-
-            
           
         }
 
@@ -189,6 +191,10 @@ class cartContoller{
 	    $_SESSION['message'] = 'Cart cleared successfully';
         require __DIR__ . ('/../views/cart.php');
 
+    }
+
+    public function addOrder(){
+        
     }
 
   
