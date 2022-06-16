@@ -53,7 +53,7 @@ class UserController
                     $_SESSION['userId'] = $userInfo->id;
                     $_SESSION['logged_in'] = true;
 
-                    header('Location: home');
+                    header('Location: homecms');
                 } else {
 
                     require __DIR__ . "../../views/cms/login.php";
