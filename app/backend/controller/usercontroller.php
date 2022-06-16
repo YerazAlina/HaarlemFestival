@@ -126,7 +126,7 @@ class UserController
             $_SESSION['email'] = $email;
         }
 
-        header('Location: home');
+        header('Location: manageUsers');
     }
 
     public function logout()
