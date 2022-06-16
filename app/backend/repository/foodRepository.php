@@ -168,5 +168,30 @@ class foodRepository
 
         return $this->stmt->fetch();
     }
+
+    public function updateRestaurant($id, $location, $name, $description, $stars, $seats, $phoneNumber, $price, $parking, $website, $menu, $contact)
+    {
+        //locationId, name, description, stars, seats, phoneNumber, price, parking, website, menu, contact
+        $query = "UPDATE restaurant SET locationId=:locationId, name=:name, description=:description, stars=:stars, seats=:seats, phoneNumber=:phoneNumber, price=:price, parking=:parking, website=:website, menu=:menu, contact=:contact  WHERE id = :id;";
+        $statement = $this->db->prepare($query);
+        $statement->execute(
+            array(
+                'id'                 =>     $id,
+                'locationId'         =>     $location,
+                'name'               =>     $name,
+                'description'        =>     $description,
+                'stars'              =>     $stars,
+                'seats'              =>     $seats,
+                'phoneNumber'        =>     $phoneNumber,
+                'price'              =>     $price,
+                'parking'            =>     $parking,
+                'website'            =>     $website,
+                'menu'               =>     $menu,
+                'contact'            =>     $contact
+            )
+        );
+
+        $count = $statement->rowCount();
+    }
     
 }

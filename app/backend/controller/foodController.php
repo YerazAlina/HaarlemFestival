@@ -59,6 +59,24 @@ class foodController
         $count = $this->foodservice->addRestaurant($location, $name, $description, $stars, $seats, $phoneNumber, $price, $parking, $website, $menu, $contact);
     }
 
+    public function updateRestaurant($id)
+    {
+        $location = $_POST['location'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $stars = $_POST['stars'];
+        $seats = $_POST['seats'];
+        $phoneNumber = $_POST['phoneNumber'];
+        $price = $_POST['price'];
+        $parking = $_POST['parking'];
+        $website = $_POST['website'];
+        $menu = $_POST['menu'];
+        $contact = $_POST['contact'];
+
+        $count = $this->foodservice->updateRestaurant($id, $location, $name, $description, $stars, $seats, $phoneNumber, $price, $parking, $website, $menu, $contact);
+    }
+
+
     public function deleteRestaurant()
     {
         $restaurantId = $_POST['deleteRestaurant'];

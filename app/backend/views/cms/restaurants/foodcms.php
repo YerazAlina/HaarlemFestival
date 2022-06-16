@@ -25,9 +25,9 @@
                     <th scope="col">Location ID</th>
                     <th scope="col">Restaurant Name</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Number of Stars (*)</th>
+                    <th scope="col">Number of Stars</th>
                     <th scope="col">Seats</th>
-                    <th scope="col">Phone Number</th>
+                    <!-- <th scope="col">Phone Number</th> -->
                     <th scope="col">Price</th>
                     <th scope="col">Parking Information</th>
                     <th scope="col">Website (link)</th>
@@ -48,7 +48,7 @@
                         <td><?php echo substr($r->description, 0, 18) . '...'; ?></td>
                         <td><?php echo $r->stars; ?></td>
                         <td><?php echo $r->seats; ?></td>
-                        <td><?php echo $r->phoneNumber; ?></td>
+                        <!-- <td><?php //echo $r->phoneNumber; ?></td> -->
                         <td><?php echo $r->price; ?></td>
                         <td><?php echo substr($r->parking, 0, 18) . '...'; ?></td>
                         <td><?php echo $r->website; ?></td>
