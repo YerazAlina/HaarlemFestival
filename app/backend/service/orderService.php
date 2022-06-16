@@ -21,4 +21,8 @@ class orderService
         return $this->orderRepository->addOrderItems($orderId, $activityId, $quantity, $subtotal);
     }
 
+    public function getLastId(){
+        return $this->orderRepository->getLastId();
+    }
+
 }

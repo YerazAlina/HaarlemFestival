@@ -24,6 +24,7 @@ class orderController{
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
+
             $fullName = $_POST['customer_full_name'] ;
             $email = $_POST['customer_email'] ;
             $address = $_POST['customer_address'];
@@ -31,35 +32,52 @@ class orderController{
             $city =  $_POST['customer_city'];
             $postCode = $_POST['customer_post_code'] ;
             $phoneNumber = $_POST['customer_phone_number'];
-            $subtotal = 5 ; // idk how to get a value from a span
-            $vat = 2; // ^^^^^^^
-            $total =7; //^^^^^^^
+            $subtotal = 100;
+            $vat = 21; 
+            $total = 121; 
             $paymentDue = date('m/d/y');
             $invoiceDate = date('m/d/y');
 
-            if($this->orderservice->addOrder($fullName, $email, $address, $houseNo, $city, $postCode, $phoneNumber, $subtotal, $vat, $total, $paymentDue, $invoiceDate)){
-                
-               
-                foreach($_SESSION['cart'] as $items => $values){
-                $activityId = $values['id'];
-                $quantity = $values['quantity'];
-                $subtotal = $quantity * $values['price'];
+            if($fullName == null || $email == null || $address == null || $houseNo == null || $city == null || $postCode == null || $phoneNumber == null || $subtotal == 0 || $vat == 0|| $total == 0){
 
-                $this->orderservice->addOrderItems(31, $activityId, $quantity, $subtotal);
-                        
-                $updatedTicketNo = $values['ticketsLeft'] - $quantity;
-                $this->activityservice->updateTicketsLeft($activityId, $updatedTicketNo);
-                    
-                }
-
-                $_SESSION['email'] = $email;
-                unset($_SESSION['cart']);
-                header('Location: confirmation');
-
-                //$this->paymentcontroller->InitializeMollie();
-                
+                $message = "Please enter all the required fields !";
 
             }
+
+            else{
+
+                if($this->orderservice->addOrder($fullName, $email, $address, $houseNo, $city, $postCode, $phoneNumber, $subtotal, $vat, $total, $paymentDue, $invoiceDate)){
+                
+                    $lastId = $this->orderservice->getLastId();
+                    $orderId = implode(",",$lastId);
+               
+                    foreach($_SESSION['cart'] as $items => $values){
+                        $activityId = $values['id'];
+                        $quantity = $values['quantity'];
+                        $subtotal = $quantity * $values['price'];
+
+                        $this->orderservice->addOrderItems($orderId, $activityId, $quantity, $subtotal);
+                                
+                        $updatedTicketNo = $values['ticketsLeft'] - $quantity;
+                        $this->activityservice->updateTicketsLeft($activityId, $updatedTicketNo);
+                        
+                    }
+    
+                    $_SESSION['email'] = $email;
+
+                    unset($_SESSION['cart']);
+
+                    header('Location: confirmation');
+                    exit;
+    
+                    //$this->paymentcontroller->InitializeMollie();
+                    
+    
+                }
+
+            }
+
+           
 
           
 

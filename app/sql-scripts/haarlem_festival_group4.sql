@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql11.freemysqlhosting.net
--- Generation Time: May 22, 2022 at 05:42 PM
+-- Generation Time: Jun 16, 2022 at 08:18 PM
 -- Server version: 5.5.62-0ubuntu0.14.04.1
 -- PHP Version: 7.0.33-0ubuntu0.16.04.16
 
@@ -44,24 +44,24 @@ CREATE TABLE `activity` (
 --
 
 INSERT INTO `activity` (`id`, `type`, `date`, `startTime`, `endTime`, `locationId`, `price`, `ticketsLeft`) VALUES
-(1, 'jazz', '2022-07-28', '18:00:00', '19:00:00', 1, 15, 300),
-(2, 'jazz', '2022-07-28', '19:30:00', '20:30:00', 1, 15, 300),
-(3, 'jazz', '2022-07-28', '21:00:00', '22:00:00', 1, 15, 300),
-(4, 'jazz', '2022-07-28', '18:00:00', '19:00:00', 1, 10, 200),
-(5, 'jazz', '2022-07-28', '19:30:00', '20:30:00', 1, 10, 200),
-(6, 'jazz', '2022-07-28', '21:00:00', '22:00:00', 1, 10, 200),
+(1, 'jazz', '2022-07-28', '18:00:00', '19:00:00', 1, 15, 299),
+(2, 'jazz', '2022-07-28', '19:30:00', '20:30:00', 1, 15, 297),
+(3, 'jazz', '2022-07-28', '21:00:00', '22:00:00', 1, 15, 290),
+(4, 'jazz', '2022-07-28', '18:00:00', '19:00:00', 18, 10, 198),
+(5, 'jazz', '2022-07-28', '19:30:00', '20:30:00', 18, 10, 198),
+(6, 'jazz', '2022-07-28', '21:00:00', '22:00:00', 18, 10, 199),
 (7, 'jazz', '2022-07-29', '18:00:00', '19:00:00', 1, 15, 300),
 (8, 'jazz', '2022-07-29', '19:30:00', '20:30:00', 1, 15, 300),
 (9, 'jazz', '2022-07-29', '21:00:00', '22:00:00', 1, 15, 300),
-(10, 'jazz', '2022-07-29', '18:00:00', '19:00:00', 1, 10, 200),
-(11, 'jazz', '2022-07-29', '19:30:00', '20:30:00', 1, 10, 200),
-(12, 'jazz', '2022-07-29', '21:00:00', '22:00:00', 1, 10, 200),
+(10, 'jazz', '2022-07-29', '18:00:00', '19:00:00', 18, 10, 200),
+(11, 'jazz', '2022-07-29', '19:30:00', '20:30:00', 18, 10, 200),
+(12, 'jazz', '2022-07-29', '21:00:00', '22:00:00', 18, 10, 200),
 (13, 'jazz', '2022-07-30', '18:00:00', '19:00:00', 1, 15, 300),
 (14, 'jazz', '2022-07-30', '19:30:00', '20:30:00', 1, 15, 300),
 (15, 'jazz', '2022-07-30', '21:00:00', '22:00:00', 1, 15, 300),
-(16, 'jazz', '2022-07-30', '18:00:00', '19:00:00', 1, 10, 150),
-(17, 'jazz', '2022-07-30', '19:30:00', '20:30:00', 1, 10, 150),
-(18, 'jazz', '2022-07-30', '21:00:00', '22:00:00', 1, 10, 150),
+(16, 'jazz', '2022-07-30', '18:00:00', '19:00:00', 19, 10, 150),
+(17, 'jazz', '2022-07-30', '19:30:00', '20:30:00', 19, 10, 150),
+(18, 'jazz', '2022-07-30', '21:00:00', '22:00:00', 19, 10, 150),
 (19, 'jazz', '2022-07-31', '15:00:00', '16:00:00', 2, 0, 0),
 (20, 'jazz', '2022-07-31', '16:00:00', '17:00:00', 2, 0, 0),
 (21, 'jazz', '2022-07-31', '17:00:00', '18:00:00', 2, 0, 0),
@@ -169,7 +169,7 @@ INSERT INTO `activity` (`id`, `type`, `date`, `startTime`, `endTime`, `locationI
 
 CREATE TABLE `artist` (
   `id` int(11) NOT NULL,
-  `artistname` varchar(40) NOT NULL,
+  `name` varchar(40) NOT NULL,
   `description` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -177,7 +177,7 @@ CREATE TABLE `artist` (
 -- Dumping data for table `artist`
 --
 
-INSERT INTO `artist` (`id`, `artistname`, `description`) VALUES
+INSERT INTO `artist` (`id`, `name`, `description`) VALUES
 (1, 'Gumbo Kings', 'Five-headed Soul Monster combines the groove of New Orleans Funk with the grittiness of Delta Blues and the melodies of Memphis Soul.'),
 (2, 'Evolve', 'One of the most sought-after party bands in the UK; with a set list jam-packed full of the latest pop favorites and a selection of oldies.'),
 (3, 'Ntjam Rosie', 'Music in which African rhythms, Western functional harmony, and the melody of the native inhabitants come together perfectly.'),
@@ -457,39 +457,38 @@ CREATE TABLE `historytour` (
 CREATE TABLE `jazzActivity` (
   `id` int(11) NOT NULL,
   `artistId` int(11) NOT NULL,
-  `activityId` int(11) NOT NULL,
-  `activityHall` varchar(40) NOT NULL
+  `activityId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `jazzActivity`
 --
 
-INSERT INTO `jazzActivity` (`id`, `artistId`, `activityId`, `activityHall`) VALUES
-(1, 1, 1, 'Main'),
-(2, 2, 2, 'Main'),
-(3, 3, 3, 'Main'),
-(4, 4, 4, 'Second'),
-(5, 5, 5, 'Second'),
-(6, 6, 6, 'Second'),
-(7, 7, 7, 'Main'),
-(8, 8, 8, 'Main'),
-(9, 9, 9, 'Main'),
-(10, 10, 10, 'Second'),
-(11, 11, 11, 'Second'),
-(12, 12, 12, 'Second'),
-(13, 13, 13, 'Main'),
-(14, 14, 14, 'Main'),
-(15, 15, 15, 'Main'),
-(16, 16, 16, 'Third'),
-(17, 17, 17, 'Third'),
-(18, 18, 18, 'Third'),
-(19, 11, 19, 'None'),
-(20, 4, 20, 'None'),
-(21, 2, 21, 'None'),
-(22, 17, 22, 'None'),
-(23, 1, 23, 'None'),
-(24, 13, 24, 'None');
+INSERT INTO `jazzActivity` (`id`, `artistId`, `activityId`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3),
+(4, 4, 4),
+(5, 5, 5),
+(6, 6, 6),
+(7, 7, 7),
+(8, 8, 8),
+(9, 9, 9),
+(10, 10, 10),
+(11, 11, 11),
+(12, 12, 12),
+(13, 13, 13),
+(14, 14, 14),
+(15, 15, 15),
+(16, 16, 16),
+(17, 17, 17),
+(18, 18, 18),
+(19, 11, 19),
+(20, 4, 20),
+(21, 2, 21),
+(22, 17, 22),
+(23, 1, 23),
+(24, 13, 24);
 
 -- --------------------------------------------------------
 
@@ -499,34 +498,94 @@ INSERT INTO `jazzActivity` (`id`, `artistId`, `activityId`, `activityHall`) VALU
 
 CREATE TABLE `location` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `locationName` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
   `address` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
   `postalCode` varchar(10) CHARACTER SET utf8mb4 NOT NULL,
-  `city` varchar(20) CHARACTER SET utf8mb4 NOT NULL
+  `city` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
+  `capacity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `location`
 --
 
-INSERT INTO `location` (`id`, `name`, `address`, `postalCode`, `city`) VALUES
-(1, 'Patronaat', 'Zijlsingel 2', '2013 DN', 'Haarlem'),
-(2, 'Grote Markt', 'Grote Markt', '2011 RD', 'Haarlem'),
-(3, 'Restaurant Mr. & Mrs.', 'Lange Veerstraat 4', '2011 DB', 'Haarlem'),
-(4, 'Ratatouille', 'Spaarne 96', '2011 CL', 'Haarlem'),
-(5, 'Restaurant ML', 'Kleine Houtstraat 70', '2011 DR', 'Haarlem'),
-(6, 'Restaurant Fris', 'Twijnderslaan 7', '2012 BG', 'Haarlem'),
-(7, 'Specktakel', 'Spekstraat 4', '2011 HM', 'Haarlem'),
-(8, 'Grand Cafe Brinkman', 'Grote Markt 13', '2011 RC', 'Haarlem'),
-(9, 'Urban Frenchy Bistro Toujours', 'Oude Groenmarkt 10-12', '2011 HL', 'Haarlem'),
-(10, 'The Golden Bull', 'Zijlstraat 39', '2011 TK', 'Haarlem'),
-(11, 'St. Bavos Church', 'Grote Markt 2', '2011 RD', 'Haarlem'),
-(12, 'Club Stalker', 'Kromme Elleboogsteeg 20', '2011 TS', 'Haarlem'),
-(13, 'Caprera Openluchttheater', 'Hoge Duin en Daalseweg 2', '2061 AG', 'Bloemendaal'),
-(14, 'Jopenkerk', 'Gedempte Voldersgracht 2', '2011 WD', 'Haarlem'),
-(15, 'Lichtfabriek', 'Minckelersweg 2', '2031 EM', 'Haarlem'),
-(16, 'Club Ruis', 'Smedestraat 31', '2011 RE', 'Haarlem'),
-(17, 'XO the Club', 'Grote Markt 8', '2011 RD', 'Haarlem');
+INSERT INTO `location` (`id`, `locationName`, `address`, `postalCode`, `city`, `capacity`) VALUES
+(1, 'Patronaat, Main Hall', 'Zijlsingel 2', '2013 DN', 'Haarlem', 300),
+(2, 'Grote Markt', 'Grote Markt', '2011 RD', 'Haarlem', 0),
+(3, 'Restaurant Mr. & Mrs.', 'Lange Veerstraat 4', '2011 DB', 'Haarlem', 0),
+(4, 'Ratatouille', 'Spaarne 96', '2011 CL', 'Haarlem', 0),
+(5, 'Restaurant ML', 'Kleine Houtstraat 70', '2011 DR', 'Haarlem', 0),
+(6, 'Restaurant Fris', 'Twijnderslaan 7', '2012 BG', 'Haarlem', 0),
+(7, 'Specktakel', 'Spekstraat 4', '2011 HM', 'Haarlem', 0),
+(8, 'Grand Cafe Brinkman', 'Grote Markt 13', '2011 RC', 'Haarlem', 0),
+(9, 'Urban Frenchy Bistro Toujours', 'Oude Groenmarkt 10-12', '2011 HL', 'Haarlem', 0),
+(10, 'The Golden Bull', 'Zijlstraat 39', '2011 TK', 'Haarlem', 0),
+(11, 'St. Bavos Church', 'Grote Markt 2', '2011 RD', 'Haarlem', 0),
+(12, 'Club Stalker', 'Kromme Elleboogsteeg 20', '2011 TS', 'Haarlem', 0),
+(13, 'Caprera Openluchttheater', 'Hoge Duin en Daalseweg 2', '2061 AG', 'Bloemendaal', 0),
+(14, 'Jopenkerk', 'Gedempte Voldersgracht 2', '2011 WD', 'Haarlem', 0),
+(15, 'Lichtfabriek', 'Minckelersweg 2', '2031 EM', 'Haarlem', 0),
+(16, 'Club Ruis', 'Smedestraat 31', '2011 RE', 'Haarlem', 0),
+(17, 'XO the Club', 'Grote Markt 8', '2011 RD', 'Haarlem', 0),
+(18, 'Patronaat, Second Hall', 'Zijlsingel 2', '2013 DN', 'Haarlem', 200),
+(19, 'Patronaat, Third Hall', 'Zijlsingel 2', '2013 DN', 'Haarlem', 150);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orderItems`
+--
+
+CREATE TABLE `orderItems` (
+  `orderId` int(11) NOT NULL,
+  `activityId` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `subtotal` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `orderId` int(11) NOT NULL,
+  `fullName` varchar(256) NOT NULL,
+  `email` varchar(256) NOT NULL,
+  `address` varchar(256) NOT NULL,
+  `houseNo` int(11) NOT NULL,
+  `city` varchar(256) NOT NULL,
+  `postCode` varchar(256) NOT NULL,
+  `phoneNumber` varchar(256) NOT NULL,
+  `subtotal` float NOT NULL,
+  `vat` float NOT NULL,
+  `total` float NOT NULL,
+  `paymentDue` date NOT NULL,
+  `invoiceDate` date NOT NULL,
+  `paymentStatus` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservation`
+--
+
+CREATE TABLE `reservation` (
+  `id` int(11) NOT NULL,
+  `foodActivityId` int(11) NOT NULL,
+  `nrOfGuests` int(11) NOT NULL,
+  `isActive` tinyint(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `reservation`
+--
+
+INSERT INTO `reservation` (`id`, `foodActivityId`, `nrOfGuests`, `isActive`) VALUES
+(1, 1, 1, 1),
+(2, 2, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -554,14 +613,14 @@ CREATE TABLE `restaurant` (
 --
 
 INSERT INTO `restaurant` (`id`, `locationId`, `name`, `description`, `stars`, `seats`, `phoneNumber`, `price`, `parking`, `website`, `menu`, `contact`) VALUES
-(1, 3, 'Restaurant Mr. & Mrs.', 'Mr. & Mrs. offers an ambiance where you feel at ease. Mr. creates delicious taste explosions with honest products and Mrs. complements the dishes with the best matching wines.', 4, 40, 0, 45, 'Paid parking nearby.', 'https://www.restaurantmrandmrs.nl/', 'https://www.restaurantmrandmrs.nl/food', 'https://www.restaurantmrandmrs.nl/contact'),
-(2, 4, 'Ratatouille', 'Ratatouille Food & Wine in Haarlem is the successful restaurant of chef Jozua Jaring. The kitchen that is fed is, just like ratatouille, a mix of French cuisine and the reality of today. The excellent price-quality ratio and accessible environment is very well received by many. Michelin also appreciates the quality of Ratatouille, they have a well-deserved Michelin star to their name since 2014.', 4, 52, 0, 45, 'Park in parking garage De Appelaar at 100 meters or parking garage De Kamp at 100 meters.', 'https://ratatouillefoodandwine.nl/', 'https://ratatouillefoodandwine.nl/menukaart/', 'https://ratatouillefoodandwine.nl/contact/'),
-(3, 5, 'Restaurant ML', '', 4, 60, 0, 45, 'Paid parking nearby', 'https://www.mlinhaarlem.nl/en/', 'https://www.mlinhaarlem.nl/nl/restaurant-x-bistro-home', 'https://www.mlinhaarlem.nl/nl/contact/'),
-(4, 6, 'Restaurant Fris', 'Restaurant Fris is located in the middle of Haarlem, near the Frederikspark. A modern restaurant where chef Rick May presents dishes based on classic French cuisine, which he knows how to refine with worldwide influences. Taste the chefs favorite signature dish, or guilty pleasure. His French croissant with duck liver, Ibérico ham, Savora mustard with VOC spices, and fig ice cream is a flavor bomb with global influences.', 4, 45, 0, 45, 'It is best to park your car in the garage “Houtplein”, less than a 5-minute walk away. Note: parking', 'https://www.restaurantfris.nl/', 'https://www.restaurantfris.nl/menu/', 'https://www.restaurantfris.nl/contact-reserveren'),
-(5, 7, 'Specktakel', 'Specktakel is a unique restaurant centrally located in the heart of Haarlem with a special courtyard and terrace. At Specktakel you dont eat quietly. Not only because of the cosiness of your company, but also because of the international food and worldly wine that you enjoy. The colors, aromas and flavors create a wonderful interplay that must be talked about.', 4, 36, 0, 35, 'Parking garages “de Appelaar”, “de Kamp” and “de Raaks”', 'https://specktakel.nl/', 'https://specktakel.nl/menu', 'https://specktakel.nl/contact'),
-(6, 8, 'Grand Cafe Brinkman', 'Café Brinkmann has been a household name in Haarlem and surroundings since 1879. Good food, perfect coffee and staff who provide excellent service with enthusiasm and pleasure. All this against the backdrop of a monumental building, in the middle of the historic center, with a huge terrace that catches every ray of sunshine. In short, a hospitable place where you like to settle down.', 3, 100, 0, 35, 'Paid parking nearby', 'https://grandcafebrinkmann.nl/', 'https://grandcafebrinkmann.nl/etendrinken/', 'https://grandcafebrinkmann.nl/contact/'),
-(7, 9, 'Urban Frenchy Bistro Toujours', 'Just that feeling of going all out in the restaurant. Complete. Starters, fine wines and delicious main courses and desserts. These are, in summary, the elements of our Toujours Experience Boxes. Our boxes contain everything you need for a Toujours evening at home: from easy easy boxes to extensive dinners that you can have on the table in no time. Everything is possible.', 3, 48, 0, 35, 'Paid parking nearby', 'https://restauranttoujours.nl/', 'https://restauranttoujours.nl/menus/', 'https://restauranttoujours.nl/reservations/'),
-(8, 10, 'The Golden Bull', 'In addition to high quality steaks, we offer a cozy no-nonsense atmosphere. All this in combination with a wide range of special wines. An experience where your taste buds are extremely stimulated. All our meat is prepared on the lava stone grill, which creates an enormous taste sensation.', 3, 60, 0, 35, 'It is easiest to park your car in Parking garage Raaks. It is a 3-minute walk from the parking garag', 'https://thegoldenbull.nl/', 'https://thegoldenbull.nl/menukaart/', 'https://thegoldenbull.nl/contact/');
+(1, 3, 'RestaurantMr', 'Mr. & Mrs. offers an ambiance where you feel at ease. Mr. creates delicious taste explosions with honest products and Mrs. complements the dishes with the best matching wines.', 4, 40, 0, 45, 'Paid parking nearby.', 'https://www.restaurantmrandmrs.nl/', 'https://www.restaurantmrandmrs.nl/food', 'https://www.restaurantmrandmrs.nl/contact'),
+(2, 4, 'Routaoullie', 'Ratatouille Food & Wine in Haarlem is the successful restaurant of chef Jozua Jaring. The kitchen that is fed is, just like ratatouille, a mix of French cuisine and the reality of today.', 4, 52, 0, 45, 'Park in parking garage De Appelaar at 100 meters or parking garage De Kamp at 100 meters.', 'https://ratatouillefoodandwine.nl/', 'https://ratatouillefoodandwine.nl/menukaart/', 'https://ratatouillefoodandwine.nl/contact/'),
+(3, 5, 'RestaurantML', 'Restaurant ML', 4, 60, 0, 45, 'Paid parking nearby', 'https://www.mlinhaarlem.nl/en/', 'https://www.mlinhaarlem.nl/nl/restaurant-x-bistro-home', 'https://www.mlinhaarlem.nl/nl/contact/'),
+(4, 6, 'RestaurantFris', 'Restaurant Fris is located in the middle of Haarlem, near the Frederikspark. A modern restaurant where chef Rick May presents dishes based on classic French cuisine, which he knows how to refine with worldwide influences.', 4, 45, 0, 45, 'It is best to park your car in the garage “Houtplein”, less than a 5-minute walk away. Note: parking', 'https://www.restaurantfris.nl/', 'https://www.restaurantfris.nl/menu/', 'https://www.restaurantfris.nl/contact-reserveren'),
+(5, 7, 'Specktakel', 'Specktakel is a unique restaurant centrally located in the heart of Haarlem with a special courtyard and terrace. At Specktakel you dont eat quietly. Not only because of the cosiness of your company, but also because of the international food and worldly wine that you enjoy.', 4, 36, 0, 35, 'Parking garages “de Appelaar”, “de Kamp” and “de Raaks”', 'https://specktakel.nl/', 'https://specktakel.nl/menu', 'https://specktakel.nl/contact'),
+(6, 8, 'Grandcafe', 'Café Brinkmann has been a household name in Haarlem and surroundings since 1879. Good food, perfect coffee and staff who provide excellent service with enthusiasm and pleasure.', 3, 100, 0, 35, 'Paid parking nearby', 'https://grandcafebrinkmann.nl/', 'https://grandcafebrinkmann.nl/etendrinken/', 'https://grandcafebrinkmann.nl/contact/'),
+(7, 9, 'UrbanFrenchy', 'Just that feeling of going all out in the restaurant. Complete. Starters, fine wines and delicious main courses and desserts. These are, in summary, the elements of our Toujours Experience Boxes.', 3, 48, 0, 35, 'Paid parking nearby', 'https://restauranttoujours.nl/', 'https://restauranttoujours.nl/menus/', 'https://restauranttoujours.nl/reservations/'),
+(8, 10, 'TheGolden', 'In addition to high quality steaks, we offer a cozy no-nonsense atmosphere. All this in combination with a wide range of special wines. An experience where your taste buds are extremely stimulated.', 3, 60, 0, 35, 'It is easiest to park your car in Parking garage Raaks. It is a 3-minute walk from the parking garag', 'https://thegoldenbull.nl/', 'https://thegoldenbull.nl/menukaart/', 'https://thegoldenbull.nl/contact/');
 
 -- --------------------------------------------------------
 
@@ -672,12 +731,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `firstname`, `lastname`, `password`, `roleId`) VALUES
-(1, 'medon@live.com', 'medon', 'medon', '2e256b5bd3ae3308d6bd880bdad91cafe5607dd5', 0),
-(2, 'simona@live.com', 'Simona', 'Simona', 'e16f2ed3b55a0d5dd11e5258ef42ba41f3bc6234', 0),
-(3, 'mohamad@live.com', 'Mohamad', 'Mohamad', 'e50d6c395bbb5d84a7ca544b23b07f4bce8571ec', 0),
-(6, 'talar@hotmail.com', 'Talar', 'Talar', 'ff6b6fc9b94fc762edbc09dccd6a582bdc23bc46', 0),
-(7, 'rachel@live.com', 'Rachel', 'Rachel', 'c269af59b8d32af462511a834387cadae8cec538', 0),
-(8, 'razvan@live.com', 'Razvan', 'Razvan', '06c0bc100fffab82a74149317f597a1a5639dabc', 0);
+(1, 'rachel@live.com', 'Rachel', 'Green', 'c269af59b8d32af462511a834387cadae8cec538', 1),
+(2, 'happycavils@live.com', 'Henry', 'Cavil', '3c363836cf4e16666669a25da280a1865c2d2874', 2),
+(3, 'jim@live.com', 'Jim', 'Jimerson', '410013f679f8a5f0c2995c0432467124ef7cea10', 3);
 
 --
 -- Indexes for dumped tables
@@ -762,6 +818,26 @@ ALTER TABLE `location`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orderItems`
+--
+ALTER TABLE `orderItems`
+  ADD KEY `orderId` (`orderId`),
+  ADD KEY `activityId` (`activityId`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`orderId`);
+
+--
+-- Indexes for table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `food_activity_id` (`foodActivityId`);
+
+--
 -- Indexes for table `restaurant`
 --
 ALTER TABLE `restaurant`
@@ -804,6 +880,11 @@ ALTER TABLE `users`
 ALTER TABLE `activity`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 --
+-- AUTO_INCREMENT for table `artist`
+--
+ALTER TABLE `artist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
 -- AUTO_INCREMENT for table `foodActivity`
 --
 ALTER TABLE `foodActivity`
@@ -817,7 +898,7 @@ ALTER TABLE `historydate`
 -- AUTO_INCREMENT for table `historyguide`
 --
 ALTER TABLE `historyguide`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `historylanguage`
 --
@@ -847,12 +928,22 @@ ALTER TABLE `historytour`
 -- AUTO_INCREMENT for table `jazzActivity`
 --
 ALTER TABLE `jazzActivity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `reservation`
+--
+ALTER TABLE `reservation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `restaurant`
 --
@@ -877,7 +968,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- Constraints for dumped tables
 --
@@ -905,8 +996,21 @@ ALTER TABLE `historytour`
 -- Constraints for table `jazzActivity`
 --
 ALTER TABLE `jazzActivity`
-  ADD CONSTRAINT `jazzActivity_ibfk_2` FOREIGN KEY (`activityId`) REFERENCES `activity` (`id`),
-  ADD CONSTRAINT `jazzActivity_ibfk_1` FOREIGN KEY (`artistId`) REFERENCES `artist` (`id`);
+  ADD CONSTRAINT `jazzActivity_ibfk_1` FOREIGN KEY (`artistId`) REFERENCES `artist` (`id`),
+  ADD CONSTRAINT `jazzActivity_ibfk_2` FOREIGN KEY (`activityId`) REFERENCES `activity` (`id`);
+
+--
+-- Constraints for table `orderItems`
+--
+ALTER TABLE `orderItems`
+  ADD CONSTRAINT `orderItems_ibfk_1` FOREIGN KEY (`orderId`) REFERENCES `orders` (`orderId`),
+  ADD CONSTRAINT `orderItems_ibfk_2` FOREIGN KEY (`activityId`) REFERENCES `activity` (`id`);
+
+--
+-- Constraints for table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`foodActivityId`) REFERENCES `foodActivity` (`id`);
 
 --
 -- Constraints for table `restaurant`

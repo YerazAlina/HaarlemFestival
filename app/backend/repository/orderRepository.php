@@ -16,6 +16,7 @@ class orderRepository
 
     public string $insert_into_order = "INSERT INTO orders (fullName, email, address, houseNo, city, postCode, phoneNumber, subtotal, vat, total, paymentDue, invoiceDate) VALUES (:fullName, :email, :address, :houseNo, :city, :postCode, :phoneNumber, :subtotal, :vat, :total, NOW(), NOW())";
     public string $insert_into_orderItems = "INSERT INTO orderItems (orderId, activityId, quantity, subtotal) VALUES (:orderId, :activityId, :quantity, :subtotal)";
+    public string $get_last_id = "SELECT orderId FROM orders ORDER BY orderId DESC LIMIT 1";
 
 
     public function addOrder($fullName, $email, $address, $houseNo, $city, $postCode, $phoneNumber, $subtotal, $vat, $total, $paymentDue, $invoiceDate)
@@ -62,23 +63,21 @@ class orderRepository
         $count = $this->stmt->rowCount();
 
         if($count == 0){
-            echo 'failed to add order...........';
+            echo 'failed to add order.....';
             return false;
 
         }
         else{
             return true;
         }
-
-
-        
    
     }
 
     public function addOrderItems($orderId, $activityId, $quantity, $subtotal){
         
         $this->stmt = $this->db->prepare($this->insert_into_orderItems);
-
+        //$orderId = $this->getLastId();
+    
         
         $this->stmt->execute(
             array(
@@ -87,14 +86,14 @@ class orderRepository
                 'activityId' => $activityId,
                 'quantity'   => $quantity,
                 'subtotal'   => $subtotal
-               
+
             )
         );
 
         $count = $this->stmt->rowCount();
 
         if($count == 0){
-            echo 'failed to add items.......';
+            echo 'failed to add items.....';
             return false;
 
         }
@@ -103,6 +102,14 @@ class orderRepository
         }
 
 
+    }
+
+    public function getLastId(){
+
+        $this->stmt = $this->db->prepare($this->get_last_id);
+        $this->stmt->execute();
+        return $this->stmt->fetch(PDO::FETCH_ASSOC);
+        
     }
 
 }

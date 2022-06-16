@@ -133,6 +133,7 @@
 																														
 												?>
 										</span>
+										<input type="hidden" id="cart_subtotal" name="cart_subtotal" value=$total>
 									</div>
 									
 									<div class="summary-item" >
