@@ -18,7 +18,7 @@ class jazzRepository
     }
 
     private string $all_events_sql = "SELECT * FROM jazzActivity
-                                      JOIN activity a on a.id = jazzActivity.activityId AND a.date = '2022-07-28'
+                                      JOIN activity a on a.id = jazzActivity.activityId
                                       RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
                                       JOIN location l on l.id = a.locationId";
 
@@ -30,11 +30,7 @@ class jazzRepository
                                         JOIN location l on l.id = a.locationId";      
                                         
     private string $book_detail_sql = "SELECT * FROM books WHERE books.ISBN=:bookISBN";
-
-
-
-
-    /*
+    
 
     private string $thursday_events = "SELECT * FROM jazzActivity
                                       JOIN activity a on a.id = jazzActivity.activityId AND a.date = '2022-07-28'
@@ -55,7 +51,7 @@ class jazzRepository
                                       JOIN activity a on a.id = jazzActivity.activityId AND a.date = '2022-07-31'
                                       RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
                                       JOIN location l on l.id = a.locationId";
-    */
+    
 
     public function findAll()
     {
@@ -64,6 +60,40 @@ class jazzRepository
         $this->stmt->execute();
         return $this->stmt->fetchAll();
     }
+
+    public function getThursdayEvents(){
+        $this->stmt = $this->db->prepare($this->thursday_events);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'jazzActivity');
+        $this->stmt->execute();
+        return $this->stmt->fetchAll();
+
+    }
+
+    public function getFridayEvents(){
+        $this->stmt = $this->db->prepare($this->friday_events);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'jazzActivity');
+        $this->stmt->execute();
+        return $this->stmt->fetchAll();
+
+    }
+
+    public function getSaturdayEvents(){
+        $this->stmt = $this->db->prepare($this->saturday_events);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'jazzActivity');
+        $this->stmt->execute();
+        return $this->stmt->fetchAll();
+
+    }
+
+    public function getSundayEvents(){
+        $this->stmt = $this->db->prepare($this->sunday_events);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'jazzActivity');
+        $this->stmt->execute();
+        return $this->stmt->fetchAll();
+
+    }
+
+
 
     public function findEvents(){
 

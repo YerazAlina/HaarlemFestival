@@ -4,7 +4,7 @@ require_once __DIR__ . ('../../service/orderService.php');
 require_once __DIR__ . ('../../controller/paymentController.php');
 
 
-class orderContoller{
+class orderController{
 
     
     private orderService $orderservice;
@@ -20,8 +20,6 @@ class orderContoller{
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-
-            $orderId = '567';
             $fullName = $_POST['customer_full_name'] ;
             $email = $_POST['customer_email'] ;
             $address = $_POST['customer_address'];
@@ -29,9 +27,9 @@ class orderContoller{
             $city =  $_POST['customer_city'];
             $postCode = $_POST['customer_post_code'] ;
             $phoneNumber = $_POST['customer_phone_number'];
-            $subtotal = 678 ; // idk how to get a value from a span
-            $vat = 56.7; // ^^^^^^^
-            $total =723; //^^^^^^^
+            $subtotal = 5 ; // idk how to get a value from a span
+            $vat = 2; // ^^^^^^^
+            $total =7; //^^^^^^^
             $paymentDue = date('m/d/y');
             $invoiceDate = date('m/d/y');
 
@@ -43,7 +41,7 @@ class orderContoller{
                 $quantity = $values['quantity'];
                 $subtotal = $quantity * $values['price'];
 
-                $this->orderservice->addOrderItems(1, $activityId, $quantity, $subtotal);
+                $this->orderservice->addOrderItems(31, $activityId, $quantity, $subtotal);
                     
                 }
                 header('Location: confirmation');

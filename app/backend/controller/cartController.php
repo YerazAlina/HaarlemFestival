@@ -7,7 +7,7 @@ require_once __DIR__ . ('../../service/foodService.php');
 
 
 
-class cartContoller{
+class cartController{
 
     
     private jazzService $jazzservice;
@@ -103,6 +103,8 @@ class cartContoller{
             }
 
             $_SESSION['cart'][] = $cart;
+
+           
           
         }
 

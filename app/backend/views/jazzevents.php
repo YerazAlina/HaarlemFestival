@@ -108,7 +108,7 @@ include_once ('include/navbar.php')
 </div>
 
 
-<div class="container">
+<!-- <div class="container">
   <div class="col-md-12">
     <div class="row day-buttons">
     <button type="button" formaction="thursdayEvents" name="thursday" class="thursday-button btn btn-default col-md-2"> Thursday </button>
@@ -117,14 +117,14 @@ include_once ('include/navbar.php')
     <button type="button" formaction="sundayEvents" name="sunday" class="sunday-button btn btn-default col-md-2"> Sunday </button>
     </div>
   </div>
-</div>
+</div> -->
 
 
 <div class="events">
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
 
-   
+<!--    
         <div class="col-md-4 mb-4">
             <div class="card">
                 <div class="card-top day-pass-3">
@@ -152,9 +152,128 @@ include_once ('include/navbar.php')
                     <button type="submit" class="btn btn-outline-success btn-sm">Add to cart</button>
                 </div>
             </div>
+        </div> -->
+
+         <p  class="jazz-heading col-md-offset-4 "> <h2> Thursday </h2> </p>
+            <br>
+
+        <?php foreach ($thursday as $e){ 
+            ?>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-top">
+                    <img src="../img/jazz/artists/<?php echo $e->name ?>.png" class="card-img-top img-fluid" alt="..." height="200px">
+                </div>
+
+                
+                    <div class="card-body-event">
+                        <h5 class="card-title" name="artistname" id="artistname" > <?php echo $e->name ?> </h5>
+                        <p class="event-time">  <?php echo $e->date ?> at <?php echo $e->startTime ?>  -  <?php echo $e->endTime ?> 
+                        <p class="card-text"> <?php echo $e->description ?> </p>
+                        <p class="card-subtitle"> <?php echo $e->startTime ?> - <?php echo $e->endTime ?> </p>
+                        <p class="card-subtitle"> <?php echo $e->locationName?></p>
+                        <p class="card-subtitle"> $ <?php echo $e->price ?> </p>
+                        <br>
+                        <small> <p class="card-subtitle"> Tickets left: <?php echo $e->ticketsLeft ?> </p> </small>
+                        <br>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-outline-danger btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                        </svg></button>
+
+                        <form method="post">
+                         <button type="submit" id="addTicket" name="addTicket" value="<?php echo $e->activityId?>" formaction="cart" class="btn btn-outline-success btn-sm">Add to cart</button>
+                         </form>
+                    </div>
+                
+            </div>
         </div>
 
-        <?php foreach ($events as $e){ 
+        <?php }  ?>
+
+        <p class="jazz-heading col-md-offset-4"> <h2> Friday </h2> </p>
+           
+        <?php foreach ($friday as $e){ 
+            ?>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-top">
+                    <img src="../img/jazz/artists/<?php echo $e->name ?>.png" class="card-img-top img-fluid" alt="..." height="200px">
+                </div>
+
+                
+                    <div class="card-body-event">
+                        <h5 class="card-title" name="artistname" id="artistname" > <?php echo $e->name ?> </h5>
+                        <p class="event-time">  <?php echo $e->date ?> at <?php echo $e->startTime ?>  -  <?php echo $e->endTime ?> 
+                        <p class="card-text"> <?php echo $e->description ?> </p>
+                        <p class="card-subtitle"> <?php echo $e->startTime ?> - <?php echo $e->endTime ?> </p>
+                        <p class="card-subtitle"> <?php echo $e->locationName?></p>
+                        <p class="card-subtitle"> $ <?php echo $e->price ?> </p>
+                        <br>
+                        <small> <p class="card-subtitle"> Tickets left: <?php echo $e->ticketsLeft ?> </p> </small>
+                        <br>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-outline-danger btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                        </svg></button>
+
+                        <form method="post">
+                         <button type="submit" id="addTicket" name="addTicket" value="<?php echo $e->activityId?>" formaction="cart" class="btn btn-outline-success btn-sm">Add to cart</button>
+                         </form>
+                    </div>
+                
+            </div>
+        </div>
+
+        <?php }  ?>
+
+        <p class="jazz-heading col-md-offset-4"> <h2> Saturday </h2> </p>
+
+
+        <?php foreach ($saturday as $e){ 
+            ?>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-top">
+                    <img src="../img/jazz/artists/<?php echo $e->name ?>.png" class="card-img-top img-fluid" alt="..." height="200px">
+                </div>
+
+                
+                    <div class="card-body-event">
+                        <h5 class="card-title" name="artistname" id="artistname" > <?php echo $e->name ?> </h5>
+                        <p class="event-time">  <?php echo $e->date ?> at <?php echo $e->startTime ?>  -  <?php echo $e->endTime ?> 
+                        <p class="card-text"> <?php echo $e->description ?> </p>
+                        <p class="card-subtitle"> <?php echo $e->startTime ?> - <?php echo $e->endTime ?> </p>
+                        <p class="card-subtitle"> <?php echo $e->locationName?></p>
+                        <p class="card-subtitle"> $ <?php echo $e->price ?> </p>
+                        <br>
+                        <small> <p class="card-subtitle"> Tickets left: <?php echo $e->ticketsLeft ?> </p> </small>
+                        <br>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-outline-danger btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                        </svg></button>
+
+                        <form method="post">
+                         <button type="submit" id="addTicket" name="addTicket" value="<?php echo $e->activityId?>" formaction="cart" class="btn btn-outline-success btn-sm">Add to cart</button>
+                         </form>
+                    </div>
+                
+            </div>
+        </div>
+
+        <?php }  ?>
+
+        <p class="jazz-heading col-md-offset-4"> <h2> Sunday </h2> </p>
+
+
+        <?php foreach ($sunday as $e){ 
             ?>
 
         <div class="col-md-4 mb-4">
@@ -238,6 +357,7 @@ include_once ('include/navbar.php')
 
 
 
+<!-- 
 <div class="card day-pass">
     <div class="row">
         <div class="col-4">
@@ -259,7 +379,7 @@ include_once ('include/navbar.php')
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 
@@ -324,7 +444,7 @@ include_once ('include/navbar.php')
 <br><br>
 
 
-
+<!-- 
 <div class="card explore-more-card col-md-12">
     <div class="card-header explore-more">
         EXPLORE MORE
@@ -332,27 +452,18 @@ include_once ('include/navbar.php')
 
     <div class="card-body-images">
         <div class="row">
-            <div class="col-md-4">
-                <img src="../img/jazz/backgrounds/dance-image.png" alt="dance">
-                <p class="explore-label"> Dance > </p>
-            </div>
-
+            
             <div class="col-md-4">
                  <img src="../img/jazz/backgrounds/food-image.png" alt="food">
-                <p class="explore-label"> Food > </p>
+                 <p class="explore-label">   Food > </p>
 
 
             </div>
 
-            <div class="col-md-4">
-                <img src="../img/jazz/backgrounds/history-image.png" alt="history">
-                <p class="explore-label"> History > </p>
-
-            </div>
 
         </div>
     </div>
-</div>
+</div> -->
 
 
 <div class="container newsletter-box">

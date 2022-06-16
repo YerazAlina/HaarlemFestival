@@ -21,7 +21,7 @@
 		        <div class="block-heading">
 				
 		          <h2>Shopping Cart</h2>
-		          <p>You have "number" items in your shopping cart</p>
+		          <p>You have <?php if(empty($_SESSION['cart'])){ echo '0' ; } else { echo count($_SESSION['cart']); } ?> event(s) in your shopping cart</p>
 				  	<form method="post">   
 						<button type="submit" id="clearCart" name="clearCart" formaction="cart" class="btn btn-outline-danger btn-sm">Clear Cart</button>
 										
@@ -185,7 +185,7 @@
 											</div>
 										</div>	
 									
-									<button type="submit" id="purchaseTickets" name="purchaseTickets" formaction="purchase" class="btn btn-danger btn-lg btn-block">Checkout</button>
+									<button type="submit" id="purchaseTickets" name="purchaseTickets" formaction="purchase" class="btn btn-danger btn-lg btn-block">Confirm Order</button>
 									
 								</div>
 							</form>

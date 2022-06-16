@@ -40,7 +40,7 @@ class SwitchRouter
 
             case 'cart':
                 require __DIR__ . '/backend/controller/cartController.php';  
-                $controller = new cartContoller();
+                $controller = new cartController();
 
                 if(isset($_POST['addTicket'])){
                     $_POST['action'] = "addToCart";
@@ -54,13 +54,18 @@ class SwitchRouter
                 elseif(isset($_POST['clearCart'])){
                     $_POST['action'] = "clearCart";
                 }
-                
+                else{
+
+                    $_POST['action'] = "displayPage";
+
+                }
                 $controller->run();
+                //require __DIR__ . '/backend/views/cart.php';  
 
                 break;
             case 'purchase':
                 require __DIR__ . '/backend/controller/orderController.php';  
-                $controller = new orderContoller();
+                $controller = new orderController();
                 $controller->purchase();
                 break;
             case 'confirmation':
