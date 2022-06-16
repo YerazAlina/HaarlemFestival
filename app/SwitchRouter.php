@@ -210,6 +210,19 @@ class SwitchRouter
                 $controller->changeStatus($_SESSION['updateId']);
                 header('Location: reservationcms');
                 break;
+                ///////////////////////////////////////////////////////////////////// FOOD SESSIONS CMS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+            case 'foodsessionscms':
+                require __DIR__ . '/backend/controller/foodController.php';
+                $controller = new foodController();
+                $controller->allfoodRestaurantCMS();
+                break;
+            case 'addSession':
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                //$controller->addEvent();
+                //$controller->allJazzEventscms();
+                break;
+
 
 
 

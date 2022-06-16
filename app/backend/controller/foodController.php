@@ -20,6 +20,12 @@ class foodController
         require __DIR__ . ('/../views/food.php');
     }
 
+    public function allfoodRestaurantCMS()
+    {
+        $restaurants = $this->foodservice->getRestaurants();
+        require __DIR__ . ('/../views/cms/food/foodsessionscms.php');
+    }
+
     // get a restaurant by Id
     public function getRestaurantById()
     {
@@ -108,7 +114,6 @@ class foodController
 
         $count = $this->foodservice->changeStatus($id, $bit);
     }
-
 
     public function getRestaurantByIdCMS($id)
     {
