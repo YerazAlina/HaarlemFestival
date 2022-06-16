@@ -20,7 +20,7 @@
     <?php require __DIR__ . '../../include/navbar.php'; ?>
     <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
     <div class="wrapper" style="margin: auto; padding: 30px;">
-        <h3>Manage Food Sessions</h3>
+        <h3>Current Food Sessions</h3>
         <br>
         <table class="table table-striped">
             <thead>

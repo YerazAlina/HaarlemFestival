@@ -47,15 +47,7 @@
                         <td><?php echo $e->date ?></td>
                         <td><?php echo $e->startTime ?></td>
                         <td><?php echo $e->endTime ?></td>
-                        <td>
-                            <?php
-                            if ($e->activityHall == "None") {
-                                echo "Grote Markt";
-                            } else {
-                                echo $e->activityHall . " Hall, Patronaat";
-                            }
-                            ?>
-                        </td>
+                        <td><?php echo "LocationId: " .  $e->locationId ?></td>
                         <td>
                             <?php
                             if ($e->price == 0) {
