@@ -24,25 +24,18 @@ class jazzRepository
                                       JOIN activity a on a.id = jazzActivity.activityId AND a.date
 
                                       RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
-                                      JOIN location l on l.id = a.locationId";
-
-    //private string $get_one_event_sql = "SELECT * FROM jazzActivity WHERE jazzActivity.activityId=:id";                            
+                                      JOIN location l on l.id = a.locationId";                         
 
     private string $get_one_event_sql = "SELECT * FROM jazzActivity
                                         JOIN activity a on a.id = jazzActivity.activityId AND jazzActivity.activityId=:id
                                         RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
                                         JOIN location l on l.id = a.locationId";
 
-    private string $book_detail_sql = "SELECT * FROM books WHERE books.ISBN=:bookISBN";
-
     private string $all_artists_sql = "SELECT * FROM artist";
 
     private string $delete_artist_sql = "delete from artist where id = :id";
 
     private string $get_one_artist_sql = "SELECT * FROM artist WHERE id=:id";
-
-    
-
 
     private string $thursday_events = "SELECT * FROM jazzActivity
                                       JOIN activity a on a.id = jazzActivity.activityId AND a.date = '2022-07-28'
