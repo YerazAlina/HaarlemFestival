@@ -14,11 +14,9 @@
 
 <body>
     <?php require __DIR__ . '../../include/navbar.php'; ?>
+    <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
     <div class="wrapper" style="margin: auto; padding: 30px;">
-        <!-- <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
-        <br> <br> <br> -->
         <h3>Manage Jazz Artist</h3>
-        <br>
         <table class="table table-striped" style="width:80%">
             <thead>
                 <tr>
@@ -36,7 +34,7 @@
                 ?>
                     <tr>
                         <th scope="row"> <?php echo $a->id ?> </th>
-                        <td><?php echo $a->artistname ?></td>
+                        <td><?php echo $a->name ?></td>
                         <td style="width:40%;"><?php echo $a->description ?></td>
                         <form action="editArtist" method="post">
                             <td><a href="editArtist">

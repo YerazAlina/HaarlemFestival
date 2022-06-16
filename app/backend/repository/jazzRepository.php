@@ -192,16 +192,16 @@ class jazzRepository
         return $this->stmt->execute();
     }
 
-    public function addArtist($artistname, $description)
+    public function addArtist($name, $description)
     {
         $count = "";
 
         //INSERT INTO `artist`(`id`, `artistname`, `description`) VALUES ([value-1],[value-2],[value-3])
-        $query = "INSERT INTO artist (artistname, description) VALUES (:artistname, :description)";
+        $query = "INSERT INTO artist (name, description) VALUES (:name, :description)";
         $statement = $this->db->prepare($query);
         $statement->execute(
             array(
-                'artistname'        =>     $artistname,
+                'name'              =>     $name,
                 'description'       =>     $description
             )
         );

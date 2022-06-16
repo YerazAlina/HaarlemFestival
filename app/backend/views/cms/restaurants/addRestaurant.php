@@ -23,17 +23,55 @@
     <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
 
     <div class="wrapper" style="margin: auto; padding: 30px; width: 400px;">
-        <h2>Add Artist</h2>
-        <p>Add a new artist for the Jazz events</p>
-        <form action="addArtist" method="post">
+        <h2>Add Restaurant</h2>
+        <p>Add a new restaurant to the Haarlem Festival restaurants</p>
+        <form action="addRestaurant" method="post">
+        <!-- $location, $name, $description, $stars, $seats, $phoneNumber, $price, $parking, $website, $menu, $contact -->
             <div class="form-group">
-                <label>Artist name</label>
-                <input type="text" name="artistname">
+                <label>Location</label>
+                <input type="text" name="location">
+            </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name">
             </div>
             <div class="form-group">
                 <label>Description</label>
-                <textarea type="text" name="description" row="6"></textarea>
+                <input type="text" name="description">
             </div>
+            <div class="form-group">
+                <label>Number of Stars</label>
+                <input type="text" name="stars">
+            </div>
+            <div class="form-group">
+                <label>Number of Seats</label>
+                <input type="text" name="seats">
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" name="phoneNumber">
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input type="text" name="price">
+            </div>
+            <div class="form-group">
+                <label>Parking Information</label>
+                <input type="text" name="parking">
+            </div>
+            <div class="form-group">
+                <label>Website (link)</label>
+                <input type="text" name="website">
+            </div>
+            <div class="form-group">
+                <label>Menu (link)</label>
+                <input type="text" name="menu">
+            </div>
+            <div class="form-group">
+                <label>Contact (link)</label>
+                <input type="text" name="contact">
+            </div>
+
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-secondary ml-2" value="Reset">
@@ -41,7 +79,7 @@
         </form>
 
     </div>
-    <?php require __DIR__ . '../../include/footer.php'; ?>
+    <?php //require __DIR__ . '../../include/footer.php'; ?>
 </body>
 
 </html>

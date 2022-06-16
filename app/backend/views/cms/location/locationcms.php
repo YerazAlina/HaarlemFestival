@@ -20,9 +20,7 @@
 <body>
     <?php require __DIR__ . '../../include/navbar.php'; ?>
     <div class="wrapper" style="margin: auto; padding: 30px;">
-    <!-- id -- name -- address -- postalCode -- city -- capacity -->
         <h3>Manage Locations</h3>
-        <br>
         <table class="table table-striped" style="width:62%">
             <thead>
                 <tr>
@@ -42,7 +40,7 @@
                 ?>
                     <tr>
                         <th scope="row"> <?php echo $l->id; ?> </th>
-                        <td><?php echo $l->name; ?></td>
+                        <td><?php echo $l->locationName; ?></td>
                         <td><?php echo $l->address; ?></td>
                         <td><?php echo $l->postalCode; ?></td>
                         <td><?php echo $l->city; ?></td>

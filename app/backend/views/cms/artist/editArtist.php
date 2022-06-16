@@ -23,35 +23,17 @@
     <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
 
     <div class="wrapper" style="margin: auto; padding: 30px; width: 400px;">
-    <!-- id -- name -- address -- postalCode -- city -- capacity -->
-        <h2>Edit Location</h2>
-        <p>Edit the information of the location. Please note that this might also effect the events.</p>
-        <form action="updateLocationCMS" method="post">
+        <h2>Edit Artist</h2>
+        <p>edit the information of the artist. Please note that this might also effect the events.</p>
+        <form action="updateArtistCMS" method="post">
             <div class="form-group">
-                <label>Name</label>
-                <input type="text" name="name" value="<?php echo $location->locationName; ?>">
+                <label>Artist name</label>
+                <input type="text" name="artist" value="<?php echo $artist->name; ?>">
             </div>
-
             <div class="form-group">
-                <label>Address</label>
-                <input type="text" name="address" value="<?php echo $location->address; ?>">
+                <label>Description</label>
+                <textarea type="text" name="description" row="15"><?php echo $artist->description; ?></textarea>
             </div>
-
-            <div class="form-group">
-                <label>Postal Code</label>
-                <input type="text" name="postalCode" value="<?php echo $location->postalCode; ?>">
-            </div>
-
-            <div class="form-group">
-                <label>City</label>
-                <input type="text" name="city" value="<?php echo $location->city; ?>">
-            </div>
-
-            <div class="form-group">
-                <label>Capacity</label>
-                <input type="text" name="capacity" value="<?php echo $location->capacity; ?>">
-            </div>
-
             <div class="form-group">
                 <a href="saveChanges">
                     <input type="submit" class="btn btn-primary" value="Save">

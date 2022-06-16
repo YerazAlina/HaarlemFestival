@@ -22,7 +22,6 @@ class UserController
         }
     }
 
-
     public function getUserDetails($email)
     {
         $userDetails = $this->service->searchByEmail($email);
@@ -72,7 +71,7 @@ class UserController
 
         $confirm_password = $_POST['confirm_password'];
 
-        $roleId = 1;
+        $roleId = 3;
 
         $select = $this->service->searchByEmail($email);
 
@@ -127,7 +126,7 @@ class UserController
             $_SESSION['email'] = $email;
         }
 
-        header('Location: home');
+        header('Location: manageUsers');
     }
 
     public function logout()

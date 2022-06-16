@@ -15,23 +15,22 @@
 <body>
     <?php require __DIR__ . '/include/navbar.php'; ?>
 
-    <div class="wrapper" style="margin: auto; width: 400px; padding: 30px;">
-        <h3>Manage Content</h3>
-        <p>The website can be edited here choose a page that you want to edit:</p>
+    <div class="wrapper" style="margin: auto; width: 500px; padding: 30px;">
+        <h3>Content Management System</h3>
+        <p>The website can be edited here choose a category that you want to edit</p>
 
         <div class="list-group">
             <!-- works -->
             <a href="locationcms" class="list-group-item list-group-item-action">All Locations and Venues</a> 
-            <a href="artistcms" class="list-group-item list-group-item-action">Jazz Artist</a>
-
+            <a href="artistcms" class="list-group-item list-group-item-action">Jazz Artists</a>
             <a href="jazzcms" class="list-group-item list-group-item-action">Jazz Events</a>
-
             <a href="foodcms" class="list-group-item list-group-item-action">Restaurants</a>
-            <a href="foodcms" class="list-group-item list-group-item-action">Restaurants Reservations</a>
-            <a href="foodcms" class="list-group-item list-group-item-action">Restaurants Events</a>
+            
+            <a href="reservationcms" class="list-group-item list-group-item-action">Restaurants Reservations</a>
+            <a href="foodsessionscms" class="list-group-item list-group-item-action">Restaurants Sessions</a>
 
-            <a href="#" class="list-group-item list-group-item-action disabled">History (currently unavailable)</a>
-            <a href="#" class="list-group-item list-group-item-action disabled">Music (currently unavailable)</a>
+            <!-- <a href="#" class="list-group-item list-group-item-action disabled">History (currently unavailable)</a>
+            <a href="#" class="list-group-item list-group-item-action disabled">Music (currently unavailable)</a> -->
         </div>
 
     </div>

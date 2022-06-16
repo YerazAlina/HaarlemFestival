@@ -7,12 +7,12 @@ require_once("location.php");
 class artist {
 
     public int $id;
-    public string $artistname;
+    public string $name;
     public string $artistdescription;
 
     /**
      * @param int $id
-     * @param string $artistname
+     * @param string $name
      * @param string $artistdescription
      */
 
@@ -33,21 +33,6 @@ class artist {
         $this->id = $id;
     }
 
-    /**
-     * @return string
-     */
-    public function getArtistname(): string
-    {
-        return $this->artistname;
-    }
-
-    /**
-     * @param string $artistname
-     */
-    public function setArtistname(string $artistname): void
-    {
-        $this->artistname = $artistname;
-    }
 
     /**
      * @return string
@@ -65,7 +50,23 @@ class artist {
         $this->artistdescription = $artistdescription;
     }
 
+    /**
+     * Get the value of name
+     */ 
+    public function getName()
+    {
+        return $this->name;
+    }
 
+    /**
+     * Set the value of name
+     *
+     * @return  self
+     */ 
+    public function setName($name)
+    {
+        $this->name = $name;
 
-
+        return $this;
+    }
 }

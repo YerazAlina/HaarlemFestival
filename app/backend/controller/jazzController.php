@@ -37,15 +37,15 @@ class jazzController
     //JAZZ ARTISTS CMS
     public function allJazzArtistscms(){
         $artists = $this->jazzservice->getArtists();
-        require __DIR__ . ('../../views/cms/jazz/artistcms.php');
+        require __DIR__ . ('../../views/cms/artist/artistcms.php');
     }
 
     public function addArtist()
     {
-        $artistname =  $_POST['artistname'];
+        $name =  $_POST['name'];
         $description = $_POST['description'];
 
-        $count = $this->jazzservice->addArtist($artistname, $description);
+        $count = $this->jazzservice->addArtist($name, $description);
     }
 
 

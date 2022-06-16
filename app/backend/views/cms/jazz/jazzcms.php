@@ -18,9 +18,8 @@
 
 <body>
     <?php require __DIR__ . '../../include/navbar.php'; ?>
+    <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
     <div class="wrapper" style="margin: auto; padding: 30px;">
-        <!-- <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
-        <br> <br> <br> -->
         <h3>Manage Jazz Events</h3>
         <br>
         <table class="table table-striped" style="width:88%">
@@ -44,19 +43,11 @@
                 ?>
                     <tr>
                         <th scope="row"> <?php echo $e->activityId; ?> </th>
-                        <td><?php echo $e->artistname ?></td>
+                        <td><?php echo $e->name ?></td>
                         <td><?php echo $e->date ?></td>
                         <td><?php echo $e->startTime ?></td>
                         <td><?php echo $e->endTime ?></td>
-                        <td>
-                            <?php
-                            if ($e->activityHall == "None") {
-                                echo "Grote Markt";
-                            } else {
-                                echo $e->activityHall . " Hall, Patronaat";
-                            }
-                            ?>
-                        </td>
+                        <td><?php echo "LocationId: " .  $e->locationId ?></td>
                         <td>
                             <?php
                             if ($e->price == 0) {
@@ -72,7 +63,6 @@
                                 echo "No Maximum";
                             } else {
                                 echo $e->ticketsLeft;
-                                //TODO:THIS SHOULD BE TOTAL NR OF TICKETS 
                             }
                             ?>
                         </td>
