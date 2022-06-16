@@ -138,7 +138,14 @@ class SwitchRouter
                 $controller = new jazzController();
                 $controller->allJazzArtistscms();
                 break;
+
+            case 'homepage':
+                require __DIR__. '/backend/views/homepage.php';
+                break;    
+            case 'jazz':
+
             case 'addArtist': //add
+
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
                 $controller->addArtist();
@@ -218,7 +225,7 @@ class SwitchRouter
 
             case 'cart':
                 require __DIR__ . '/backend/controller/cartController.php';  
-                $controller = new cartContoller();
+                $controller = new cartController();
 
                 if(isset($_POST['addTicket'])){
                     $_POST['action'] = "addToCart";
@@ -226,16 +233,19 @@ class SwitchRouter
                 }elseif(isset($_POST['removeTicket'])){
                     $_POST['action'] = "removeFromCart";
                     
-                }else if(isset($_POST['addQuantity'])){
+                }elseif(isset($_POST['addQuantity']) || isset($_POST['subtractQuantity']) ){
                     $_POST['action'] = "updateCart";
                 }
-
-                else{
+                elseif(isset($_POST['clearCart'])){
                     $_POST['action'] = "clearCart";
+                }
+                else{
+
+                    $_POST['action'] = "displayPage";
 
                 }
-                
                 $controller->run();
+                //require __DIR__ . '/backend/views/cart.php';  
 
 
 
@@ -252,7 +262,14 @@ class SwitchRouter
                 //$controller->allJazzEventscms();
 
                 break;
-
+            case 'purchase':
+                require __DIR__ . '/backend/controller/orderController.php';  
+                $controller = new orderController();
+                $controller->purchase();
+                break;
+            case 'confirmation':
+                require __DIR__ . '/backend/views/confirmation.php';  
+                break;
 
 
 
@@ -284,6 +301,7 @@ class SwitchRouter
                 break;
 
             default:
+
                 echo '404 not found';
                 http_response_code(404);
         }

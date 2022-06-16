@@ -20,6 +20,12 @@ class jazzController
 
     public function allJazzEvents(){
         $events = $this->jazzservice->getEvents();
+
+        $thursday = $this->thursdayEvents();
+        $friday = $this->fridayEvents();
+        $saturday = $this->saturdayEvents();
+        $sunday = $this->sundayEvents();
+        
         require __DIR__ . ('/../views/jazzevents.php');
     }
   
@@ -42,11 +48,34 @@ class jazzController
         $count = $this->jazzservice->addArtist($artistname, $description);
     }
 
+
+    public function thursdayEvents(){
+        return $this->jazzservice->getThursdayEvents();
+
+    }
+
+    public function fridayEvents(){
+        return $this->jazzservice->getFridayEvents();
+
+    }
+
+    public function saturdayEvents(){
+        return $this->jazzservice->getSaturdayEvents();
+
+    }
+
+    public function sundayEvents(){
+        return $this->jazzservice->getSundayEvents();
+
+    }
+
+
+
+
     public function updateArtist($id)
     {
         $artist =  $_POST['artist'];
         $description = $_POST['description'];
-
         $count = $this->jazzservice->updateArtist($id, $artist, $description);
 
         if(empty($count)){

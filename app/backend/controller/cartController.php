@@ -7,7 +7,7 @@ require_once __DIR__ . ('../../service/foodService.php');
 
 
 
-class cartContoller{
+class cartController{
 
     
     private jazzService $jazzservice;
@@ -35,7 +35,11 @@ class cartContoller{
                     break;      
                 case 'updateCart':
                     $this->updateQuantity();
-                    break;     
+                    break;
+                case 'displayPage':
+                    require __DIR__ . ('/../views/cart.php');
+                    break;
+
                 
             }
         }
@@ -49,10 +53,22 @@ class cartContoller{
         // $activityId = null;
         // $cart = null;
 
+        if(!isset($_SESSION['cart'])){
+            $_SESSION['cart'] = array();
+
+        }
 
         if(!empty($_POST['addTicket'])){
 
             $activityId = $_POST['addTicket'];
+
+
+            if(in_array($activityId, $_SESSION['cart'])){
+                $_POST['action'] = 'updateCart';
+                echo 'in cart';
+                $this->run();
+            }
+
             $getType = $this->activityservice->getType($activityId);
 
             $type = "";
@@ -77,6 +93,7 @@ class cartContoller{
 
             }
 
+
             foreach($details as $detail){
 
                 $cart = array (
@@ -85,54 +102,75 @@ class cartContoller{
                     'startTime' => $detail['startTime'],
                     'endTime' => $detail['endTime'],
                     'location' => $detail['locationName'],
+                    'address' => $detail['address'],
+                    'ticketsLeft' => $detail['ticketsLeft'],
                     'date' => $detail['date'],
                     'price' => $detail['price'],
                     'id' => $detail['activityId'],
-                    'quantity' => $_POST['addQuantity']
+                    'quantity' => 1
                 );
             
             }
 
             $_SESSION['cart'][] = $cart;
-
             
-          
+        
+
         }
 
         require __DIR__ . ('/../views/cart.php');
+
 
     }
 
     
     public function updateQuantity(){
 
-        if(isset($_POST['addQuantity'])){
+        if(isset($_POST['addQuantity']) || isset($_POST['subtractQuantity'])){
 
-            $id = $_POST['addQuantity'];
-            //$_SESSION['cart'][$id]['quantity'] += 1;
+            //$id = ;
+            // $_SESSION['cart'][$id]['quantity'] += 1;
             // $newValue = $_SESSION['cart']['quantity'][$id] ++;
-            // array_replace($newValue, $_SESSION['cart'][$id]['quantity']);
+            // array_replace_value($_SESSION['cart'][$id]['quantity'], $newValue);
             // print($_SESSION['cart'][$id]['quantity']);
 
            
-            foreach($_SESSION['cart'] as $items=>$values){
-                if($id == $values['id']){
+            foreach($_SESSION['cart'] as $items => $values){
+                if(isset($_POST['addQuantity'])){
+                    if($values['id'] == $_POST['addQuantity']){
 
-                    $values['quantity']++;
-                    print($values['quantity']);
-
-                    break;
+                        $_SESSION['cart'][$items]['quantity'] += 1;
+                        //$_SESSION['cart'][$items]['price'] = $values['price'] * $_SESSION['cart'][$items]['quantity'] ;
+                        //print($values['quantity']);
+    
+                    }
                 }
+                elseif(isset($_POST['subtractQuantity'])){
+                    if($values['id'] == $_POST['subtractQuantity']){
+
+                        $_SESSION['cart'][$items]['quantity'] -=1;
+                        //$_SESSION['cart'][$items]['price'] = $values['price'] * $_SESSION['cart'][$items]['quantity'];
+
+                        if($_SESSION['cart'][$items]['quantity'] == 0){
+                                unset($_SESSION['cart'][$items]);
+                        
+                       
+                        }
+                        //print($values['quantity']);
+    
+                    }
+
+                }
+               
+
             }
 
-        }
 
+        }
+       
         require __DIR__ . ('/../views/cart.php');
     }
 
-
-
-   
    
 
     public function removeFromCart(){
@@ -166,6 +204,10 @@ class cartContoller{
 	    $_SESSION['message'] = 'Cart cleared successfully';
         require __DIR__ . ('/../views/cart.php');
 
+    }
+
+    public function addOrder(){
+        
     }
 
   

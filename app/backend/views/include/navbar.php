@@ -29,7 +29,7 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="jazzevents">JAZZ</a>
+                            <a class="nav-link active" href="jazz">JAZZ</a>
                         </li>
 
                         <li class="nav-item">

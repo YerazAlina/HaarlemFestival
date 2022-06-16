@@ -18,10 +18,26 @@ class jazzService{
         return $this->jazzrepository->findAll();
     }
 
+    public function getThursdayEvents(){
+        return $this->jazzrepository->getThursdayEvents();
+    }
+
+    public function getFridayEvents(){
+        return $this->jazzrepository->getFridayEvents();
+    }
+
+    public function getSaturdayEvents(){
+        return $this->jazzrepository->getSaturdayEvents();
+    }
+
+    public function getSundayEvents(){
+        return $this->jazzrepository->getSundayEvents();
+    }
+
     public function getArtists(){
         return $this->jazzrepository->findAllArtists();
     }
-
+  
     public function getOne($id){
         return $this->jazzrepository->findById($id);
     }
