@@ -222,49 +222,59 @@ class SwitchRouter
                 //$controller->addEvent();
                 //$controller->allJazzEventscms();
                 break;
-
-
-
-
-
-
-
-
-
-
-
+                ///////////////////////////////////////////////////////////////////// FOOD  WEBSITE \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+            case 'food':
+                require __DIR__ . '/backend/controller/foodController.php';
+                $controller = new foodController();
+                $controller->allfoodRestaurant();
+                $controller = new cartController();
+                $controller->index();
+                break;
             case 'foodReservation':
                 require __DIR__ . '/backend/controller/foodController.php';
-
                 $controller = new foodController();
-
                 //require __DIR__ . '/backend/controller/cartController.php';
                 //$controller = new cartController();
                 // $controller->index();
                 break;
-
+                /////////////////////////////////////////////////////////////////////  CART + ORDER WEBSITE \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
             case 'cart':
                 require __DIR__ . '/backend/controller/cartController.php';
-                $controller = new cartContoller();
+                $controller = new cartController();
 
                 if (isset($_POST['addTicket'])) {
                     $_POST['action'] = "addToCart";
                 } elseif (isset($_POST['removeTicket'])) {
                     $_POST['action'] = "removeFromCart";
-                } else if (isset($_POST['addQuantity'])) {
+                } elseif (isset($_POST['addQuantity']) || isset($_POST['subtractQuantity'])) {
                     $_POST['action'] = "updateCart";
-                } else {
+                } elseif (isset($_POST['clearCart'])) {
                     $_POST['action'] = "clearCart";
+                } else {
+                    $_POST['action'] = "displayPage";
                 }
-
                 $controller->run();
-
-
-
-
-
-
-                //JUST VIEWS
+                break;
+            case 'purchase':
+                require __DIR__ . '/backend/controller/orderController.php';
+                $controller = new orderController();
+                $controller->purchase();
+                break;
+                ///////////////////////////////////////////////////////////////////// FOOD  WEBSITE \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+            case 'jazz':
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $controller->allJazzEvents();
+                $controller = new cartController();
+                $controller->index();
+                break;
+                ///////////////////////////////////////////////////////////////////// VIEWS ONLY \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+            case 'homepage':
+                require __DIR__ . '/backend/views/homepage.php';
+                break;
+            case 'confirmation':
+                require __DIR__ . '/backend/views/confirmation.php';
+                break;
             case 'addArtistView':
                 require __DIR__ . '/backend/views/cms/artist/addArtist.php';
                 break;
@@ -284,11 +294,10 @@ class SwitchRouter
                 //for creating a new user account as superadminuser
                 require __DIR__ . '/backend/views/cms/users/createuser.php';
                 break;
-            case 'home':
+            case 'homecms':
             case 'manageContent':
                 require __DIR__ . '/backend/views/cms/manageContent.php';
                 break;
-
             default:
                 echo '404 not found';
                 http_response_code(404);
