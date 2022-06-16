@@ -70,7 +70,6 @@ class SwitchRouter
                 break;
             case 'confirmation':
                 require __DIR__ . '/backend/views/confirmation.php';  
-               
                 break;
 
             default:

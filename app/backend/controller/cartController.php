@@ -53,11 +53,22 @@ class cartController{
         // $activityId = null;
         // $cart = null;
 
-        //$_SESSION['cart'][] =array();
+        if(!isset($_SESSION['cart'])){
+            $_SESSION['cart'] = array();
+
+        }
 
         if(!empty($_POST['addTicket'])){
 
             $activityId = $_POST['addTicket'];
+
+
+            if(in_array($activityId, $_SESSION['cart'])){
+                $_POST['action'] = 'updateCart';
+                echo 'in cart';
+                $this->run();
+            }
+
             $getType = $this->activityservice->getType($activityId);
 
             $type = "";
@@ -85,8 +96,6 @@ class cartController{
 
             foreach($details as $detail){
 
-
-
                 $cart = array (
 
                     'name' => $detail['name'],
@@ -94,6 +103,7 @@ class cartController{
                     'endTime' => $detail['endTime'],
                     'location' => $detail['locationName'],
                     'address' => $detail['address'],
+                    'ticketsLeft' => $detail['ticketsLeft'],
                     'date' => $detail['date'],
                     'price' => $detail['price'],
                     'id' => $detail['activityId'],
@@ -103,12 +113,13 @@ class cartController{
             }
 
             $_SESSION['cart'][] = $cart;
+            
+        
 
-           
-          
         }
 
         require __DIR__ . ('/../views/cart.php');
+
 
     }
 

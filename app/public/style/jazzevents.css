@@ -118,9 +118,14 @@
     font-weight: bold;
 }
 
-.card-body-event{
+.card-body-event-jazz{
     padding: 15px;
     height: 280px;
+}
+
+.card-body-event-food{
+    padding: 15px;
+    height: 350px;
 }
 
 .card{

@@ -22,6 +22,7 @@ class activityRepository
 
 
     private string $get_one_event_sql = "SELECT type FROM activity WHERE activity.id=:id";
+    private string $update_ticket_left = "UPDATE activity SET ticketsLeft=:ticketsLeft WHERE id=:id";
 
 
     public function findById($id)
@@ -34,6 +35,28 @@ class activityRepository
         } else {
             return null;
         }
+    }
+
+    public function updateTicketsLeft($id, $updatedTicketNo){
+
+        $this->stmt = $this->db->prepare($this->update_ticket_left);
+        $this->stmt->execute([':ticketsLeft' => $updatedTicketNo,':id'=>$id]);
+
+        $count = $this->stmt->rowCount();
+
+        if($count == 0){
+            //echo 'failed to update ticket no............';
+            return false;
+
+        }
+        else{
+            //echo 'updated ticket no = ' . $updatedTicketNo;
+            return true;
+        }
+
+
+
+
     }
 
 }

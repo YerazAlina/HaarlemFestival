@@ -2,17 +2,21 @@
 
 require_once __DIR__ . ('../../service/orderService.php');
 require_once __DIR__ . ('../../controller/paymentController.php');
+require_once __DIR__ . ('../../service/activityService.php');
+
 
 
 class orderController{
 
     
     private orderService $orderservice;
+    private activityService $activityservice;
     private paymentController $paymentcontroller;
 
     public function __construct(){
         $this->orderservice = new orderService();
         $this->paymentcontroller = new paymentController();
+        $this->activityservice = new activityService();
     }
 
     public function purchase()
@@ -42,8 +46,14 @@ class orderController{
                 $subtotal = $quantity * $values['price'];
 
                 $this->orderservice->addOrderItems(31, $activityId, $quantity, $subtotal);
+                        
+                $updatedTicketNo = $values['ticketsLeft'] - $quantity;
+                $this->activityservice->updateTicketsLeft($activityId, $updatedTicketNo);
                     
                 }
+
+                $_SESSION['email'] = $email;
+                unset($_SESSION['cart']);
                 header('Location: confirmation');
 
                 //$this->paymentcontroller->InitializeMollie();
@@ -51,9 +61,7 @@ class orderController{
 
             }
 
-
-
-
+          
 
         }
 

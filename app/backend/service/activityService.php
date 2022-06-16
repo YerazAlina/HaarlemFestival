@@ -20,5 +20,9 @@ class activityService{
         return $this->activityrepository->findById($id);
     }
 
+    public function updateTicketsLeft($id, $updatedTicketNo){
+        return $this->activityrepository->updateTicketsLeft($id, $updatedTicketNo);
+    }
+
 }
 
