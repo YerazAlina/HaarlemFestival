@@ -20,6 +20,7 @@ class foodRepository
 
 
     private string $get_all_restaurants_sql = "SELECT * FROM restaurant";
+    private string $get_all_reservations_sql = "SELECT * FROM reservation";
     private string $delete_restaurant_sql = "DELETE FROM restaurant WHERE id = :id";
     private string $get_one_restaurant__sql = "SELECT * FROM restaurant WHERE id = :id";
 
@@ -62,6 +63,8 @@ class foodRepository
         return $this->stmt->fetchAll();
     }
 
+    //findAllReservations()
+
     public function findAllRestaurants()
     {
         $this->stmt = $this->db->prepare($this->get_all_restaurants_sql);
@@ -70,6 +73,14 @@ class foodRepository
         return $this->stmt->fetchAll();
     }
 
+
+    public function findAllReservations()
+    {
+        $this->stmt = $this->db->prepare($this->get_all_reservations_sql);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'reservation');
+        $this->stmt->execute();
+        return $this->stmt->fetchAll();
+    }
 
     public function findEvents()
     {

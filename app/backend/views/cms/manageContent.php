@@ -26,7 +26,7 @@
             <a href="jazzcms" class="list-group-item list-group-item-action">Jazz Events</a>
             <a href="foodcms" class="list-group-item list-group-item-action">Restaurants</a>
             
-            <!-- <a href="foodcms" class="list-group-item list-group-item-action">Restaurants Reservations</a> -->
+            <a href="reservationcms" class="list-group-item list-group-item-action">Restaurants Reservations</a>
             <!-- <a href="foodcms" class="list-group-item list-group-item-action">Restaurants Events</a> -->
 
             <!-- <a href="#" class="list-group-item list-group-item-action disabled">History (currently unavailable)</a>

@@ -44,6 +44,10 @@ class foodService{
         return $this->foodrepository->updateRestaurant($id, $location, $name, $description, $stars, $seats, $phoneNumber, $price, $parking, $website, $menu, $contact);
     }
 
+    public function getAllReservations(){
+        return $this->foodrepository->findAllReservations();
+    }
+
 
 
 

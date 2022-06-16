@@ -39,6 +39,12 @@ class foodController
         require __DIR__ . ('/../views/cms/restaurants/foodcms.php');
     }
 
+    public function allReservations()
+    {
+        $reservations = $this->foodservice->getAllReservations();
+        require __DIR__ . ('/../views/cms/reservations/reservationcms.php');
+    }
+
     public function addRestaurant()
     {
         // $id, $location, $name, $description, $stars, $seats, $phoneNumber, $price, $parking, $website, $menu, $contact

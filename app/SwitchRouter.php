@@ -197,8 +197,12 @@ class SwitchRouter
                 $controller = new foodController();
                 $controller->deleteRestaurant();
                 break;
-
-
+                ///////////////////////////////////////////////////////////////////// RESERVATION CMS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+            case 'reservationcms':
+                require __DIR__ . '/backend/controller/foodController.php';
+                $controller = new foodController();
+                $controller->allReservations();
+                break;
 
 
 
