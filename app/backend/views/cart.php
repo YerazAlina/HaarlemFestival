@@ -19,10 +19,13 @@
 	 	<section class="shopping-cart dark">
 	 		<div class="container">
 		        <div class="block-heading">
-
 				
 		          <h2>Shopping Cart</h2>
 		          <p>You have "number" items in your shopping cart</p>
+				  	<form method="post">   
+						<button type="submit" id="clearCart" name="clearCart" formaction="cart" class="btn btn-outline-danger btn-sm">Clear Cart</button>
+										
+					</form>
 
 		        </div>
 		        <div class="content">
@@ -30,71 +33,73 @@
 	 					<div class="col-md-12 col-lg-8">
 	 						<div class="cart-items">
 
-
-
 						 	<?php 
 							
-							 foreach($_SESSION['cart'] as $items=>$values){ ?>
+							if(!empty($_SESSION['cart'])) {
+
 								
-				 				<div class="event">
-				 					<div class="row">
-					 					<div class="col-md-3">
-					 						<img class="img-fluid mx-auto d-block image" src="../img/jazz/artists/<?php echo $values['id']?>.png">
-					 					</div>
-					 					<div class="col-md-8">
-					 						<div class="info">
-						 						<div class="row">
-							 						<div class="col-md-5 event-name">
-							 							<div class="event-name">
-								 							<a href="#"><?php echo $values['name']?></a>
-								 							<div class="event-info">
-									 							<div>Time: <span class="value">...</span></div>
-									 							<div>Date: <span class="value">...</span></div>
-									 							<div>Location: <span class="value">...</span></div>
-									 						</div>
-									 					</div>
-							 						</div>
-							 						<div class="col-md-4 cart-quantity">
-							 							<label for="cart-quantity">Quantity:</label>
-							 							<input id="cart-quantity" type="number" value ="1" class="form-control cart-quantity-input">
-							 						</div>
-													
-							 						<div class="col-md-3 price">
-							 							<span>$...</span>
-							 						</div>
-
-													 <form method="post">   
-														<button type="submit" id="removeTicket" name="removeTicket" value="<?php echo $_SESSION["cart"][$i]?>" formaction="cart" class="btn btn-outline-warning btn-sm">Remove from cart</button>
-									
-													</form> 
-							
-
-									
-							 					</div>
-							 				</div>
-					 					</div>
-					 				</div>
-				 				</div>
-								
-							<?php } ?>	 
-
-								 
-									<!-- NEED TO SOMEHOW CALL THIS FROM THE CONTROLLER -->
-									<!-- WIIILLLL DOOOOOOOO IT       LAAAAAAAAAAAATTTTTTTERRRRRRRR-->
-									<?php
-											
-											if(isset($_POST['removeTicket'])){
-												$id = $_POST['removeTicket'];
-												unset($_SESSION["cart"][$id]);
-									
-											}
-									
-										
-													
-
+								foreach($_SESSION['cart'] as $items=>$values){ 
+									//printf($values['id']) ;
 									?>
+									
+
+									<div class="event">
+										<div class="row">
+											<div class="col-md-3">
+											
+												<img class="img-fluid mx-auto d-block image" src="../img/cart/<?php echo $values['name']?>.png">
+											</div>
+											<div class="col-md-8">
+												<div class="info">
+													<div class="row">
+														<div class="col-md-5 event-name">
+															<div class="event-name">
+																<b><?php echo $values['name']?></b>
+																<div class="event-info">
+																	<div>Time: <span class="value"><?php echo $values['startTime'] ?> - <?php echo $values['endTime']?></span></div>
+																	<div>Date: <span class="value"><?php echo $values['date']?></span></div>
+																	<div>Location: <span class="value"><?php echo $values['location']?></span></div>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-4 cart-quantity"> 
+															
+															<form method="post">
+																<button type="submit" id="addQuantity" name="addQuantity" value="<?php echo $values['id']?>" formaction="cart"> + </button>
+																
+																<label for="cart-quantity"> <?php echo $values['quantity'] ?> </label>
+																<button type="submit"> - </button>
+															</form>
+														
+
+														</div>
+														
+														<div class="col-md-3 price">
+															<span>$<?php echo $values['price']?></span>
+														</div>
+
+														
+														<form method="post">   
+															<button type="submit" id="removeTicket" name="removeTicket" value="<?php echo $values['id']?>" formaction="cart" class="btn btn-outline-warning btn-sm">Remove from cart</button>
+										
+														</form> 
 								
 
+										
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+							<?php 
+								}
+							
+							} else {
+								echo "CART IS EMPTY ! ";
+							} ?>	 
+
+								
 								<!--
 				 				<div class="event">
 				 					<div class="row">

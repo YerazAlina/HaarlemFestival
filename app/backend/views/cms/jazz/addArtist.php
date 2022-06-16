@@ -21,7 +21,6 @@
     <?php require __DIR__ . '../../include/navbar.php'; ?>
 
     <input type="button" class="btn btn-dark" value="Back" onclick="history.back()">
-    <!-- INSERT INTO `artist`(`id`, `artistname`, `description`) VALUES ([value-1],[value-2],[value-3]) -->
 
     <div class="wrapper" style="margin: auto; padding: 30px; width: 400px;">
         <h2>Add Artist</h2>

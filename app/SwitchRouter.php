@@ -132,30 +132,31 @@ class SwitchRouter
 
 
 
-                //Jazz CMS
-            case 'jazzcms':
-                require __DIR__ . '/backend/controller/jazzController.php';
-                $controller = new jazzController();
-                $controller->allJazzEventscms();
-                break;
+                //Jazz Artist CMS 
             case 'artistcms':
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
                 $controller->allJazzArtistscms();
                 break;
-            case 'addArtist':
+            case 'addArtist': //add
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
                 $controller->addArtist();
                 $controller->allJazzArtistscms();
                 break;
-            case 'addEvent':
+            case 'editArtist': //edit
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
-                $controller->addEvent();
-                $controller->allJazzEventscms();
+                $_SESSION['updateId'] = $_POST['editArtist'];
+                $artist = $controller->getArtist($_SESSION['updateId']);
+                require __DIR__ . '/backend/views/cms/jazz/editArtist.php';
                 break;
-            case 'deleteArtist':
+            case 'updateArtistCMS': //edit 
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                $controller->updateArtist($_SESSION['updateId']);
+                break;
+            case 'deleteArtist': //delete
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
                 $controller->deleteArtist();
@@ -163,6 +164,94 @@ class SwitchRouter
 
 
 
+
+
+
+
+                //Location CMS 
+            case 'locationcms':
+                require __DIR__ . '/backend/controller/locationController.php';
+                $controller = new LocationController();
+                $controller->allLocations();
+                break;
+            case 'addLocation': //add
+                require __DIR__ . '/backend/controller/locationController.php';
+                $controller = new LocationController();
+                $controller->addLocation();
+                $controller->allLocations();
+                break;
+            case 'editLocation': //edit
+                require __DIR__ . '/backend/controller/locationcontroller.php';
+                $controller = new LocationController();
+                $_SESSION['updateId'] = $_POST['editLocation'];
+                $location = $controller->getLocation($_SESSION['updateId']);
+                require __DIR__ . '/backend/views/cms/location/editLocation.php';
+                break;
+            case 'updateLocationCMS': //edit 
+                require __DIR__ . '/backend/controller/locationcontroller.php';
+                $controller = new LocationController();
+                $controller->updateLocation($_SESSION['updateId']);
+                header('Location: locationcms');
+                break;
+            case 'deleteLocation': //delete
+                require __DIR__ . '/backend/controller/locationcontroller.php';
+                $controller = new LocationController();
+                $controller->deleteLocation();
+                break;
+
+
+
+
+
+
+
+            case 'foodReservation':
+                require __DIR__ . '/backend/controller/foodController.php';
+                
+                $controller = new foodController();
+                $restaurant = $controller->getRestaurantById();
+
+                //require __DIR__ . '/backend/controller/cartController.php';
+                //$controller = new cartController();
+               // $controller->index();
+                break;
+
+            case 'cart':
+                require __DIR__ . '/backend/controller/cartController.php';  
+                $controller = new cartContoller();
+
+                if(isset($_POST['addTicket'])){
+                    $_POST['action'] = "addToCart";
+
+                }elseif(isset($_POST['removeTicket'])){
+                    $_POST['action'] = "removeFromCart";
+                    
+                }else if(isset($_POST['addQuantity'])){
+                    $_POST['action'] = "updateCart";
+                }
+
+                else{
+                    $_POST['action'] = "clearCart";
+
+                }
+                
+                $controller->run();
+
+
+
+                //Jazz Event CMS
+            case 'jazzcms':
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                //$controller->allJazzEventscms();
+                break;
+            case 'addEvent':
+                require __DIR__ . '/backend/controller/jazzController.php';
+                $controller = new jazzController();
+                //$controller->addEvent();
+                //$controller->allJazzEventscms();
+
+                break;
 
 
 
@@ -179,6 +268,9 @@ class SwitchRouter
                 break;
             case 'addEventView':
                 require __DIR__ . '/backend/views/cms/jazz/addEvent.php';
+                break;
+            case 'addLocationView':
+                require __DIR__ . '/backend/views/cms/location/addLocation.php';
                 break;
             case 'register':
                 require __DIR__ . '/backend/views/cms/users/register.php';

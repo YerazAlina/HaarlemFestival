@@ -19,12 +19,13 @@ class foodController
     }
 
     // get a restaurant by Id
-    public function getRestaurantById($id) {
-        if(Is_null($id)) {
-            header("Location: food");
-            exit();
-        }
-
-        return $restaurant = $this->foodService->findById($id);
+    public function getRestaurantById() {
+        $id = ($_POST['addTicket']);
+        // if(Is_null($id)) {
+        //     header("Location: food");
+        //     exit();
+        // }
+        $restaurant = $this->foodservice->findById($id);
+        return $restaurant;
     }
 }
