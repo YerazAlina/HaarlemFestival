@@ -203,6 +203,13 @@ class SwitchRouter
                 $controller = new foodController();
                 $controller->allReservations();
                 break;
+            case 'reservationChangeStatus':
+                require __DIR__ . '/backend/controller/foodController.php';
+                $controller = new foodController();
+                $_SESSION['updateId'] = $_POST['reservationChangeStatus'];
+                $controller->changeStatus($_SESSION['updateId']);
+                header('Location: reservationcms');
+                break;
 
 
 
@@ -217,7 +224,6 @@ class SwitchRouter
                 require __DIR__ . '/backend/controller/foodController.php';
 
                 $controller = new foodController();
-                $restaurant = $controller->getRestaurantById();
 
                 //require __DIR__ . '/backend/controller/cartController.php';
                 //$controller = new cartController();

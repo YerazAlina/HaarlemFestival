@@ -39,6 +39,20 @@ class foodService{
         return $this->foodrepository->findByIdCMS($id);
     }
 
+    public function findOneActivity($id){
+        return $this->foodrepository->findActivityByIdCMS($id);
+    }
+
+    public function findOneReservation($id){
+        return $this->foodrepository->findReservationByIdCMS($id);
+    }
+
+    //changeStatus($id, $reservation->foodActivityId, $reservation->nrOfGuests, $reservation->isActive)
+    public function changeStatus($id, $isActive)
+    {
+        return $this->foodrepository->changeStatus($id, $isActive);
+    }
+
     public function updateRestaurant($id, $location, $name, $description, $stars, $seats, $phoneNumber, $price, $parking, $website, $menu, $contact)
     {
         return $this->foodrepository->updateRestaurant($id, $location, $name, $description, $stars, $seats, $phoneNumber, $price, $parking, $website, $menu, $contact);

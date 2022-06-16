@@ -39,6 +39,7 @@ class foodController
         require __DIR__ . ('/../views/cms/restaurants/foodcms.php');
     }
 
+    //RESERVATIONS
     public function allReservations()
     {
         $reservations = $this->foodservice->getAllReservations();
@@ -93,9 +94,37 @@ class foodController
         }
     }
 
+    //chanceStatus
+    public function changeStatus($id)
+    {
+        $reservation = $this->foodservice->findOneReservation($id);
+        $bit = $reservation->isActive;
+
+        if ($bit === 1) {
+            $bit = 0;
+        } else if ($bit === 0) {
+            $bit = 1;
+        }
+
+        $count = $this->foodservice->changeStatus($id, $bit);
+    }
+
+
     public function getRestaurantByIdCMS($id)
     {
         $restaurant = $this->foodservice->findOne($id);
         return $restaurant;
+    }
+
+    public function getFoodActivityById($id)
+    {
+        $foodActivity = $this->foodservice->findOneActivity($id);
+        return $foodActivity;
+    }
+
+    public function getReservationById($id)
+    {
+        $reservation = $this->foodservice->findOneReservation($id);
+        return $reservation;
     }
 }

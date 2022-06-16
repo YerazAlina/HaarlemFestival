@@ -72,7 +72,7 @@ class UserController
 
         $confirm_password = $_POST['confirm_password'];
 
-        $roleId = 1;
+        $roleId = 3;
 
         $select = $this->service->searchByEmail($email);
 
