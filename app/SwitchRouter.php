@@ -9,7 +9,10 @@ class SwitchRouter
         switch ($uri) {
             case '':
                 break;
-            case 'jazzevents':
+            case 'homepage':
+                require __DIR__. '/backend/views/homepage.php';
+                break;    
+            case 'jazz':
                 require __DIR__ . '/backend/controller/jazzController.php';
                 $controller = new jazzController();
                 $controller->allJazzEvents();

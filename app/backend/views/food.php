@@ -20,7 +20,7 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../../style/food.css?<?php echo time(); ?>" />
     <link rel="stylesheet" type="text/css" href="../../style/jazzevents.css?<?php echo time(); ?>" />
-    <title>Festival Info</title>
+    <title>Food</title>
 
 </head>
 
