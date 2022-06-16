@@ -40,7 +40,7 @@
                 ?>
                     <tr>
                         <th scope="row"> <?php echo $l->id; ?> </th>
-                        <td><?php echo $l->name; ?></td>
+                        <td><?php echo $l->locationName; ?></td>
                         <td><?php echo $l->address; ?></td>
                         <td><?php echo $l->postalCode; ?></td>
                         <td><?php echo $l->city; ?></td>
