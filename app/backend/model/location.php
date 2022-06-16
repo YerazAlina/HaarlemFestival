@@ -7,7 +7,7 @@ class location {
     public string $address;
     public string $postalCode;
     public string $city;
-    public string $capacity;
+    public int $capacity;
 
     /**
      * @param int $id
@@ -15,6 +15,7 @@ class location {
      * @param string $address
      * @param string $postalCode
      * @param string $city
+     * @param int $capacity
      */
 
 

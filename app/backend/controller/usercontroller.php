@@ -22,7 +22,6 @@ class UserController
         }
     }
 
-
     public function getUserDetails($email)
     {
         $userDetails = $this->service->searchByEmail($email);
