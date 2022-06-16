@@ -63,7 +63,6 @@
                                 echo "No Maximum";
                             } else {
                                 echo $e->ticketsLeft;
-                                //TODO:THIS SHOULD BE TOTAL NR OF TICKETS 
                             }
                             ?>
                         </td>
