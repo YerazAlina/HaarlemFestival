@@ -21,13 +21,13 @@
 
         <div class="list-group">
             <!-- works -->
-            <!-- <a href="locationcms" class="list-group-item list-group-item-action">All Locations and Venues</a>  -->
+            <a href="locationcms" class="list-group-item list-group-item-action">All Locations and Venues</a> 
             <a href="artistcms" class="list-group-item list-group-item-action">Jazz Artists</a>
             <a href="jazzcms" class="list-group-item list-group-item-action">Jazz Events</a>
-
             <a href="foodcms" class="list-group-item list-group-item-action">Restaurants</a>
-            <a href="foodcms" class="list-group-item list-group-item-action">Restaurants Reservations</a>
-            <a href="foodcms" class="list-group-item list-group-item-action">Restaurants Events</a>
+            
+            <!-- <a href="foodcms" class="list-group-item list-group-item-action">Restaurants Reservations</a> -->
+            <!-- <a href="foodcms" class="list-group-item list-group-item-action">Restaurants Events</a> -->
 
             <!-- <a href="#" class="list-group-item list-group-item-action disabled">History (currently unavailable)</a>
             <a href="#" class="list-group-item list-group-item-action disabled">Music (currently unavailable)</a> -->

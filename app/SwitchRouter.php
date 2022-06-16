@@ -13,7 +13,7 @@ class SwitchRouter
             case '':
             case 'login':
                 if (isset($_SESSION['logged_in'])) {
-                    echo "You are already logged in";
+                    echo "You are already logged in. <br>   " . " Add /home in the url to go to the homepage.";
                 } else {
                     require __DIR__ . '/backend/views/cms/login.php';
                 }
