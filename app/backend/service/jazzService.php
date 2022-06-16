@@ -34,11 +34,35 @@ class jazzService{
         return $this->jazzrepository->getSundayEvents();
     }
 
-    
+    public function getArtists(){
+        return $this->jazzrepository->findAllArtists();
+    }
+  
     public function getOne($id){
         return $this->jazzrepository->findById($id);
     }
 
+    public function findOneArtist($id){
+        return $this->jazzrepository->findByIdArtist($id);
+    }
 
+    public function addEvent($type, $date, $startTime, $endTime, $locationId, $price, $ticketsLeft)
+    {
+        return $this->jazzrepository->addEvent($type, $date, $startTime, $endTime, $locationId, $price, $ticketsLeft);
+    }
 
+    public function addArtist($artistname, $description)
+    {
+        return $this->jazzrepository->addArtist($artistname, $description);
+    }
+
+    public function updateArtist($id, $artist, $description)
+    {
+        return $this->jazzrepository->updateArtist($id, $artist, $description);
+    }
+
+    public function deleteArtist($id)
+    {
+        return $this->jazzrepository->deleteOne($id);
+    }
 }

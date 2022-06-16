@@ -43,7 +43,7 @@
 				</a>
 			</div>
 
-			<div class="col-8 d-flex justify-content-center text-center">
+			<!-- <div class="col-8 d-flex justify-content-center text-center">
 				<a href="manageUsers">
                     <br> <br> <br> <br>
 					<button type="button" class="btn btn-light" style="background-color:#844242; color:white; height:160px; width: 240px;"> Manage Users </button>
@@ -52,7 +52,7 @@
                     <br> <br> <br> <br>
 					<button type="button" class="btn btn-light" style="background-color:#844242; color:white; height:160px; width: 240px;"> Manage Content </button>
 				</a>
-			</div>
+			</div> -->
 
 		</div>
 	</div>

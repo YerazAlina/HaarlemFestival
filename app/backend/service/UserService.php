@@ -16,9 +16,14 @@ class UserService
         return $this->userRepository->findAll();
     }
 
-    public function createUser($email, $firstname, $lastname ,$password)
+    public function getAllRoles()
     {
-        return $this->userRepository->addUser($email, $firstname, $lastname ,$password);
+        return $this->userRepository->findAllRoles();
+    }
+
+    public function createUser($email, $firstname, $lastname ,$password, $roleId)
+    {
+        return $this->userRepository->addUser($email, $firstname, $lastname ,$password, $roleId);
     }
 
     public function deleteUser($id)
@@ -36,12 +41,13 @@ class UserService
         return $this->userRepository->findById($id);
     }
 
-    public function updateEmail($email, $id)
+    //new
+    public function updateUser($id, $email, $firstname, $lastname, $password, $roleId)
     {
-        return $this->userRepository->updateEmail($email, $id);
+        return $this->userRepository->updateUser($id, $email, $firstname, $lastname ,$password, $roleId);
     }
 
-    public function searchEmail($email)
+    public function searchByEmail($email)
     {
         return $this->userRepository->findByEmail($email);
     }

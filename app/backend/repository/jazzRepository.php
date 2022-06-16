@@ -18,7 +18,11 @@ class jazzRepository
     }
 
     private string $all_events_sql = "SELECT * FROM jazzActivity
+
                                       JOIN activity a on a.id = jazzActivity.activityId
+
+                                      JOIN activity a on a.id = jazzActivity.activityId AND a.date
+
                                       RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
                                       JOIN location l on l.id = a.locationId";
 
@@ -27,10 +31,18 @@ class jazzRepository
     private string $get_one_event_sql = "SELECT * FROM jazzActivity
                                         JOIN activity a on a.id = jazzActivity.activityId AND jazzActivity.activityId=:id
                                         RIGHT JOIN artist a2 on a2.id = jazzActivity.artistId
-                                        JOIN location l on l.id = a.locationId";      
-                                        
+                                        JOIN location l on l.id = a.locationId";
+
     private string $book_detail_sql = "SELECT * FROM books WHERE books.ISBN=:bookISBN";
+
+    private string $all_artists_sql = "SELECT * FROM artist";
+
+    private string $delete_artist_sql = "delete from artist where id = :id";
+
+    private string $get_one_artist_sql = "SELECT * FROM artist WHERE id=:id";
+
     
+
 
     private string $thursday_events = "SELECT * FROM jazzActivity
                                       JOIN activity a on a.id = jazzActivity.activityId AND a.date = '2022-07-28'
@@ -94,8 +106,16 @@ class jazzRepository
     }
 
 
+    public function findAllArtists()
+    {
+        $this->stmt = $this->db->prepare($this->all_artists_sql);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'artist');
+        $this->stmt->execute();
+        return $this->stmt->fetchAll();
+    }
 
-    public function findEvents(){
+    public function findEvents()
+    {
 
         /*
         if(isset($_POST["thursdayEvents"])){
@@ -147,9 +167,16 @@ class jazzRepository
         } else {
             return null;
         }
+    }
 
-       
+    public function findByIdArtist($id)
+    {
+        $this->stmt = $this->db->prepare($this->get_one_artist_sql);
+        $this->stmt->bindParam(':id', $id);
+        $this->stmt->setFetchMode(PDO::FETCH_CLASS, 'artist');
+        $this->stmt->execute();
 
+        return $this->stmt->fetch();
     }
 
     public function saveOne($object)
@@ -159,6 +186,68 @@ class jazzRepository
 
     public function deleteOne($id)
     {
-        // TODO: Implement deleteOne() method.
+        $this->stmt = $this->db->prepare($this->delete_artist_sql);
+        $this->stmt->bindParam(':id', $id);
+
+        return $this->stmt->execute();
+    }
+
+    public function addArtist($artistname, $description)
+    {
+        $count = "";
+
+        //INSERT INTO `artist`(`id`, `artistname`, `description`) VALUES ([value-1],[value-2],[value-3])
+        $query = "INSERT INTO artist (artistname, description) VALUES (:artistname, :description)";
+        $statement = $this->db->prepare($query);
+        $statement->execute(
+            array(
+                'artistname'        =>     $artistname,
+                'description'       =>     $description
+            )
+        );
+
+        $count = $statement->rowCount();
+
+        return $count;
+    }
+
+    public function addEvent($type, $date, $startTime, $endTime, $locationId, $price, $ticketsLeft)
+    {
+        $count = "";
+
+        // INSERT INTO `activity`(`id`, `type`, `date`, `startTime`, `endTime`, `locationId`, `price`, `ticketsLeft`)
+
+        $query = "INSERT INTO activity (type, date, startTime, endTime, locationId, price, ticketsLeft) VALUES (:type, :date, :startTime, :endTime, :locationId; :price, :ticketsLeft)";
+        $statement = $this->db->prepare($query);
+        $statement->execute(
+            array(
+                'type'           =>     $type,
+                'date'           =>     $date,
+                'startTime'      =>     $startTime,
+                'endTime'        =>     $endTime,
+                'locationId'     =>     $locationId,
+                'price'          =>     $price,
+                'ticketsLeft'    =>     $ticketsLeft
+            )
+        );
+
+        $count = $statement->rowCount();
+
+        return $count;
+    }
+
+    public function updateArtist($id, $artistname, $description)
+    {
+        $query = "UPDATE artist SET artistname=:artistname, description=:description WHERE id = :id;";
+        $statement = $this->db->prepare($query);
+        $statement->execute(
+            array(
+                'id'                 =>     $id,
+                'artistname'         =>     $artistname,
+                'description'        =>     $description
+            )
+        );
+
+        $count = $statement->rowCount();
     }
 }
