@@ -1,6 +1,5 @@
 {
     "require": {
-        "mollie/mollie-api-php": "^2.0",
         "endroid/qr-code": "^4.4"
     }
 }

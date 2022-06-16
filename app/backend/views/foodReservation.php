@@ -29,8 +29,34 @@
 
 include_once ('include/navbar.php')
 ?>
+    <header class="w3-container w3-border w3-bottombar w3-transparent w3-border-black">
+        <section class="w3-padding-32 w3-margin ">
+            <div class="w3-right">
+                <img src="../img/food/<?php echo $restaurant->name ?>.png" alt="">
+            </div>
 
+            <h2> <?php echo $restaurant->name ?></h2>
 
+            <p> <i class="fas fa-euro"></i> Price: <?php echo $restaurant->price ?>.00 EUR </p>
+
+            <p> <i class="fas fa-map-marker-alt"></i> Address: <?php echo $restaurant->address ?> </p>
+
+            <p> <?php echo $restaurant->description ?> </p>
+        </section>
+    </header>
+
+    <section class=" w3-display-container  w3-container">
+        <section>
+            <h1>Book your table </h1>
+            <p>A reservation fee of €10,- per person wil be charged when a reservation is made on the Haarlem Festival site. This fee will be deducted from the final check a visiting the restaurant.</p>
+
+        </section>
+
+        <section>
+            <?php $startTime = $restaurant->startTime ?>
+            <?php $endTime = $restaurant->endTime ?>
+        </section>
+    </section>
 
     <div class="row recommended-events">
         <h3 class="rec-title"> Complete your day </h3>

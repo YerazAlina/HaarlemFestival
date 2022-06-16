@@ -4,13 +4,9 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit3646d2ca6a6ea3eed1ab43a3a130836d
+class ComposerStaticInitbbb2f2189473ae9004d1cd78be5814ea
 {
     public static $prefixLengthsPsr4 = array (
-        'M' => 
-        array (
-            'Mollie\\Api\\' => 11,
-        ),
         'E' => 
         array (
             'Endroid\\QrCode\\' => 15,
@@ -19,10 +15,6 @@ class ComposerStaticInit3646d2ca6a6ea3eed1ab43a3a130836d
         array (
             'DASPRiD\\Enum\\' => 13,
         ),
-        'C' => 
-        array (
-            'Composer\\CaBundle\\' => 18,
-        ),
         'B' => 
         array (
             'BaconQrCode\\' => 12,
@@ -30,10 +22,6 @@ class ComposerStaticInit3646d2ca6a6ea3eed1ab43a3a130836d
     );
 
     public static $prefixDirsPsr4 = array (
-        'Mollie\\Api\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/mollie/mollie-api-php/src',
-        ),
         'Endroid\\QrCode\\' => 
         array (
             0 => __DIR__ . '/..' . '/endroid/qr-code/src',
@@ -41,10 +29,6 @@ class ComposerStaticInit3646d2ca6a6ea3eed1ab43a3a130836d
         'DASPRiD\\Enum\\' => 
         array (
             0 => __DIR__ . '/..' . '/dasprid/enum/src',
-        ),
-        'Composer\\CaBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
         ),
         'BaconQrCode\\' => 
         array (
@@ -59,9 +43,9 @@ class ComposerStaticInit3646d2ca6a6ea3eed1ab43a3a130836d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit3646d2ca6a6ea3eed1ab43a3a130836d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit3646d2ca6a6ea3eed1ab43a3a130836d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit3646d2ca6a6ea3eed1ab43a3a130836d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitbbb2f2189473ae9004d1cd78be5814ea::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitbbb2f2189473ae9004d1cd78be5814ea::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitbbb2f2189473ae9004d1cd78be5814ea::$classMap;
 
         }, null, ClassLoader::class);
     }
