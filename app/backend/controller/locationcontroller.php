@@ -28,9 +28,9 @@ class LocationController
         $address = $_POST['address'];
         $postalCode =  $_POST['postalCode'];
         $city = $_POST['city'];
-        // $capacity =  $_POST['capacity'];
+        $capacity =  $_POST['capacity'];
 
-        $count = $this->service->updateLocation($id, $name, $address, $postalCode, $city); //, $capacity);
+        $count = $this->service->updateLocation($id, $name, $address, $postalCode, $city, $capacity);
     }
 
     public function addLocation()
@@ -39,9 +39,9 @@ class LocationController
         $address = $_POST['address'];
         $postalCode =  $_POST['postalCode'];
         $city = $_POST['city'];
-        //$capacity =  $_POST['capacity'];
+        $capacity =  $_POST['capacity'];
 
-        $count = $this->service->addLocation($name, $address, $postalCode, $city); //, $capacity);
+        $count = $this->service->addLocation($name, $address, $postalCode, $city, $capacity);
     }
 
     public function deleteLocation()

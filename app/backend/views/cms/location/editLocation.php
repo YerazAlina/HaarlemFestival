@@ -29,7 +29,7 @@
         <form action="updateLocationCMS" method="post">
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" name="name" value="<?php echo $location->name; ?>">
+                <input type="text" name="name" value="<?php echo $location->locationName; ?>">
             </div>
 
             <div class="form-group">
@@ -47,10 +47,10 @@
                 <input type="text" name="city" value="<?php echo $location->city; ?>">
             </div>
 
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label>Capacity</label>
                 <input type="text" name="capacity" value="<?php echo $location->capacity; ?>">
-            </div> -->
+            </div>
 
             <div class="form-group">
                 <a href="saveChanges">

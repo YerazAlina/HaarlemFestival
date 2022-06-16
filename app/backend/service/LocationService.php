@@ -20,14 +20,14 @@ class LocationService
         return $this->locationRepository->findById($id);
     }
 
-    public function updateLocation($id, $name, $address, $postalCode, $city)//, $capacity)
+    public function updateLocation($id, $name, $address, $postalCode, $city, $capacity)
     {
-        return $this->locationRepository->updateLocation($id, $name, $address, $postalCode, $city); //, $capacity);
+        return $this->locationRepository->updateLocation($id, $name, $address, $postalCode, $city, $capacity);
     }
 
-    public function addLocation($name, $address, $postalCode, $city)//, $capacity)
+    public function addLocation($name, $address, $postalCode, $city, $capacity)
     {
-        return $this->locationRepository->addLocation($name, $address, $postalCode, $city);//, $capacity);
+        return $this->locationRepository->addLocation($name, $address, $postalCode, $city, $capacity);
     }
 
     public function deleteLocation($id)

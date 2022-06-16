@@ -48,10 +48,10 @@
                 <input type="text" name="city">
             </div>
 
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label>Capacity</label>
                 <input type="text" name="capacity">
-            </div> -->
+            </div>
 
 
             <div class="form-group">

@@ -49,9 +49,9 @@ class LocationRepository extends Repository
         return $this->stmt->execute();
     }
 
-    public function updateLocation($id, $name, $address, $postalCode, $city)
+    public function updateLocation($id, $name, $address, $postalCode, $city, $capacity)
     {
-        $query = "UPDATE location SET name=:name, address=:address, postalCode=:postalCode, city=:city WHERE id = :id;";
+        $query = "UPDATE location SET name=:name, address=:address, postalCode=:postalCode, city=:city, capacity=:capacity WHERE id = :id;";
         $statement = $this->db->prepare($query);
         $statement->execute(
             array(
@@ -60,26 +60,26 @@ class LocationRepository extends Repository
                 'address'            =>     $address,
                 'postalCode'         =>     $postalCode,
                 'city'               =>     $city,
-                //'capacity'           =>     $capacity
+                'capacity'           =>     $capacity
             )
         );
 
         $count = $statement->rowCount();
     }
 
-    public function addLocation($name, $address, $postalCode, $city) //, $capacity)
+    public function addLocation($name, $address, $postalCode, $city, $capacity)
     {
         $count = "";
 
-        $query = "INSERT INTO location (name, address, postalCode, city) VALUES (:name, :address, :postalCode, :city)";
+        $query = "INSERT INTO location (name, address, postalCode, city, capacity) VALUES (:name, :address, :postalCode, :city, :capacity)";
         $statement = $this->db->prepare($query);
         $statement->execute(
             array(
                 'name'               =>     $name,
                 'address'            =>     $address,
                 'postalCode'         =>     $postalCode,
-                'city'               =>     $city
-                // 'capacity'           =>     $capacity
+                'city'               =>     $city,
+                'capacity'           =>     $capacity
             )
         );
 

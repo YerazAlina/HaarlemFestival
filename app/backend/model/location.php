@@ -7,7 +7,7 @@ class location {
     public string $address;
     public string $postalCode;
     public string $city;
-    //public string $capacity;
+    public string $capacity;
 
     /**
      * @param int $id
@@ -97,9 +97,24 @@ class location {
     {
         $this->city = $city;
     }
+    
+    /**
+     * Get the value of capacity
+     */ 
+    public function getCapacity()
+    {
+        return $this->capacity;
+    }
 
+    /**
+     * Set the value of capacity
+     *
+     * @return  self
+     */ 
+    public function setCapacity($capacity)
+    {
+        $this->capacity = $capacity;
 
-
-
-
+        return $this;
+    }
 }

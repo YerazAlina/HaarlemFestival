@@ -29,7 +29,7 @@
                     <th scope="col">Address</th>
                     <th scope="col">Postal Code</th>
                     <th scope="col">City</th>
-                    <!-- <th scope="col">Capacity</th> -->
+                    <th scope="col">Capacity</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -44,7 +44,7 @@
                         <td><?php echo $l->address; ?></td>
                         <td><?php echo $l->postalCode; ?></td>
                         <td><?php echo $l->city; ?></td>
-                        <!-- <td><?php //echo $l->capacity; ?></td> -->
+                        <td><?php echo $l->capacity; ?></td>
 
                         <form action="editLocation" method="post">
                             <td><a href="editLocation">
