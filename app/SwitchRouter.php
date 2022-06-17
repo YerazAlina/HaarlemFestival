@@ -10,7 +10,6 @@ class SwitchRouter
     {
         switch ($uri) {
                 ///////////////////////////////////////////////////////////////////// LOGIN/LOGOUT/REGISTER CMS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-            case '':
             case 'login':
                 if (isset($_SESSION['logged_in'])) {
                     echo "You are already logged in. <br>   " . " Add /home in the url to go to the homepage.";
@@ -269,6 +268,7 @@ class SwitchRouter
                 $controller->index();
                 break;
                 ///////////////////////////////////////////////////////////////////// VIEWS ONLY \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+            case '':
             case 'homepage':
                 require __DIR__ . '/backend/views/homepage.php';
                 break;
