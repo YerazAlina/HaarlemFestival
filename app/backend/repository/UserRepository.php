@@ -92,7 +92,7 @@ class UserRepository extends Repository
             )
         );
 
-        return $statement->fetchAll(PDO::FETCH_ASSOC); //GOD WHY DOES THIS NOT WORK
+        return $statement->fetchAll(PDO::FETCH_ASSOC); 
     }
 
     public function addUser($email, $firstname, $lastname, $password, $roleId)

@@ -101,7 +101,6 @@ class foodController
         }
     }
 
-    //THIS IS NOT WORKING CORRRECTLHYYYSAFFSHSAKJHJFDASJFSLJSLK AQFJOK
     public function changeStatus($id)
     {
         $reservation = $this->foodservice->findOneReservation($id);
